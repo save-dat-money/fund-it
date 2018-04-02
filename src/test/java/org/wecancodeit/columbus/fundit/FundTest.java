@@ -1,6 +1,9 @@
 package org.wecancodeit.columbus.fundit;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+
 
 import org.junit.Test;
 
@@ -12,6 +15,18 @@ public class FundTest {
 		
 		assertNotNull(underTest);
 		
+	}
+	
+	@Test
+	public void shouldGetFundName() {
+		
+		Fund underTest = new Fund("Emergency");
+		
+		
+		String check = underTest.getFundName();
+		
+		assertThat(check, is("Emergency"));
+
 		
 	}
 }
