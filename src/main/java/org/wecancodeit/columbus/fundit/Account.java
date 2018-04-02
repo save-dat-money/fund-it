@@ -1,5 +1,6 @@
 package org.wecancodeit.columbus.fundit;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -16,6 +17,11 @@ public class Account {
 		this.balance = balance;
 
 	}
+	
+	public  Account(double balance, Fund...funds) {
+		this.balance = balance;
+		this.funds = Arrays.asList(funds);
+	}
 
 	public Account() {
 
@@ -27,6 +33,10 @@ public class Account {
 
 	public void setFunds(Fund...fund) {
 		this.funds = Arrays.asList(fund);
+	}
+
+	public void removeFund(Fund fund) {
+		funds.remove(fund); 
 	}
 	
 
