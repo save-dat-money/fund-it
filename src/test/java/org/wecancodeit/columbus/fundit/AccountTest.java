@@ -4,6 +4,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+
+import java.util.Collection;
 
 import org.junit.Test;
 
@@ -31,12 +34,25 @@ public class AccountTest {
 		Account account = new Account(100.00);
 		Fund fundTest = new Fund("Emergency");
 		
-	
-		Fund check = account.getFunds(); 
+		account.setFunds(fundTest);
+		Collection<Fund> check = account.getFunds(); 
 		
 		assertThat(check, contains(fundTest));
 		
-//		assertThat(, contains(fundTest));		
+	}
+	
+	@Test
+	public void accountSetFundstoAccount() {
+		Account account = new Account(100.00);
+		Fund fundTest = new Fund("Emergency");
+		Fund fundTest2 = new Fund("Dog"); 
+		
+		account.setFunds(fundTest,fundTest2);
+		
+		Collection<Fund> check = account.getFunds(); 
+		
+		assertThat(check, containsInAnyOrder(fundTest,fundTest2));
+		
 	}
 	
 	

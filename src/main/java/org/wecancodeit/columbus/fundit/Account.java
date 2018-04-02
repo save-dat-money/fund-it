@@ -1,9 +1,13 @@
 package org.wecancodeit.columbus.fundit;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 public class Account {
 
 	private double balance;
-
+	private Collection<Fund> funds; 
+	
 	public double getBalance() {
 		return balance;
 	}
@@ -17,9 +21,13 @@ public class Account {
 
 	}
 
-	public Fund getFunds() {
-		// TODO Auto-generated method stub
-		return null;
+	public Collection<Fund> getFunds() {
+		return funds;
 	}
+
+	public void setFunds(Fund...fund) {
+		this.funds = Arrays.asList(fund);
+	}
+	
 
 }
