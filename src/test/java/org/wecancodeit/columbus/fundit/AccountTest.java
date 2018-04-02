@@ -15,6 +15,15 @@ public class AccountTest {
 		Account account = new Account(); 
 		
 		assertNotNull(account);
+	}
+	
+	@Test
+	public void accountShouldHaveBalance() {
+		Account account = new Account(100.00); 
+		
+		double check = account.getBalance(); 
+		
+		assertThat(check, is(100.00));
 		
 	}
 
