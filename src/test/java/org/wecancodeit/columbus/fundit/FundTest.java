@@ -26,7 +26,5 @@ public class FundTest {
 		String check = underTest.getFundName();
 		
 		assertThat(check, is("Emergency"));
-
-		
 	}
 }

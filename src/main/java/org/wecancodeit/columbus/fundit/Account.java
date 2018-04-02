@@ -17,4 +17,9 @@ public class Account {
 
 	}
 
+	public Fund getFunds() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
