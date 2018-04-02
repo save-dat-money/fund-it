@@ -20,7 +20,7 @@ public class Account {
 	
 	public  Account(double balance, Fund...funds) {
 		this.balance = balance;
-		this.funds = Arrays.asList(funds);
+		this.funds = new ArrayList<Fund>(Arrays.asList(funds));
 	}
 
 	public Account() {
@@ -31,9 +31,10 @@ public class Account {
 		return funds;
 	}
 
-	public void setFunds(Fund...fund) {
-		this.funds = Arrays.asList(fund);
-	}
+	//possibly for later use
+//	public void setFunds(Fund...fund) {
+//		funds = Arrays.asList(fund); 
+//	}
 
 	public void removeFund(Fund fund) {
 		funds.remove(fund); 

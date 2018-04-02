@@ -1,8 +1,11 @@
 package org.wecancodeit.columbus.fundit;
 
+import javax.persistence.ManyToOne;
+
 public class Fund {
 
 	private String fundName;
+	private Account account; 
 
 	public String getFundName() {
 		return fundName;

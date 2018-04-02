@@ -32,10 +32,9 @@ public class AccountTest {
 	
 	@Test
 	public void accountSetFundToAccount() {
-		Account account = new Account(100.00);
 		Fund fundTest = new Fund("Emergency");
+		Account account = new Account(100.00,fundTest);
 		
-		account.setFunds(fundTest);
 		Collection<Fund> check = account.getFunds(); 
 		
 		assertThat(check, contains(fundTest));
@@ -44,12 +43,10 @@ public class AccountTest {
 	
 	@Test
 	public void accountSetFundstoAccount() {
-		Account account = new Account(100.00);
 		Fund fundTest = new Fund("Emergency");
 		Fund fundTest2 = new Fund("Dog"); 
-		
-		account.setFunds(fundTest,fundTest2);
-		
+		Account account = new Account(100.00,fundTest,fundTest2);
+				
 		Collection<Fund> check = account.getFunds(); 
 		
 		assertThat(check, containsInAnyOrder(fundTest,fundTest2));
@@ -60,17 +57,13 @@ public class AccountTest {
 		
 		Fund fundTest = new Fund("Emergency");
 		Fund fundTest2 = new Fund("Dog"); 
-		Account account = new Account(100.00,fundTest2,fundTest);
-//		account.setFunds(fundTest,fundTest2);
+		Account account = new Account(100.00,fundTest,fundTest2);
 		
-		account.removeFund(fundTest2);
+		account.removeFund(fundTest);
 		
 		Collection<Fund> check = account.getFunds(); 
 		
-		
-		assertThat(check, contains(not(fundTest2))); 
-		
-		
+		assertThat(check, contains(not(fundTest))); 
 	}
 	
 	
