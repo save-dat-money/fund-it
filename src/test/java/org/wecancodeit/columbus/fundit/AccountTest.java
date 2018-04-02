@@ -23,8 +23,8 @@ public class AccountTest {
 		
 		double check = account.getBalance(); 
 		
-		assertThat(check, is(100.00));
-		
+		assertThat(check, is(100.00));	
 	}
-
+	
+	
 }
