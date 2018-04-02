@@ -1,14 +1,25 @@
 package org.wecancodeit.columbus.fundit;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+@Entity
 public class Fund {
-
+	@Id
+	@GeneratedValue
+	private long id;
 	private String fundName;
-	private Account account; 
+	@ManyToOne
+	public Account account;
 
 	public String getFundName() {
 		return fundName;
+	}
+
+	public long getId() {
+		return id;
 	}
 
 	public Fund(String fundName) {

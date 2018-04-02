@@ -4,11 +4,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class Account {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+@Entity
+public class Account {
+	@Id
+	@GeneratedValue
+	private long id;
 	private double balance;
-	private Collection<Fund> funds; 
-	
+
+	@OneToMany(mappedBy = "account")
+	private Collection<Fund> funds;
+
 	public double getBalance() {
 		return balance;
 	}
@@ -17,8 +27,8 @@ public class Account {
 		this.balance = balance;
 
 	}
-	
-	public  Account(double balance, Fund...funds) {
+
+	public Account(double balance, Fund... funds) {
 		this.balance = balance;
 		this.funds = new ArrayList<Fund>(Arrays.asList(funds));
 	}
@@ -31,14 +41,22 @@ public class Account {
 		return funds;
 	}
 
-	//possibly for later use
-//	public void setFunds(Fund...fund) {
-//		funds = Arrays.asList(fund); 
-//	}
+	// possibly for later use
+	// public void setFunds(Fund...fund) {
+	// funds = Arrays.asList(fund);
+	// }
 
 	public void removeFund(Fund fund) {
-		funds.remove(fund); 
+		funds.remove(fund);
 	}
-	
+
+	public String addFund(Fund fund) {
+		if (!(funds.contains(fund))) {
+			funds.add(fund);
+			return "added";
+		} else {
+			return "duplicate";
+		}
+	}
 
 }
