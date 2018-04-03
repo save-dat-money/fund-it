@@ -1,0 +1,15 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	display: grid;
+	grid-template-rows: 10% auto 10%;
+	height: 100vh;
+}
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
