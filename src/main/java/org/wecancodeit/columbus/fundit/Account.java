@@ -21,7 +21,7 @@ public class Account {
 	private Collection<Fund> funds;
 
 	public double getBalance() {
-		return balance;
+		return balance; 
 	}
 
 	public Account(double balance) {
