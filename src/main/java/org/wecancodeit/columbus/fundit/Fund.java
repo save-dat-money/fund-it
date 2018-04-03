@@ -22,8 +22,9 @@ public class Fund {
 		return id;
 	}
 
-	public Fund(String fundName) {
+	public Fund(String fundName, Account account) {
 		this.fundName = fundName;
+		this.account = account;
 	}
 
 	@Override
@@ -52,6 +53,9 @@ public class Fund {
 	}
 
 	public Fund() {
+	}
+	public Account getAccount() {
+		return account;
 	}
 
 }

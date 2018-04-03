@@ -19,8 +19,8 @@ public class FundTest {
 	
 	@Test
 	public void shouldGetFundName() {
-		
-		Fund underTest = new Fund("Emergency");
+		Account account = new Account("Savings", 1000);
+		Fund underTest = new Fund("Emergency", account);
 		
 		
 		String check = underTest.getFundName();
