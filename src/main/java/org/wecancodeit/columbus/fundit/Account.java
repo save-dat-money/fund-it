@@ -14,13 +14,14 @@ public class Account {
 	@Id
 	@GeneratedValue
 	private long id;
+
 	private double balance;
 
 	@OneToMany(mappedBy = "account")
 	private Collection<Fund> funds;
 
 	public double getBalance() {
-		return balance;
+		return balance; 
 	}
 
 	public Account(double balance) {
@@ -56,6 +57,28 @@ public class Account {
 		} else {
 			return "duplicate";
 		}
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Account other = (Account) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 
 }
