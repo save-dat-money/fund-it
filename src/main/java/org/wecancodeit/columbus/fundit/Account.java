@@ -25,7 +25,6 @@ public class Account {
 
 	public Account(double balance) {
 		this.balance = balance;
-
 	}
 
 	public Account(double balance, Fund... funds) {

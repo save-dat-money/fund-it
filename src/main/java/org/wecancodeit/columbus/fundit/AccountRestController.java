@@ -1,5 +1,7 @@
 package org.wecancodeit.columbus.fundit;
 
+import java.util.Collection;
+
 import javax.annotation.Resource;
 
 import org.springframework.ui.Model;
@@ -14,9 +16,9 @@ public class AccountRestController {
 	FundRepository fundRepo;
 	
 	@RequestMapping("/accounts")
-	public String showAllFunds(Long id, Model model) {
+	public Collection<Fund> showAllFunds(Long id, Model model) {
 		model.addAttribute("allFunds", fundRepo.findAll());
-		return "homePage";
+		return (Collection<Fund>) fundRepo.findAll();
 	}
 	
 	@RequestMapping("/account/{id}/addfund/{fundName}")
