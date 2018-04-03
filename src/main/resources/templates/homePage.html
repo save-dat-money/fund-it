@@ -8,7 +8,19 @@
 	href="/css/style.css" />
 </head>
 <body>
-	<article class="fundContainer">
+	<section class="container">
+		<header>
+			<h2>Fundit!LOGO</h2>
+			<nav>
+				<ul>
+					<li>Resources</li>
+					<li>About us</li>
+					<li>Preferences</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+				<article class="fundContainer">
 		<h3>Funds:</h3>
 		<span class="account-fund" th:each="fund: ${account.funds}"> <a
 			th:href="@{'/fund/' + ${fund.id}}" th:text="${fund.fundName}"></a> <a
@@ -27,6 +39,9 @@
 			</div>
 		</form>
 	</article>
-<script type="text/javascript" src="/js/app.js"></script>
+		</main>
+		<footer></footer>
+	</section>
+  <script type="text/javascript" src="/js/app.js"></script>
 </body>
 </html>
