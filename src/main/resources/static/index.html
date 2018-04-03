@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Account</title>
+<link class="layout" rel="stylesheet" type="text/css"
+	href="/css/layout.css" />
+<link class="style" rel="stylesheet" type="text/css"
+	href="/css/style.css" />
+</head>
+<body>
+	<section class="container">
+		<header>
+			<h2>Fundit!LOGO</h2>
+			<nav>
+				<ul>
+					<li>Resources</li>
+					<li>About us</li>
+					<li>Preferences</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<section class="main__top">
+				<h1>Account Balance: 12565.65</h1>
+			</section>
+			<section class="main__bottom">
+				<section class="main__bottom__left">
+					<img src="./images/svg_pie.jpg"></img>
+				</section>
+				<section class="main__bottom__right">
+					<article class="fundContainer">
+						<h3>Funds:</h3>
+						<span class="account-fund" th:each="fund: ${account.funds}"> <a
+							th:href="@{'/fund/' + ${fund.id}}" th:text="${fund.fundName}"></a> <a
+							class="fund-delete-x">x</a> <input type="hidden" th:value="${fund.id}" />
+						</span>
+					</article>
+					<article class="fund-input-form">
+						<h3>Add Fund:</h3>
+						<form method="POST">
+							<div>
+								<label>Fund:</label> <input type="text" id="fundName" required="true" />
+							</div>
+							<div>
+								<input type="button" class="fund-add-button" value="Submit"></input>
+							</div>
+						</form>
+					</article>
+				</section>
+			</section>
+		</main>
+		<footer></footer>
+	</section>
+  <script type="text/javascript" src="/js/app.js"></script>
+</body>
+</html>
