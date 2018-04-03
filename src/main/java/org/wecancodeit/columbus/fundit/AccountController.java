@@ -27,7 +27,7 @@ public class AccountController {
 	@RequestMapping("/account/{accountId}")
 	public String getAllFundsFromThisAccount(@PathVariable Long accountId, Model model) {
 		model.addAttribute("account", accountRepo.findOne(accountId)); 
-		return "account"; 
+		return "homePage"; 
 	}
 	
 //	//to see every single funds that exist within all accounts
