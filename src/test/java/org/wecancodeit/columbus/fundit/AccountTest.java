@@ -11,60 +11,45 @@ import java.util.Collection;
 
 import org.junit.Test;
 
-
 public class AccountTest {
-	
+
 	@Test
 	public void shouldCreateAnAccountObject() {
-		Account account = new Account(); 
-		
+		Account account = new Account();
+
 		assertNotNull(account);
 	}
-	
+
 	@Test
 	public void accountShouldHaveBalance() {
-		Account account = new Account(100.00); 
-		
-		double check = account.getBalance(); 
-		
-		assertThat(check, is(100.00));	
+		Account account = new Account("Savings", 100.00);
+
+		double check = account.getBalance();
+
+		assertThat(check, is(100.00));
 	}
-	
+
 	@Test
 	public void accountSetFundToAccount() {
-		Fund fundTest = new Fund("Emergency");
-		Account account = new Account(100.00,fundTest);
-		
-		Collection<Fund> check = account.getFunds(); 
-		
-		assertThat(check, contains(fundTest));
-		
+		Account account = new Account("Savings", 100.00);
+		Fund fundTest = new Fund("Emergency", account);
+		Account check = fundTest.getAccount();
+		assertThat(check, is(account));
+
 	}
-	
+
 	@Test
 	public void accountSetFundstoAccount() {
-		Fund fundTest = new Fund("Emergency");
-		Fund fundTest2 = new Fund("Dog"); 
-		Account account = new Account(100.00,fundTest,fundTest2);
-				
-		Collection<Fund> check = account.getFunds(); 
-		
-		assertThat(check, containsInAnyOrder(fundTest,fundTest2));
+		Account account = new Account("Savings", 100.00);
+		Fund fundTest = new Fund("Emergency", account);
+		Fund fundTest2 = new Fund("Dog", account);
+
+		Account check = fundTest.getAccount();
+		Account check2 = fundTest2.getAccount();
+
+		assertThat(check, is(account));
+		assertThat(check2, is(account));
 	}
-	
-	@Test
-	public void shouldBeAbleToRemoveFundFromAccount() {
-		
-		Fund fundTest = new Fund("Emergency");
-		Fund fundTest2 = new Fund("Dog"); 
-		Account account = new Account(100.00,fundTest,fundTest2);
-		
-		account.removeFund(fundTest);
-		
-		Collection<Fund> check = account.getFunds(); 
-		
-		assertThat(check, contains(not(fundTest))); 
-	}
-	
-	
+
+
 }

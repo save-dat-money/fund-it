@@ -15,12 +15,8 @@ public class AccountJpaTest {
 	
 	@Test
 	public void shouldFindItemByFundDescription() {
-		Fund fund = new Fund("Test"); 
-		fundRepo.save(fund); 
-		Account account = new Account(100.00,fund); 
-		
-		
+		Account account = new Account(100.00); 
+		Fund fund = new Fund("Test", account); 
+		fundRepo.save(fund); 	
 	}
-
-
 }
