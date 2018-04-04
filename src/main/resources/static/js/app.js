@@ -45,5 +45,5 @@ xhr.onreadystatechange = function() {
 	}
 }
 
-xhr.open('GET', 'http://localhost:8080/', true)
+xhr.open('GET', 'http://localhost:8080/accounts', true)
 xhr.send()
