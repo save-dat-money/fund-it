@@ -7,3 +7,14 @@ header {
 footer {
 	background-color: seagreen;
 }
+.main__top {
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-bottom-color: black;
+}
+.main__bottom__right {
+	padding: 10px;
+	border-left-style: solid;
+	border-left-width: 2px;
+	border-left-color: black;
+}

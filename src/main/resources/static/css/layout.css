@@ -13,3 +13,21 @@ header {
 	justify-content: space-between;
 	align-items: center;
 }
+main {
+	display: grid;
+	grid-template-rows: 10% 90%;
+}
+.main__top {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.main__bottom {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+.main__bottom__left {
+	display: flex;
+	justify-content: center;
+	margin: auto;
+}
