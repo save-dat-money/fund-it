@@ -1,6 +1,9 @@
 package org.wecancodeit.columbus.fundit;
 
+import static java.util.Arrays.asList;
+
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,12 +24,20 @@ public class Account {
 	@OneToMany(mappedBy = "account")
 	private Collection<Fund> funds;
 
+	public long getId() {
+		return id;
+	}
+	
 	public double getBalance() {
 		return balance;
 	}
 
 	public String getAccountName() {
 		return accountName;
+	}
+
+	public Collection<Fund> getFunds() {
+		return funds;
 	}
 
 	public Account(double balance) {
@@ -38,11 +49,13 @@ public class Account {
 		this.balance = balance;
 	}
 
-	public Account() {
+	public Account(String accountName, double balance, Fund... funds) {
+		this.accountName = accountName;
+		this.balance = balance;
+		this.funds = new HashSet<>(asList(funds));
 	}
 
-	public Collection<Fund> getFunds() {
-		return funds;
+	public Account() {
 	}
 
 	@Override
