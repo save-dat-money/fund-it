@@ -26,7 +26,7 @@ xhr.onreadystatechange = function() {
 
 
 		function appendOneElementToBody(res) {
-			const body = document.querySelector('.main__bottom__left')
+			const body = document.querySelector('.main__bottom__right')
 			
 
 
