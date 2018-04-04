@@ -14,15 +14,22 @@ xhr.onreadystatechange = function() {
 
 		function appendOneElementToBody(res) {
 			const body = document.querySelector('.main__bottom__left')
+			const headerOne = document.querySelector('.main__top')
+
 
 			const accountContainer = document.createElement('div')
 			accountContainer.classList.add('accountContainer')
 
-			appendElement(accountContainer, createElement('h2', res.balance))
-			appendElement(accountContainer, createElement('h2', res.accountName))
-			appendElement(accountContainer, createElement('p', res.funds))
+			const accountNameContainer = document.createElement('div')
+			accountNameContainer.classList.add('accountNameContainer')
+
+
+			appendElement(accountContainer, createElement('h2', res.fundName))
+			appendElement(accountNameContainer, createElement('p', res.account.accountName))
+			appendElement(accountContainer, createElement('p', res.account.balance))
 
 			appendElement(body, accountContainer)
+			appendElement(headerOne, accountNameContainer)
 		}
 
 		function createElement(elem, textValue) {
