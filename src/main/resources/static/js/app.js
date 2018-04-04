@@ -1,7 +1,8 @@
 const xhr = new XMLHttpRequest()
 xhr.onreadystatechange = function() {
 	if (xhr.readyState === 4 && xhr.status === 200) {
-		const res = JSON.parse(xhr.response);
+		// console.warn(xhr.responseText)
+		const res = JSON.parse(xhr.response)
 
 		if(res.length) {
 			res.forEach(function(account) {
@@ -11,13 +12,14 @@ xhr.onreadystatechange = function() {
 			appendOneElementToBody(res)
 		}
 
-		fuction appendOneElementToBody(res) {
-			const body = document.body
+		function appendOneElementToBody(res) {
+			const body = document.querySelector('.main__bottom__left')
 
 			const accountContainer = document.createElement('div')
 			accountContainer.classList.add('accountContainer')
 
 			appendElement(accountContainer, createElement('h2', res.balance))
+			appendElement(accountContainer, createElement('h2', res.accountName))
 
 			appendElement(body, accountContainer)
 		}
@@ -43,5 +45,5 @@ xhr.onreadystatechange = function() {
 	}
 }
 
-xhr.open('GET', 'htp://localhost:8080/index', true)
+xhr.open('GET', 'http://localhost:8080/', true)
 xhr.send()
