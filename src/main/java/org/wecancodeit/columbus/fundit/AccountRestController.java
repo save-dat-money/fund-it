@@ -18,8 +18,8 @@ public class AccountRestController {
 	AccountRepository accountRepo;
 
 	@RequestMapping(path = "/accounts", method = RequestMethod.GET)
-	public Iterable<Account> findAccounts() {
-		return accountRepo.findAll(); 
+	public Iterable<Fund> findAccounts() {
+		return fundRepo.findAll(); 
 	}
 
 }

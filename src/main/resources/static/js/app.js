@@ -20,6 +20,7 @@ xhr.onreadystatechange = function() {
 
 			appendElement(accountContainer, createElement('h2', res.balance))
 			appendElement(accountContainer, createElement('h2', res.accountName))
+			appendElement(accountContainer, createElement('p', res.funds))
 
 			appendElement(body, accountContainer)
 		}

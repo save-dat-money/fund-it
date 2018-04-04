@@ -20,6 +20,8 @@ public class AccountPopulator implements CommandLineRunner {
 		accountRepo.save(account);
 		Fund fund = new Fund("Test Fund", account);
 		fundRepo.save(fund);
+		accountRepo.save(account);
+	
 	}
 
 }
