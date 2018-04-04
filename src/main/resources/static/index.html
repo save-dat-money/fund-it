@@ -30,11 +30,11 @@
 				<section class="main__bottom__right">
 					<article class="fundContainer">
 						<h3>Funds:</h3>
-						<span class="account-fund" th:each="fund: ${account.funds}"> <a
+<!-- 						<span class="account-fund" th:each="fund: ${account.funds}"> <a
 							th:href="@{'/fund/' + ${fund.id}}" th:text="${fund.fundName}"></a> <a
 							class="fund-delete-x">x</a> <input type="hidden" th:value="${fund.id}" />
 						</span>
-					</article>
+					</article> -->
 					<article class="fund-input-form">
 						<h3>Add Fund:</h3>
 						<form method="POST">
