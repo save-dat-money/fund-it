@@ -1,5 +1,7 @@
 package org.wecancodeit.columbus.fundit;
 
+import java.util.Collections;
+
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +17,9 @@ public class AccountRestController {
 	@Resource
 	AccountRepository accountRepo;
 
-	@RequestMapping(path = "/accounts", method = RequestMethod.GET)
+	@RequestMapping(path = "", method = RequestMethod.GET)
 	public Iterable<Account> findAccounts() {
-		return accountRepo.findAll();
+		return accountRepo.findAll(); 
 	}
 
 }
