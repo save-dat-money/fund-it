@@ -10,8 +10,21 @@
 }
 header {
 	display: flex;
+	justify-content: center;
+}
+.header__container {
+	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	width: 90%;
+	margin: auto;
+}
+.nav__menu {
+	position: relative;
+}
+.header__nav {
+	position: absolute;
+	right: 0;
 }
 main {
 	display: grid;
