@@ -11,6 +11,7 @@ public class Fund {
 	@GeneratedValue
 	private long id;
 	private String fundName;
+	
 	@ManyToOne
 	public Account account;
 
@@ -54,6 +55,7 @@ public class Fund {
 
 	public Fund() {
 	}
+
 	public Account getAccount() {
 		return account;
 	}
