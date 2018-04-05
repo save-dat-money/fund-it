@@ -33,6 +33,11 @@ public class Fund {
 		this.account = account;
 	}
 	
+	//AJAX uses only
+	public Fund(String fundName) {
+		this.fundName = fundName;
+	}
+	
 	public Fund(String fundName, Account account, int fundAmount) {
 		this.fundName = fundName;
 		this.account = account;
