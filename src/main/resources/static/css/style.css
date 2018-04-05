@@ -4,6 +4,12 @@ body {
 header {
 	background-color: pink;
 }
+.header__nav__button {
+/*	width: 20px;
+	height: 20px;*/
+	max-width: 25%;
+	max-height: 25%;
+}
 footer {
 	background-color: seagreen;
 }
