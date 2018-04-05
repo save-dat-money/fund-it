@@ -20,13 +20,13 @@ xhr.onreadystatechange = function() {
 			accountNameContainer.classList.add('accountNameContainer')
 
 			appendElement(accountNameContainer, createElement('p', res[0].account.accountName))
-
+			appendElement(accountNameContainer, createElement('p', res[0].account.balance))
 			appendElement(headerOne, accountNameContainer)
 		}
 
 
 		function appendOneElementToBody(res) {
-			const body = document.querySelector('.main__bottom__right')
+			const body = document.querySelector('.fundContainer')
 			
 
 
@@ -36,8 +36,8 @@ xhr.onreadystatechange = function() {
 			
 
 			appendElement(accountContainer, createElement('h2', res.fundName))
-			appendElement(accountContainer, createElement('p', res.account.balance))
-
+			appendElement(accountContainer, createElement('p', res.fundAmount))
+			
 			appendElement(body, accountContainer)
 			
 		}
@@ -63,5 +63,5 @@ xhr.onreadystatechange = function() {
 	}
 }
 
-xhr.open('GET', 'http://localhost:8080/accounts', true)
+xhr.open('GET', 'http://localhost:8080/account/1/funds', true)
 xhr.send()

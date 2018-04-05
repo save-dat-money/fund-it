@@ -11,9 +11,14 @@ public class Fund {
 	@GeneratedValue
 	private long id;
 	private String fundName;
+	private int fundAmount; 
 	
 	@ManyToOne
 	public Account account;
+
+	public int getFundAmount() {
+		return fundAmount;
+	}
 
 	public String getFundName() {
 		return fundName;
@@ -26,6 +31,12 @@ public class Fund {
 	public Fund(String fundName, Account account) {
 		this.fundName = fundName;
 		this.account = account;
+	}
+	
+	public Fund(String fundName, Account account, int fundAmount) {
+		this.fundName = fundName;
+		this.account = account;
+		this.fundAmount = fundAmount;
 	}
 
 	@Override
