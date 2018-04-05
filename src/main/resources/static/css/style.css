@@ -5,10 +5,29 @@ header {
 	background-color: pink;
 }
 .header__nav__button {
-/*	width: 20px;
-	height: 20px;*/
-	max-width: 25%;
-	max-height: 25%;
+	max-width: 25px;
+	max-height: 25px;
+}
+.header__nav  {
+	display: none;
+}
+.show__menu {
+	display: flex;
+	background-color: white;
+	padding: 3px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	border-radius: 5px;
+}
+ul li {
+	margin-bottom: 12px;
+}
+ul li:hover {
+	color: blue;
+}
+ul {
+	list-style-type: none;
 }
 footer {
 	background-color: seagreen;
