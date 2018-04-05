@@ -19,6 +19,7 @@ public class AccountRestController {
 	@RequestMapping(path = "/accounts", method = RequestMethod.GET)
 	public Iterable<Account> findAccounts() {
 		return accountRepo.findAll();
+
 	}
 
 	@RequestMapping(path = "/funds", method = RequestMethod.GET)
