@@ -31,12 +31,14 @@ public class Fund {
 	public Fund(String fundName, Account account) {
 		this.fundName = fundName;
 		this.account = account;
+		this.fundAmount = 100;
 	}
 	
 	//AJAX uses only
 	public Fund(String fundName) {
 		this.fundName = fundName;
 	}
+
 	
 	public Fund(String fundName, Account account, int fundAmount) {
 		this.fundName = fundName;
