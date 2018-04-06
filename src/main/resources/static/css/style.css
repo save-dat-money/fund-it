@@ -1,8 +1,13 @@
+.container {
+	background-image: url(../images/cherry-wood.jpg);
+}
+
 body {
-	background-color: goldenrod;
+	/*background-color: goldenrod;*/
 }
 header {
-	background-color: pink;
+	/*background-color: pink;*/
+	border-bottom: solid;
 }
 .header__nav__button {
 	max-width: 25px;
@@ -24,13 +29,14 @@ ul li {
 	margin-bottom: 12px;
 }
 ul li:hover {
-	color: blue;
+	/*color: blue;*/
 }
 ul {
 	list-style-type: none;
 }
 footer {
-	background-color: seagreen;
+	/*background-color: seagreen;*/
+	border-top: solid;
 }
 .main__top {
 	border-bottom-style: solid;
@@ -42,4 +48,9 @@ footer {
 	border-left-style: solid;
 	border-left-width: 2px;
 	border-left-color: black;
+	background-color: #fff; 
+	background-image: 
+	linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+	linear-gradient(#eee .1em, transparent .1em);
+	background-size: 100% 1.2em;
 }
