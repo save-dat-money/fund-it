@@ -57,10 +57,7 @@ public class Account {
 
 	public Account() {
 	}
-	
-	public void addFund(Fund fundName) {
-		funds.add(fundName);
-	}
+
 
 	@Override
 	public int hashCode() {
