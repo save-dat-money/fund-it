@@ -93,18 +93,19 @@ public class AccountJpaTest {
 		assertThat(fundsForAccountId, containsInAnyOrder(fund1, fund2));
 	}
 
-//	@Test
-//	public void addFundToAccount() {
-//		Account account = new Account("Savings", 100.00);
-//		account = accountRepo.save(account);		
-//		
-//		account.addFund(new Fund("Emergency", account));
-//
-//		entityManager.flush();
-//		entityManager.clear();
-//
-//		Collection<Fund> fundsForAccount = account.
-//		assertThat(fundsForAccount, contains());
-//	}
+	@Test
+	public void addFundToAccount() {
+		Account account = new Account("Savings", 100.00);
+		account = accountRepo.save(account);		
+	
+		Fund fund = new Fund("Emergency", account);
+		fund = fundRepo.save(fund); 
+
+		entityManager.flush();
+		entityManager.clear();
+
+		Collection<Fund> fundsForAccount = fundRepo.findByAccountId(1L);
+		assertThat(fundsForAccount, contains(fund));
+	}
 
 }

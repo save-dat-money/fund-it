@@ -33,22 +33,12 @@ public class AccountRestController {
 		return fundRepo.findByAccountId(accountId);
 	}
 
-	// @RequestMapping(path = "/addFund", method = RequestMethod.POST)
-	// public Fund addFund(@RequestBody NewFundRequest newFundRequest) {
-	// // Validation here (account must exist, etc.)
-	// Account newFundAccount = accountRepo.findById((long)
-	// newFundRequest.accountId);
-	// Fund newFund = new Fund(newFundRequest.fundName, newFundAccount,
-	// newFundRequest.fundAmount);
-	// fundRepo.save(newFund);
-	// return newFund;
-	// }
+
 	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}", method = RequestMethod.POST)
 	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName) {
 		Account newFundAccount = accountRepo.findById(1L);
 		Fund newFund = new Fund(fundName, newFundAccount);
 		fundRepo.save(newFund);
-		newFundAccount.addFund(newFund);
 		accountRepo.save(newFundAccount);
 		return newFund;
 	}
