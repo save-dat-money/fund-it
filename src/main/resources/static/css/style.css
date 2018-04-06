@@ -7,7 +7,6 @@ body {
 }
 header {
 	/*background-color: pink;*/
-	border-bottom: solid;
 }
 .post-it{
 	font-family: arial, sans-serif;
@@ -82,6 +81,7 @@ footer {
 	border-left-width: 2px;
 	border-left-color: black;
 	background-color: #fff; 
+	/*This puts in the notebook effect*/
 	background-image: 
 	linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
 	linear-gradient(#eee .1em, transparent .1em);
