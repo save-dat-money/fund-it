@@ -27,19 +27,14 @@ xhr.onreadystatechange = function() {
 
 		function appendOneElementToBody(res) {
 			const body = document.querySelector('.fundContainer')
-			
-
 
 			const accountContainer = document.createElement('div')
 			accountContainer.classList.add('accountContainer')
-
-			
 
 			appendElement(accountContainer, createElement('h2', res.fundName))
 			appendElement(accountContainer, createElement('p', res.fundAmount))
 			
 			appendElement(body, accountContainer)
-			
 		}
 
 		function createElement(elem, textValue) {

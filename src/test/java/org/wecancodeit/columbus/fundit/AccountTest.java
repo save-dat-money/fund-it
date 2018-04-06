@@ -4,8 +4,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.not;
 
 import java.util.Collection;
 
@@ -50,6 +48,5 @@ public class AccountTest {
 		assertThat(check, is(account));
 		assertThat(check2, is(account));
 	}
-
 
 }

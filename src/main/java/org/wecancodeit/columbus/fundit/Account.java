@@ -27,7 +27,7 @@ public class Account {
 	public long getId() {
 		return id;
 	}
-	
+
 	public double getBalance() {
 		return balance;
 	}
@@ -57,6 +57,7 @@ public class Account {
 
 	public Account() {
 	}
+
 
 	@Override
 	public int hashCode() {
