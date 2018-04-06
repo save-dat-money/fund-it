@@ -34,6 +34,7 @@
 .main__bottom__right:before{
     position: absolute;
     content: '';
+    margin-bottom: 3px;
     top: -5px;
     left: 0;
     height: 10px;

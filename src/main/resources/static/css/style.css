@@ -3,10 +3,8 @@
 }
 
 body {
-	/*background-color: goldenrod;*/
 }
 header {
-	/*background-color: pink;*/
 }
 
 .header__nav__button {
@@ -35,11 +33,10 @@ ul {
 	list-style-type: none;
 }
 footer {
-	/*background-color: seagreen;*/
 	border-top: solid;
 }
 .main__top {
-	border-bottom-style: solid;
+	/*border-bottom-style: solid;
 	border-bottom-width: 2px;
-	border-bottom-color: black;
+	border-bottom-color: black;*/
 }
