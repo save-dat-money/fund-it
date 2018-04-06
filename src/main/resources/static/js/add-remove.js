@@ -22,11 +22,12 @@ function addFund(event){
 			const fundBody = document.createElement('div')
 			appendElement(fundBody, createElement('p', fundName))
 			appendElement(otherBody, fundBody)
-			}
 		}
-		xhr.open('POST', '/addFund', true)
-		xhr.send()
 	}
+	
+	xhr.open('POST', '/addFund', true)
+	xhr.send('fundName=myNewFund&fundAmount=100&accountId=1')
+}
 
 function createElement(elem, textValue) {
 	const newElem = document.createElement(elem)

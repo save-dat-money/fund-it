@@ -34,7 +34,7 @@ public class AccountRestController {
 		return fundRepo.findByAccountId(accountId);
 	}
 
-	@PostMapping(path = "/addFund")
+	@RequestMapping(path = "/addFund", method = RequestMethod.POST)
 	public Fund addFund(@RequestBody NewFundRequest newFundRequest) {
 		// Validation here (account must exist, etc.)
 		Account newFundAccount = accountRepo.findById((long) newFundRequest.accountId);
