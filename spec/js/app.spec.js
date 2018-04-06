@@ -1,21 +1,21 @@
 // // // //my javascript will go here 
-// describe('appendElement' function() {
-//     it('returns added element to Header', function() {
-//     	const bodyTest = document.createElement('h1')
-//     	const testCreated = createElement('p','I am here')
+describe('appendElement' function() {
+    it('returns added element to Header', function() {
+    	const bodyTest = document.createElement('h1')
+    	const testCreated = createElement('p','I am here')
     	
-//     	const toAddResult = document.createElement('h1')
-//     	const toCreate = document.createElement('p')
-//     	const toCreateText = document.createTextNode('I am here')	
-//     	toCreate.appendChild(toCreateText)
+    	const toAddResult = document.createElement('h1')
+    	const toCreate = document.createElement('p')
+    	const toCreateText = document.createTextNode('I am here')	
+    	toCreate.appendChild(toCreateText)
 
-//     	const result = toAddResult.appendChild(toCreate)
+    	const result = toAddResult.appendChild(toCreate)
     	
-//     	expect(appendElement(bodyTest,testCreated)).toEqual(result)
+    	expect(appendElement(bodyTest,testCreated)).toEqual(result)
 
 
-//     });
-// });
+    });
+});
 
 describe("mocking ajax", function() {
 
