@@ -27,7 +27,7 @@ public class Account {
 	public long getId() {
 		return id;
 	}
-	
+
 	public double getBalance() {
 		return balance;
 	}
@@ -56,6 +56,10 @@ public class Account {
 	}
 
 	public Account() {
+	}
+	
+	public void addFund(Fund fundName) {
+		funds.add(fundName);
 	}
 
 	@Override
