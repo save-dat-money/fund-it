@@ -37,16 +37,16 @@ xhr.onreadystatechange = function() {
 			appendElement(body, accountContainer)
 		}
 
-		function createElement(elem, textValue) {
-			const newElem = document.createElement(elem)
-			newElem.innerText = textValue
+		// function createElement(elem, textValue) {
+		// 	const newElem = document.createElement(elem)
+		// 	newElem.innerText = textValue
 
-			return newElem
-		}
+		// 	return newElem
+		// }
 
-		function appendElement(parent, child) {
-			parent.appendChild(child)
-		}
+		// function appendElement(parent, child) {
+		// 	parent.appendChild(child)
+		// }
 
 		function showAllPropsInObject(object) {
 			for (prop in res) {
@@ -60,3 +60,14 @@ xhr.onreadystatechange = function() {
 
 xhr.open('GET', 'http://localhost:8080/account/1/funds', true)
 xhr.send()
+
+function createElement(elem, textValue) {
+			const newElem = document.createElement(elem)
+			newElem.innerText = textValue
+
+			return newElem
+		}
+
+		function appendElement(parent, child) {
+			parent.appendChild(child)
+		}
