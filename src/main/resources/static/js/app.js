@@ -26,22 +26,7 @@ xhr.onreadystatechange = function() {
 			appendElement(headerOne, accountNameContainer)
 		}
 
-		function appendOneElementToBody(res) {
-			const body = document.querySelector('.fundContainer')
 
-			const accountContainer = document.createElement('div')
-			accountContainer.classList.add('accountContainer')
-			
-			let xButton = createElement('button', 'x')
-			xButton.className = 'removeButton'
-			xButton.onclick = removeFund
-			appendElement(accountContainer, createElement('h2', res.fundName))
-			appendElement(accountContainer, xButton)
-			appendElement(accountContainer, createElement('p', res.fundAmount))
-			accountContainer.setAttribute('data-fundId', res.id)
-
-			appendElement(body, accountContainer)
-		}
 
 		function createElement(elem, textValue) {
 			const newElem = document.createElement(elem)
@@ -62,6 +47,26 @@ xhr.onreadystatechange = function() {
 
 		console.log(res)
 	}
+}
+
+function appendOneElementToBody(res) {
+	const body = document.querySelector('.fundContainer')
+
+	const fundContainer = document.createElement('div')
+	fundContainer.classList.add('fundContainer')
+	
+	let xButton = createElement('button', 'x')
+	xButton.className = 'removeButton'
+	xButton.onclick = removeFund
+	let fund = createElement('h2', res.fundName)
+	
+	appendElement(fundContainer, fund)
+	appendElement(fundContainer, xButton)
+	appendElement(fundContainer, createElement('p', res.fundAmount))
+	
+	fundContainer.setAttribute('data-fund-id', res.id)
+
+	appendElement(body, fundContainer)
 }
 
 xhr.open('GET', 'http://localhost:8080/account/1/funds', true)
