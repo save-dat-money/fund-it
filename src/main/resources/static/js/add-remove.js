@@ -1,7 +1,11 @@
+
 document.addEventListener("DOMContentLoaded", function() {
+	createAddFundButton()
+});
+
+function createAddFundButton() {
 	const addFundButton = document.querySelector('.fund-add-button');
 	addFundButton.addEventListener('click', addFund)
-});
 
 function removeFund(event) {
 	event.preventDefault();
@@ -37,6 +41,7 @@ function addFund(event) {
 
 	xhr.open('POST', '/add-fund/account/1/' + fundName, true)
 	xhr.send()
+	console.log('here')
 }
 
 function createElement(elem, textValue) {
