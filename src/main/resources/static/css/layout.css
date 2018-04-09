@@ -42,7 +42,9 @@ main {
 	justify-content: center;
 	margin: auto;
 }
-
+.fundContainer h3{
+margin-top: 20px;
+}
 
 @media screen and (min-width: 700px) {
 	.main__bottom {
