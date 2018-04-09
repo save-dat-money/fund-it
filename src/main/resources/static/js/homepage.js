@@ -23,7 +23,7 @@ google.charts.setOnLoadCallback(drawChart);
         ]);
 
         const options = {
-          title: 'My Daily Activities',
+          // title: 'My Daily Activities',
           backgroundColor: { fill: 'transparent'},
           colors: [
             '#6A99CB',
@@ -43,7 +43,7 @@ google.visualization.events.addListener(chart, 'select', selectHandler);
 
 function selectHandler() {
   var selection = chart.getSelection();
-  const otherside = document.querySelector('.otherside');
+  const otherside = document.querySelector('.main__bottom__right');
   const value = data.getValue(selection[0].row || 0, selection[0].column || 0); 
   var t = document.createTextNode(value);
   otherside.replaceChild(t, otherside.childNodes[0]);
