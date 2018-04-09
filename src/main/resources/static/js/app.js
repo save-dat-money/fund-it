@@ -4,7 +4,7 @@ xhr.onreadystatechange = function() {
 		// console.warn(xhr.responseText)
 		const res = JSON.parse(xhr.response)
 
-		if(res.length) {
+		if (res.length) {
 			appendAccountNameToHeader(res)
 			res.forEach(function(account) {
 				appendOneElementToBody(account)
@@ -19,21 +19,27 @@ xhr.onreadystatechange = function() {
 			const accountNameContainer = document.createElement('div')
 			accountNameContainer.classList.add('accountNameContainer')
 
-			appendElement(accountNameContainer, createElement('p', res[0].account.accountName))
-			appendElement(accountNameContainer, createElement('p', res[0].account.balance))
+			appendElement(accountNameContainer, createElement('p',
+					res[0].account.accountName))
+			appendElement(accountNameContainer, createElement('p',
+					res[0].account.balance))
 			appendElement(headerOne, accountNameContainer)
 		}
-
 
 		function appendOneElementToBody(res) {
 			const body = document.querySelector('.fundContainer')
 
 			const accountContainer = document.createElement('div')
 			accountContainer.classList.add('accountContainer')
-
-			appendElement(accountContainer, createElement('h2', res.fundName))
-			appendElement(accountContainer, createElement('p', res.fundAmount))
 			
+			let xButton = createElement('button', 'x')
+			xButton.className = 'removeButton'
+			xButton.onclick = removeFund
+			appendElement(accountContainer, createElement('h2', res.fundName))
+			appendElement(accountContainer, xButton)
+			appendElement(accountContainer, createElement('p', res.fundAmount))
+			accountContainer.setAttribute('data-fundId', res.id)
+
 			appendElement(body, accountContainer)
 		}
 

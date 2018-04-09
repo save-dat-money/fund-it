@@ -8,6 +8,32 @@ document.addEventListener("DOMContentLoaded", function() {
 	addFundButton.addEventListener('click',addFund)
 });
 
+//do not need below event listener because ajax loads funds to page
+//document.addEventListener("DOMContentLoaded", function(){
+//	const removeFundButtonCollection = document.querySelectorAll('.removeButton')
+//	removeFundButtonList = Array.from(removeFundButtonCollection)
+//	removeFundButtonList.forEach(function(removeFundButton){
+//	removeFundButton.addEventListener('click', removeFund)
+//	})
+//});
+
+function removeFund(event){
+	event.preventDefault();
+	const theButton = event.target
+	const fundId = theButton.parentElement.getAttribute('data-fundId')
+	console.log(theButton)
+	
+	const xhr = new XMLHttpRequest()//ajax request 
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+			let accountContainer = theButton.parentElement
+			accountContainer.parentElement.removeChild(accountContainer)
+		}
+	}
+	xhr.open('POST', '/account/1/fund/' + fundId + '/remove-fund', true)
+	xhr.send()
+}
+
 
 function addFund(event){
 	event.preventDefault();//prevents forms from refreshing

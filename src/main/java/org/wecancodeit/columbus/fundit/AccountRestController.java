@@ -47,6 +47,7 @@ public class AccountRestController {
 		Account currentFundAccount = accountRepo.findById(accountId);
 		if (fundToRemove != null) {
 			currentFundAccount.removeFund(fundToRemove);
+			fundRepo.delete(fundToRemove);
 		}
 		accountRepo.save(currentFundAccount);
 		return fundId.toString();
