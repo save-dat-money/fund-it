@@ -5,7 +5,6 @@ import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -33,7 +32,6 @@ public class AccountRestController {
 		return fundRepo.findByAccountId(accountId);
 	}
 
-
 	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}", method = RequestMethod.POST)
 	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName) {
 		Account newFundAccount = accountRepo.findById(1L);
@@ -41,6 +39,19 @@ public class AccountRestController {
 		fundRepo.save(newFund);
 		accountRepo.save(newFundAccount);
 		return newFund;
+	}
+
+	@RequestMapping(path = "/account/{accountId}/fund/{fundId}/remove-fund", method = RequestMethod.POST)
+	public String removeFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId) {
+		Fund fundToRemove = fundRepo.findOne(fundId);
+		Account currentFundAccount = accountRepo.findById(accountId);
+		if (fundToRemove != null) {
+			currentFundAccount.removeFund(fundToRemove);
+			fundRepo.delete(fundToRemove);
+		}
+		accountRepo.save(currentFundAccount);
+		return fundId.toString();
+
 	}
 
 }

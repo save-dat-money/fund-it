@@ -58,7 +58,6 @@ public class Account {
 	public Account() {
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -79,6 +78,10 @@ public class Account {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	public void removeFund(Fund fund) {
+		funds.remove(fund);
 	}
 
 }

@@ -4,7 +4,7 @@ xhr.onreadystatechange = function() {
 		// console.warn(xhr.responseText)
 		const res = JSON.parse(xhr.response)
 
-		if(res.length) {
+		if (res.length) {
 			appendAccountNameToHeader(res)
 			res.forEach(function(account) {
 				appendOneElementToBody(account)
@@ -19,23 +19,14 @@ xhr.onreadystatechange = function() {
 			const accountNameContainer = document.createElement('div')
 			accountNameContainer.classList.add('accountNameContainer')
 
-			appendElement(accountNameContainer, createElement('p', res[0].account.accountName))
-			appendElement(accountNameContainer, createElement('p', res[0].account.balance))
+			appendElement(accountNameContainer, createElement('p',
+					res[0].account.accountName))
+			appendElement(accountNameContainer, createElement('p',
+					res[0].account.balance))
 			appendElement(headerOne, accountNameContainer)
 		}
 
 
-		function appendOneElementToBody(res) {
-			const body = document.querySelector('.fundContainer')
-
-			const accountContainer = document.createElement('div')
-			accountContainer.classList.add('accountContainer')
-
-			appendElement(accountContainer, createElement('h2', res.fundName))
-			appendElement(accountContainer, createElement('p', res.fundAmount))
-			
-			appendElement(body, accountContainer)
-		}
 
 		function createElement(elem, textValue) {
 			const newElem = document.createElement(elem)
@@ -56,6 +47,26 @@ xhr.onreadystatechange = function() {
 
 		console.log(res)
 	}
+}
+
+function appendOneElementToBody(res) {
+	const body = document.querySelector('.fundContainer')
+
+	const fundContainer = document.createElement('div')
+	fundContainer.classList.add('fundContainer')
+	
+	let xButton = createElement('button', 'x')
+	xButton.className = 'removeButton'
+	xButton.onclick = removeFund
+	let fund = createElement('h2', res.fundName)
+	
+	appendElement(fundContainer, fund)
+	appendElement(fundContainer, xButton)
+	appendElement(fundContainer, createElement('p', res.fundAmount))
+	
+	fundContainer.setAttribute('data-fund-id', res.id)
+
+	appendElement(body, fundContainer)
 }
 
 xhr.open('GET', 'http://localhost:8080/account/1/funds', true)
