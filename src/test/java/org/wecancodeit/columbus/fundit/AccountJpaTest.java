@@ -3,6 +3,7 @@ package org.wecancodeit.columbus.fundit;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
@@ -96,16 +97,40 @@ public class AccountJpaTest {
 	@Test
 	public void addFundToAccount() {
 		Account account = new Account("Savings", 100.00);
-		account = accountRepo.save(account);		
-	
+		account = accountRepo.save(account);
+
 		Fund fund = new Fund("Emergency", account);
-		fund = fundRepo.save(fund); 
+		fund = fundRepo.save(fund);
 
 		entityManager.flush();
 		entityManager.clear();
 
 		Collection<Fund> fundsForAccount = fundRepo.findByAccountId(1L);
 		assertThat(fundsForAccount, contains(fund));
+	}
+
+	@Test
+	public void removeFundFromAccount() {
+		Account newAccount = new Account("Savings", 100.00);
+		newAccount = accountRepo.save(newAccount);
+
+		Long accountId = newAccount.getId();
+
+		Fund fund = new Fund("Emergency", newAccount);
+		fund = fundRepo.save(fund);
+
+		Fund fund2 = new Fund("Another One", newAccount);
+		fund2 = fundRepo.save(fund2);
+
+		entityManager.flush();
+		entityManager.clear();
+
+		newAccount = accountRepo.findById(accountId);
+
+		newAccount.removeFund(fund);
+		newAccount.removeFund(fund2);
+		assertThat(newAccount.getFunds(), not(containsInAnyOrder(fund, fund2)));
+
 	}
 
 }
