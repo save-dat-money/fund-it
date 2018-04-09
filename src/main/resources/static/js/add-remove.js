@@ -1,13 +1,12 @@
-// const xhr = new XMLHttpRequest()
-// xhr.onreadystatechange = function() {
-// 	if (xhr.readyState === 4 && xhr.status === 200) {
-// 		const res = JSON.parse(xhr.response
 
 document.addEventListener("DOMContentLoaded", function() {
-	const addFundButton = document.querySelector('.fund-add-button');
-	addFundButton.addEventListener('click',addFund)
+	createAddFundButton()
 });
 
+function createAddFundButton() {
+	const addFundButton = document.querySelector('.fund-add-button');
+	addFundButton.addEventListener('click', addFund)
+}
 
 function addFund(event){
 	event.preventDefault();//prevents forms from refreshing
@@ -33,6 +32,7 @@ function addFund(event){
 	
 	xhr.open('POST', '/add-fund/account/1/'+fundName, true)
 	xhr.send()
+	console.log('here')
 }
 
 function createElement(elem, textValue) {

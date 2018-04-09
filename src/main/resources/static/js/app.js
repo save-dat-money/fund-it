@@ -37,16 +37,6 @@ xhr.onreadystatechange = function() {
 			appendElement(body, accountContainer)
 		}
 
-		// function createElement(elem, textValue) {
-		// 	const newElem = document.createElement(elem)
-		// 	newElem.innerText = textValue
-
-		// 	return newElem
-		// }
-
-		// function appendElement(parent, child) {
-		// 	parent.appendChild(child)
-		// }
 
 		function showAllPropsInObject(object) {
 			for (prop in res) {
