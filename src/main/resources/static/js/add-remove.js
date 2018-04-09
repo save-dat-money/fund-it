@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function createAddFundButton() {
 	const addFundButton = document.querySelector('.fund-add-button');
 	addFundButton.addEventListener('click', addFund)
+}
 
 function removeFund(event) {
 	event.preventDefault();
