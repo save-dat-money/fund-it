@@ -27,6 +27,9 @@ header {
 	position: absolute;
 	right: 0;
 }
+nav.show__menu{
+	z-index:22;
+}
 main {
 	display: grid;
 	grid-template-rows: 10% 90%;
@@ -42,8 +45,9 @@ main {
 	justify-content: center;
 	margin: auto;
 }
+
 .fundContainer h3{
-margin-top: 20px;
+	margin-top: 20px;
 }
 
 @media screen and (min-width: 700px) {
