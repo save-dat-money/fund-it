@@ -8,20 +8,31 @@ const toggleMenu = () => {
 
 toggleMenu()
 
+const xhr1 = new XMLHttpRequest()
+xhr1.onreadystatechange = function() {
+	if (xhr1.readyState === 4 && xhr1.status === 200) {
+		const res = JSON.parse(xhr1.response)
+		
+		drawChart(res)
+	}
+		
+}
 
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
+//google.charts.setOnLoadCallback();
+      function drawChart(res) {
 
-      const data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     10],
-          ['Commute',  2],
-          ['Eat',      2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
-
+      const data = new google.visualization.DataTable();
+    	  data.addColumn('string', 'fundName');
+          data.addColumn('number', 'fundAmount');
+          console.log(res);
+          res.forEach(function(item){
+        	  data.addRows([
+        		  [item.fundName, item.fundAmount]
+        	  ])
+          });
+          console.log(res);
+         
         const options = {
         	chartArea: {
         		width: '85%',
@@ -31,8 +42,8 @@ google.charts.setOnLoadCallback(drawChart);
         	backgroundColor: { fill: 'transparent'},
         	colors: [
            		'#6A99CB',
-            	'#F27370',
             	'#FA9856',
+            	'#F27370',
             	'#ACBD86',
             	'#F7B32D'
             ]
@@ -53,4 +64,8 @@ function selectHandler() {
   otherside.replaceChild(t, otherside.childNodes[0]);
 }
       }
-      
+//The event listener is so that it reloads repeatedly
+window.addEventListener('load', evt => {
+      xhr1.open('GET', 'http://localhost:8080/account/1/funds', true)
+      xhr1.send()
+})
