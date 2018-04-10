@@ -8,20 +8,29 @@ const toggleMenu = () => {
 
 toggleMenu()
 
+const xhr1 = new XMLHttpRequest()
+xhr1.onreadystatechange = function() {
+	if (xhr1.readyState === 4 && xhr1.status === 200) {
+		const res = JSON.parse(xhr1.response)
+		
+		drawChart(res)
+	}
+		
+}
 
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
 
-      const data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     10],
-          ['Commute',  2],
-          ['Eat',      2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
+      function drawChart(res) {
 
+      const data = new google.visualization.DataTable();
+    	  data.addColumn('string', 'fundName');
+          data.addColumn('number', 'fundAmount');
+          console.log(res);
+          res.forEach(function(item){
+        	  data.addRows([
+        		  [item.fundName, item.fundAmount]
+        	  ])
+          });
         const options = {
         	chartArea: {
         		width: '85%',
@@ -54,3 +63,5 @@ function selectHandler() {
 }
       }
       
+      xhr1.open('GET', 'http://localhost:8080/account/1/funds', true)
+      xhr1.send()
