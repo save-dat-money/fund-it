@@ -1,21 +1,31 @@
-let modal = document.querySelector(".modal");
-let trigger = document.querySelectorAll(".editButton") //an array
-let closeButton = document.querySelector(".close-button");
+// document.addEventListener("DOMContentLoaded", function() {
+     console.log('running')
+    let modal = document.querySelector(".modal");
+    let testTrigger = document.querySelectorAll(".editButton") //an array
+    let closeButton = document.querySelector(".close-button")
 
-trigger.forEach(function (elem){
-    elem.addEventListener("click", toggleModal);
-})
-
-function toggleModal() {
-    modal.classList.toggle("show-modal");
-}
-
-function windowOnClick(event) {
-    if (event.target === modal) {
-        toggleModal();
+    testTrigger.forEach(function (elem){
+        elem.addEventListener("click", toggleModal);
+    })
+    
+     function toggleModal() {
+        modal.classList.toggle("show-modal");
+        console.log('Here')
     }
-}
 
 
-closeButton.addEventListener("click", toggleModal);
-window.addEventListener("click", windowOnClick);
+    function windowOnClick(event) {
+        if (event.target === modal) {
+            toggleModal()
+        }
+    }
+
+
+    closeButton.addEventListener("click", toggleModal);
+    window.addEventListener("click", windowOnClick);
+
+// });
+
+ 
+
+

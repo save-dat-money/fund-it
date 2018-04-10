@@ -63,7 +63,32 @@ function appendOneElementToBody(res) {
 	fundContainer.setAttribute('data-fund-id', res.id)
 
 	appendElement(body, fundContainer)
+
+	let modal = document.querySelector(".modal");
+    let testTrigger = document.querySelectorAll(".editButton") //an array
+    let closeButton = document.querySelector(".close-button")
+
+    testTrigger.forEach(function (elem){
+        elem.addEventListener("click", toggleModal);
+    })
+    
+     function toggleModal() {
+        modal.classList.toggle("show-modal");
+        console.log('Here')
+    }
+
+
+    function windowOnClick(event) {
+        if (event.target === modal) {
+            toggleModal()
+        }
+    }
+
+
+    closeButton.addEventListener("click", toggleModal);
+    // window.addEventListener("click", windowOnClick);
 }
+
 
 xhr.open('GET', 'http://localhost:8080/account/1/funds', true)
 xhr.send()
