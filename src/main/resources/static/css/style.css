@@ -1,8 +1,9 @@
-.container {
+/*.container {
 	background-image: url(../images/cherry-wood.jpg);
-}
+}*/
 
 body {
+	background-image: url(../images/cherry-wood.jpg);
 }
 header {
 }
