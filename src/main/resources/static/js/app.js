@@ -49,9 +49,15 @@ function appendOneElementToBody(res) {
 	xButton.className = 'removeButton'
 	xButton.onclick = removeFund
 	let fund = createElement('h2', res.fundName)
+	fund.className = 'fundInformation'
+
+	let editButton = createElement('button', 'edit')
+	editButton.className = 'editButton'
+	// editButton.onClick = showInfo
 	
 	appendElement(fundContainer, fund)
-	appendElement(fundContainer, xButton)
+	appendElement(fund, xButton)
+	appendElement(fund, editButton)
 	appendElement(fundContainer, createElement('p', res.fundAmount))
 	
 	fundContainer.setAttribute('data-fund-id', res.id)
