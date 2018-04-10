@@ -19,7 +19,7 @@ xhr1.onreadystatechange = function() {
 }
 
 google.charts.load('current', {'packages':['corechart']});
-
+//google.charts.setOnLoadCallback();
       function drawChart(res) {
 
       const data = new google.visualization.DataTable();
@@ -31,6 +31,8 @@ google.charts.load('current', {'packages':['corechart']});
         		  [item.fundName, item.fundAmount]
         	  ])
           });
+          console.log(res);
+         
         const options = {
         	chartArea: {
         		width: '85%',
@@ -40,8 +42,8 @@ google.charts.load('current', {'packages':['corechart']});
         	backgroundColor: { fill: 'transparent'},
         	colors: [
            		'#6A99CB',
-            	'#F27370',
             	'#FA9856',
+            	'#F27370',
             	'#ACBD86',
             	'#F7B32D'
             ]
@@ -62,6 +64,8 @@ function selectHandler() {
   otherside.replaceChild(t, otherside.childNodes[0]);
 }
       }
-      
+//The event listener is so that it reloads repeatedly
+window.addEventListener('load', evt => {
       xhr1.open('GET', 'http://localhost:8080/account/1/funds', true)
       xhr1.send()
+})
