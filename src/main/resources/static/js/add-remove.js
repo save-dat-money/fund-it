@@ -13,12 +13,14 @@ function removeFund(event) {
 	const theButton = event.target
 	const fundId = theButton.parentElement.getAttribute('data-fund-id')
 	console.log(theButton)
-
+	
 	const xhr = new XMLHttpRequest()// ajax request
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
+			console.log(xhr.responseText);
 			let fundContainer = theButton.parentElement
 			fundContainer.parentElement.removeChild(fundContainer)
+			document.querySelector('#fundsAmnt').textContent = xhr.responseText
 		}
 	}
 	xhr.open('POST', '/account/1/fund/' + fundId + '/remove-fund', true)
