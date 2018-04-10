@@ -30,3 +30,8 @@ post-it:hover,post-it:focus{
   position:relative;
   z-index:5;
 }
+@media screen and (min-width: 700px) {
+	.post-it {
+		transform-scale: .75, .75;
+	}
+}
