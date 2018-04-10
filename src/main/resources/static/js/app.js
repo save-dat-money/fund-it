@@ -20,9 +20,9 @@ xhr.onreadystatechange = function() {
 			accountNameContainer.classList.add('accountNameContainer')
 
 			appendElement(accountNameContainer, createElement('p',
-					res[0].account.accountName))
+				res[0].account.accountName))
 			appendElement(accountNameContainer, createElement('p',
-					res[0].account.balance))
+				res[0].account.balance))
 			appendElement(headerOne, accountNameContainer)
 		}
 
@@ -34,11 +34,13 @@ xhr.onreadystatechange = function() {
 				console.log(`${prop} ${res[prop]}`)
 			}
 		}
-
 		console.log(res)
 	}
 }
 
+/**
+ * Adds a single fund to the list.
+ */
 function appendOneElementToBody(res) {
 	const body = document.querySelector('.fundContainer')
 
@@ -53,7 +55,6 @@ function appendOneElementToBody(res) {
 
 	let editButton = createElement('button', 'edit')
 	editButton.className = 'editButton'
-	// editButton.onClick = showInfo
 	
 	appendElement(fundContainer, fund)
 	appendElement(fund, xButton)
@@ -65,28 +66,30 @@ function appendOneElementToBody(res) {
 	appendElement(body, fundContainer)
 
 	let modal = document.querySelector(".modal");
-    let testTrigger = document.querySelectorAll(".editButton") //an array
+    //let testTrigger =  document.querySelectorAll("[data-fund-id='"+res.id+"'] .editButton") //an array
+    
     let closeButton = document.querySelector(".close-button")
 
-    testTrigger.forEach(function (elem){
-        elem.addEventListener("click", toggleModal);
-    })
+    // testTrigger.forEach(function (elem){
+    // 	elem.addEventListener("click", toggleModal);
+    // })
+    editButton.addEventListener("click", toggleModal);
     
-     function toggleModal() {
-        modal.classList.toggle("show-modal");
-        console.log('Here')
+    function toggleModal() {
+    	modal.classList.toggle("show-modal");
+    	console.log('Here')
     }
 
 
-    function windowOnClick(event) {
-        if (event.target === modal) {
-            toggleModal()
-        }
-    }
+    // function windowOnClick(event) {
+    // 	if (event.target === modal) {
+    // 		toggleModal()
+    // 	}
+    // }
 
 
     closeButton.addEventListener("click", toggleModal);
-    // window.addEventListener("click", windowOnClick);
+
 }
 
 
@@ -94,12 +97,12 @@ xhr.open('GET', 'http://localhost:8080/account/1/funds', true)
 xhr.send()
 
 function createElement(elem, textValue) {
-			const newElem = document.createElement(elem)
-			newElem.innerText = textValue
+	const newElem = document.createElement(elem)
+	newElem.innerText = textValue
 
-			return newElem
-		}
+	return newElem
+}
 
-		function appendElement(parent, child) {
-			parent.appendChild(child)
-		}
+function appendElement(parent, child) {
+	parent.appendChild(child)
+}
