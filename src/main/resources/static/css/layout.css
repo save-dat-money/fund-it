@@ -39,6 +39,9 @@ main {
 	justify-content: center;
 	align-items: center;
 }
+.accountNameContainer {
+	display: flex;
+}
 
 .main__bottom__left {
 	display: flex;
