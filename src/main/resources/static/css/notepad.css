@@ -1,6 +1,6 @@
 .main__bottom__right {
-	/*padding: 10px;
-	border-left-style: solid;
+	padding: 10px;
+	/*border-left-style: solid;
 	border-left-width: 2px;
 	border-left-color: black;*/
 	background-color: #fff;
@@ -17,8 +17,11 @@
   position: relative;
   width: 95%;
   height: 100%;
+  min-height: 20em;
   box-shadow: 1px -1px 5px #555;
   border-top: 1px solid #946947;
+  box-sizing: border-box;
+  margin: auto;
 }
 
 .main__bottom__right:after {

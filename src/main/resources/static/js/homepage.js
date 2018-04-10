@@ -23,14 +23,18 @@ google.charts.setOnLoadCallback(drawChart);
         ]);
 
         const options = {
-          // title: 'My Daily Activities',
-          backgroundColor: { fill: 'transparent'},
-          colors: [
-            '#6A99CB',
-            '#F27370',
-            '#FA9856',
-            '#ACBD86',
-            '#F7B32D'
+        	chartArea: {
+        		width: '85%',
+        		height: '85%',
+        	},
+        	legend: {position: 'none'},
+        	backgroundColor: { fill: 'transparent'},
+        	colors: [
+           		'#6A99CB',
+            	'#F27370',
+            	'#FA9856',
+            	'#ACBD86',
+            	'#F7B32D'
             ]
         };
      
