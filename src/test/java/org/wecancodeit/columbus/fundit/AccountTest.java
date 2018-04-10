@@ -49,4 +49,34 @@ public class AccountTest {
 		assertThat(check2, is(account));
 	}
 
+	@Test
+	public void acctBalanceEqualsSumOfFunds() {
+		Account account = new Account("Savings", 100.00);
+		Fund fund1 = new Fund("Emergency", account);
+		Fund fund2 = new Fund("House", account);
+		account = new Account("Savings", 100.00, fund1, fund2);
+
+		double fund1Amount = fund1.getFundAmount();
+		double fund2Amount = fund2.getFundAmount();
+
+		double accountTotal = account.getFundsTotalAmnt();
+
+		assertThat(accountTotal, is(fund1Amount + fund2Amount));
+
+	}
+
+	@Test
+	public void fundsWithDefaultAmountAreEqualToAcctBalance() {
+		Account account = new Account("Savings", 100.00);
+		Fund fund1 = new Fund("Emergency", account);
+		Fund fund2 = new Fund("House", account);
+		account = new Account("Savings", 100.00, fund1, fund2);
+
+		double accntBalance = fund1.getAccount().getBalance();
+
+		double accountTotal = account.getFundsTotalAmnt();
+
+		assertThat(accountTotal, is(accntBalance));
+
+	}
 }

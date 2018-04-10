@@ -37,12 +37,12 @@ function addFund(event) {
 			const res = JSON.parse(xhr.response)
 			console.log(xhr.responseText);
 			appendOneElementToBody(res)
+			appendAccountNameToHeader(res)
 		}
 	}
 
 	xhr.open('POST', '/add-fund/account/1/' + fundName, true)
 	xhr.send()
-	console.log('here')
 }
 
 function createElement(elem, textValue) {

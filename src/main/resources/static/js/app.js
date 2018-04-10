@@ -13,21 +13,6 @@ xhr.onreadystatechange = function() {
 			appendOneElementToBody(res)
 		}
 
-		function appendAccountNameToHeader(res) {
-			const headerOne = document.querySelector('.main__top')
-
-			const accountNameContainer = document.createElement('div')
-			accountNameContainer.classList.add('accountNameContainer')
-
-			appendElement(accountNameContainer, createElement('p',
-					res[0].account.accountName))
-			appendElement(accountNameContainer, createElement('p',
-					res[0].account.balance))
-			appendElement(headerOne, accountNameContainer)
-		}
-
-
-
 
 		function showAllPropsInObject(object) {
 			for (prop in res) {
@@ -38,6 +23,41 @@ xhr.onreadystatechange = function() {
 		console.log(res)
 	}
 }
+
+function appendAccountNameToHeader(res) {
+	
+	res = res instanceof Array ? res[0] : res;
+	
+	// let headerOne = ...;
+	let existingAccntHeader = document.querySelector('.accountNameContainer')
+	if(existingAccntHeader) existingAccntHeader.parentElement.removeChild(existingAccntHeader)
+		// remove headerOne;
+	
+	const headerOne = document.querySelector('.main__top')
+	
+	const accountNameContainer = document.createElement('div')
+	accountNameContainer.classList.add('accountNameContainer')
+	
+	appendElement(accountNameContainer, createElement('p',
+	res.account.accountName))
+	appendElement(accountNameContainer, createElement('p',
+	res.account.fundsTotalAmnt))
+	appendElement(headerOne, accountNameContainer)
+}
+
+//function appendAccountAmountToHeader(res) {
+//	const headerOne = document.querySelector('.main__top')
+//
+//	const accountNameContainer = document.createElement('div')
+//	accountNameContainer.classList.add('accountNameContainer')
+//
+//	appendElement(accountNameContainer, createElement('p',
+//			res.account.accountName))
+//	appendElement(accountNameContainer, createElement('p',
+//			res.account.fundsTotalAmnt))
+//	appendElement(headerOne, accountNameContainer)
+//}
+
 
 function appendOneElementToBody(res) {
 	const body = document.querySelector('.fundContainer')

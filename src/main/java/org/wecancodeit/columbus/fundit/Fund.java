@@ -11,12 +11,12 @@ public class Fund {
 	@GeneratedValue
 	private long id;
 	private String fundName;
-	private int fundAmount; 
-	
+	private double fundAmount;
+
 	@ManyToOne
 	public Account account;
 
-	public int getFundAmount() {
+	public double getFundAmount() {
 		return fundAmount;
 	}
 
@@ -33,14 +33,13 @@ public class Fund {
 		this.account = account;
 		this.fundAmount = 100;
 	}
-	
-	//AJAX uses only
+
+	// AJAX uses only
 	public Fund(String fundName) {
 		this.fundName = fundName;
 	}
 
-	
-	public Fund(String fundName, Account account, int fundAmount) {
+	public Fund(String fundName, Account account, double fundAmount) {
 		this.fundName = fundName;
 		this.account = account;
 		this.fundAmount = fundAmount;
@@ -77,6 +76,7 @@ public class Fund {
 	public Account getAccount() {
 		return account;
 	}
+
 	@Override
 	public String toString() {
 		return " " + fundName;
