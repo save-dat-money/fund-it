@@ -20,11 +20,27 @@ xhr.onreadystatechange = function() {
 			const accountNameContainer = document.createElement('div')
 			accountNameContainer.classList.add('accountNameContainer')
 
+
+			const modalDepositAmount = document.createElement('div')
+			appendElement(modalDepositAmount , createElement('p',res[0].account.balance))
+
+			const modalWithdrawAmount = document.createElement('div')
+			appendElement(modalWithdrawAmount , createElement('p',res[0].account.balance))
+
+			const modalContentDeposit = document.querySelector('.modal-content-deposit')
+			appendElement(modalContentDeposit, modalDepositAmount)
+
+			const modalContentWithdraw = document.querySelector('.modal-content-withdraw')
+			appendElement(modalContentWithdraw, modalWithdrawAmount)
+
+
 			appendElement(accountNameContainer, createElement('p',
 				res[0].account.accountName))
 			appendElement(accountNameContainer, createElement('p',
 				res[0].account.balance))
 			appendElement(headerOne, accountNameContainer)
+		
+
 		}
 
 
@@ -75,6 +91,8 @@ function appendAccountNameToHeader(res) {
 	appendElement(accountNameContainer, fundsAmntContainer)
 	accountNameContainer.setAttribute('data-fund-id', res.id)
 	appendElement(headerOne, accountNameContainer)
+
+
 }
 
 function appendOneElementToBody(res) {
@@ -102,6 +120,8 @@ function appendOneElementToBody(res) {
 	fundContainer.setAttribute('data-fund-id', res.id)
 
 	appendElement(body, fundContainer)
+
+
 
 	// let modal = document.querySelector(".modal");
  //    //let testTrigger =  document.querySelectorAll("[data-fund-id='"+res.id+"'] .editButton") //an array
