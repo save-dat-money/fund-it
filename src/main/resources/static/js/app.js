@@ -49,7 +49,7 @@ function appendAccountNameToHeader(res) {
 			res.account.accountName))
 
 	let fundsAmntContainer = createElement('p', '$');
-	let fundsAmnt = createElement('span', res.account.fundsTotalAmnt.toFixed(2))
+	let fundsAmnt = createElement('span', res.account.balance.toFixed(2))
 
 	appendElement(fundsAmntContainer, fundsAmnt)
 	fundsAmnt.setAttribute('id', 'fundsAmnt')

@@ -20,7 +20,7 @@ function removeFund(event) {
 			console.log(xhr.responseText);
 			let fundContainer = theButton.parentElement
 			fundContainer.parentElement.removeChild(fundContainer)
-			document.querySelector('#fundsAmnt').textContent = xhr.responseText
+			//document.querySelector('#fundsAmnt').textContent = xhr.responseText
 		}
 	}
 	xhr.open('POST', '/account/1/fund/' + fundId + '/remove-fund', true)
