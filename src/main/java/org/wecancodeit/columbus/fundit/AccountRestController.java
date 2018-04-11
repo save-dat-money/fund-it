@@ -27,6 +27,11 @@ public class AccountRestController {
 	public Iterable<Fund> getFunds() {
 		return fundRepo.findAll();
 	}
+	@RequestMapping(path = "/funds/{fundId}", method = RequestMethod.GET)
+	public Fund getFund(@PathVariable("fundId") long fundId) {
+		Fund displayFund = fundRepo.findOne(fundId);
+		return displayFund;
+	}
 	
 	@CrossOrigin("*")
 	@RequestMapping(path = "/account/{accountId}/funds", method = RequestMethod.GET)
