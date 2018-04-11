@@ -45,6 +45,7 @@ function addFund(event) {
 			console.log(xhr.responseText);
 			appendOneElementToBody(newFund)
 			appendAccountNameToHeader(newFund)
+			//appendUnassignedFundToBody(newFund)
 			drawChart(fundsApp.funds);
 		}
 	}

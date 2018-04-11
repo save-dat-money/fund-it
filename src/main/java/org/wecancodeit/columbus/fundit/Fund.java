@@ -23,6 +23,10 @@ public class Fund {
 	public String getFundName() {
 		return fundName;
 	}
+	
+	public Account getAccount() {
+		return account;
+	}
 
 	public long getId() {
 		return id;
@@ -71,10 +75,6 @@ public class Fund {
 	}
 
 	public Fund() {
-	}
-
-	public Account getAccount() {
-		return account;
 	}
 
 	@Override

@@ -91,12 +91,13 @@ public class Account {
 		}
 		return totalAmnt;
 	}
+
 	public double getUnassignedFundAmount() {
 		double unassignedFund = 0.0;
 		if (balance >= getFundsTotalAmnt()) {
 			unassignedFund = balance - getFundsTotalAmnt();
 		} else {
-			unassignedFund = -(getFundsTotalAmnt() - balance); 
+			unassignedFund = -(getFundsTotalAmnt() - balance);
 		}
 		return unassignedFund;
 	}
