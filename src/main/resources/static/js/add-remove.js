@@ -22,7 +22,8 @@ function removeFund(event) {
 			console.log(xhr.responseText);
 			let fundContainer = theButton.parentElement
 			fundContainer.parentElement.removeChild(fundContainer)
-			document.querySelector('#fundsAmnt').textContent = xhr.responseText
+
+			//document.querySelector('#fundsAmnt').textContent = xhr.responseText
 			drawChart(fundsApp.funds)
 		}
 	}

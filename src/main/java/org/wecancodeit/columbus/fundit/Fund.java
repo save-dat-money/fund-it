@@ -31,7 +31,7 @@ public class Fund {
 	public Fund(String fundName, Account account) {
 		this.fundName = fundName;
 		this.account = account;
-		this.fundAmount = 100;
+		this.fundAmount = account.getUnassignedFundAmount();
 	}
 
 	// AJAX uses only
@@ -81,5 +81,6 @@ public class Fund {
 	public String toString() {
 		return " " + fundName;
 	}
+
 
 }

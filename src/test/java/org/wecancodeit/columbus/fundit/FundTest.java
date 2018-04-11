@@ -29,4 +29,5 @@ public class FundTest {
 		long accountId = account.getId(); 
 		assertThat(accountId, is(0L));
 	}
+
 }

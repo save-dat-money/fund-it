@@ -16,7 +16,7 @@ public class AccountPopulator implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Account account = new Account("Account 1", 500);
+		Account account = new Account("Account 1", 700);
 		accountRepo.save(account);
 		
 		Account account2 = new Account("Account 2", 1000);

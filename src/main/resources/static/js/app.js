@@ -66,6 +66,7 @@ function appendAccountNameToHeader(res) {
 	appendElement(accountNameContainer, createElement('p',
 			res.account.accountName))
 
+
 	let fundsAmntContainer = createElement('p', ': ');
 	let fundsAmnt = createElement('span', res.account.fundsTotalAmnt.toFixed(2))
 
@@ -95,7 +96,7 @@ function appendOneElementToBody(res) {
 	
 
 	appendElement(fundContainer, fund)
-	appendElement(fund, xButton)
+	appendElement(fundContainer, xButton)
 	appendElement(fund, editButton)
 	appendElement(fundContainer, createElement('p', res.fundAmount))
 
