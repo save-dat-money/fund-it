@@ -1,18 +1,19 @@
-
-     console.log('running')
-
-     function toggleModalDeposit() {
-        modalDepoist.classList.toggle("show-modal");
-        
-    }
-
-      function toggleModalWithdraw() {
-        modalWithdraw.classList.toggle("show-modal");
-       
-    }
+//eventlistener assignment for deposit amount
+const submitDepositButton = document.querySelector('.amount-deposit-button')
+submitDepositButton.addEventListener('click', editAccountDeposit)
 
 
-//eventlistener assignment
+
+function toggleModalDeposit() {
+    modalDepoist.classList.toggle("show-modal");   
+}
+function toggleModalWithdraw() {
+   modalWithdraw.classList.toggle("show-modal");
+
+}
+
+
+//eventlistener assignment for modal 
 let depositButton = document.querySelector('#deposit')
 let withdrawButton = document.querySelector('#withdraw')
 
@@ -29,17 +30,35 @@ closeButtonDeposit.addEventListener("click", toggleModalDeposit);
 let closeButtonWithdraw = document.querySelector(".close-button-withdraw")
 closeButtonWithdraw.addEventListener("click", toggleModalWithdraw);
 
-const xhr = new XMLHttpRequest()
-xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log(xhr.responseText)
-        const res = JSON.parse(xhr.response)
+
+
+function editAccountDeposit(event) {
+    const theButtonDeposit = event.target
+    const amountBalance = document.querySelector('#amountDeposit').value; // Fund name
+    
+    console.log(amountBalance)
+
+    const xhrDeposit = new XMLHttpRequest()
+    xhrDeposit.onreadystatechange = function() {
+        if (xhrDeposit.readyState === 4 && xhrDeposit.status === 200) {
+            console.log(xhrDeposit)
+            const res = JSON.parse(xhrDeposit.response)
+
+        }
 
     }
+    xhrDeposit.open('POST', 'http://localhost:8080/account/1', true)
+    xhrDeposit.send()
 
 }
 
 
 
-xhr.open('PUT', 'http://localhost:8080//account/{accountId}', true)
-xhr.send()
+
+
+
+
+
+
+
+

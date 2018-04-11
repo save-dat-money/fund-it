@@ -36,12 +36,11 @@ public class AccountRestController {
 
 	
 	//account edit controller
-	@RequestMapping(path = "/account/{accountId}", method = RequestMethod.PUT)
-	public Account depositAccount(@PathVariable("balanceDeposit") double balanceDeposit) {
+	@RequestMapping(path = "/account/1", method = RequestMethod.POST)
+	public Account depositAccount(@PathVariable("amountDeposit") double amountDeposit) {
 		Account editAccount = accountRepo.findById(1L);
-		editAccount.deposit(balanceDeposit);
+		editAccount.deposit(amountDeposit);
 		accountRepo.save(editAccount);
-		
 		return editAccount; 
 	}
 	
