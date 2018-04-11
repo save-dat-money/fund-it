@@ -43,7 +43,10 @@ post-it:hover,post-it:focus{
 	flex-direction: row;
 	justify-content: space-between;
 	padding-bottom: 0;
-	font-size: 12px;
+	font-size: 14px;
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
+
 }
 /*.post-it ul li {
 	border-right-style: solid;
