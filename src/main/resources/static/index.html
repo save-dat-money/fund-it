@@ -62,16 +62,37 @@
 				<div class="modal-content-deposit">
 					<span class="close-button-deposit">&times;</span>
 					<h1>Current Account Balance:</h1>
-				</div>
-			
+					<form method="PUT">
+							
+							<div>
+								<label>Amount To Deposit:</label> <input id="amount_deposit" type="number" id="balanceDeposit" required="true"  min="1" max = "700"/>
+							</div>
+
+
+							<div>
+								<input type="button" class="amount-deposit-button"  value="Submit"></input>
+							</div>
+						</form>
 			</div>
+				</div>
+				
 			<div class="modal-withdraw"><!-- .modal -->
 				
 				<div class="modal-content-withdraw">
 					<span class="close-button-withdraw">&times;</span>
 					<h1>Current Account Balance:</h1>
-				</div>
+			
+					<form method="PUT">
+							<div>
+								<label>Amount to Withdraw:</label> <input id="amount_withdraw" type="number" id="balanceWithdraw" required="true" min="1" max="700"/>
+							</div>
+							<div>
+								<input type="button" class="amount-withdraw-button"  value="Submit"></input>
+							</div>
+						</form>
 
+				</div>
+				
 			</div>
 		</main>
 

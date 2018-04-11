@@ -34,6 +34,19 @@ public class AccountRestController {
 		return fundRepo.findByAccountId(accountId);
 	}
 
+	
+	//account edit controller
+	@RequestMapping(path = "/account/{accountId}", method = RequestMethod.PUT)
+	public Account depositAccount(@PathVariable("balanceDeposit") double balanceDeposit) {
+		Account editAccount = accountRepo.findById(1L);
+		editAccount.deposit(balanceDeposit);
+		accountRepo.save(editAccount);
+		
+		return editAccount; 
+	}
+	
+	
+
 	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}", method = RequestMethod.POST)
 	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName) {
 		Account newFundAccount = accountRepo.findById(1L);

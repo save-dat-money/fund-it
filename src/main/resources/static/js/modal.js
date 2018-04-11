@@ -12,10 +12,6 @@
     }
 
 
-
- 
-
-
 //eventlistener assignment
 let depositButton = document.querySelector('#deposit')
 let withdrawButton = document.querySelector('#withdraw')
@@ -33,6 +29,17 @@ closeButtonDeposit.addEventListener("click", toggleModalDeposit);
 let closeButtonWithdraw = document.querySelector(".close-button-withdraw")
 closeButtonWithdraw.addEventListener("click", toggleModalWithdraw);
 
+const xhr = new XMLHttpRequest()
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(xhr.responseText)
+        const res = JSON.parse(xhr.response)
+
+    }
+
+}
 
 
 
+xhr.open('PUT', 'http://localhost:8080//account/{accountId}', true)
+xhr.send()
