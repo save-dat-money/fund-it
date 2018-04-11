@@ -1,3 +1,7 @@
+window.fundsApp = {
+		funds: [],
+};
+
 const toggleMenu = () => {
 	const navButton = document.querySelector(".header__nav__button");
 	const navMenu = document.querySelector(".header__nav");
@@ -8,30 +12,34 @@ const toggleMenu = () => {
 
 toggleMenu()
 
+
 const xhr1 = new XMLHttpRequest()
 xhr1.onreadystatechange = function() {
 	if (xhr1.readyState === 4 && xhr1.status === 200) {
-		const res = JSON.parse(xhr1.response)
+		const fundsArray = JSON.parse(xhr1.response)
+		fundsApp.funds = fundsArray;
+		console.log(fundsArray);
 		
-		drawChart(res)
+		drawChart(fundsArray);
+	 
 	}
 		
 }
 
 google.charts.load('current', {'packages':['corechart']});
 //google.charts.setOnLoadCallback();
-      function drawChart(res) {
+      function drawChart(fundsArray) {
 
       const data = new google.visualization.DataTable();
     	  data.addColumn('string', 'fundName');
           data.addColumn('number', 'fundAmount');
-          console.log(res);
-          res.forEach(function(item){
+          console.log(fundsArray);
+          fundsArray.forEach(function(item){
         	  data.addRows([
         		  [item.fundName, item.fundAmount]
         	  ])
           });
-          console.log(res);
+          console.log(fundsArray);
          
         const options = {
         	chartArea: {
