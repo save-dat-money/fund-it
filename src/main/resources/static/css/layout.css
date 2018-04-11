@@ -7,10 +7,12 @@
 	display: grid;
 	grid-template-rows: 10% auto 10%;
 	height: 100vh;
+	overflow-x: hidden;
 }
 header {
 	display: flex;
 	justify-content: center;
+
 }
 .header__container {
 	display: flex;

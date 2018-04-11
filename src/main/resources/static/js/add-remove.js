@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
 	createAddFundButton()
 });
@@ -15,7 +14,7 @@ function removeFund(event) {
 	const arrayIndex = fundsApp.funds.indexOf(fundId)
 	fundsApp.funds.splice(arrayIndex, 1)
 	console.log(theButton)
-	
+
 	const xhr = new XMLHttpRequest()// ajax request
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
@@ -23,7 +22,8 @@ function removeFund(event) {
 			let fundContainer = theButton.parentElement
 			fundContainer.parentElement.removeChild(fundContainer)
 
-			//document.querySelector('#fundsAmnt').textContent = xhr.responseText
+			// document.querySelector('#fundsAmnt').textContent =
+			// xhr.responseText
 			drawChart(fundsApp.funds)
 		}
 	}
