@@ -12,13 +12,18 @@ function removeFund(event) {
 	event.preventDefault();
 	const theButton = event.target
 	const fundId = theButton.parentElement.getAttribute('data-fund-id')
+	const arrayIndex = fundsApp.funds.indexOf(fundId)
+	fundsApp.funds.splice(arrayIndex, 1)
 	console.log(theButton)
-
+	
 	const xhr = new XMLHttpRequest()// ajax request
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
+			console.log(xhr.responseText);
 			let fundContainer = theButton.parentElement
 			fundContainer.parentElement.removeChild(fundContainer)
+			document.querySelector('#fundsAmnt').textContent = xhr.responseText
+			drawChart(fundsApp.funds)
 		}
 	}
 	xhr.open('POST', '/account/1/fund/' + fundId + '/remove-fund', true)
@@ -34,15 +39,17 @@ function addFund(event) {
 	const xhr = new XMLHttpRequest()// ajax request
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
-			const res = JSON.parse(xhr.response)
+			const newFund = JSON.parse(xhr.response)
+			fundsApp.funds.push(newFund);
 			console.log(xhr.responseText);
-			appendOneElementToBody(res)
+			appendOneElementToBody(newFund)
+			appendAccountNameToHeader(newFund)
+			drawChart(fundsApp.funds);
 		}
 	}
 
 	xhr.open('POST', '/add-fund/account/1/' + fundName, true)
 	xhr.send()
-	console.log('here')
 }
 
 function createElement(elem, textValue) {

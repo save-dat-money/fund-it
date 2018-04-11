@@ -84,4 +84,12 @@ public class Account {
 		funds.remove(fund);
 	}
 
+	public double getFundsTotalAmnt() {
+		double totalAmnt = 0;
+		for (Fund fund : funds) {
+			totalAmnt += fund.getFundAmount();
+		}
+		return totalAmnt;
+	}
+
 }

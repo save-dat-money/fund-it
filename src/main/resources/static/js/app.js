@@ -13,6 +13,7 @@ xhr.onreadystatechange = function() {
 			appendOneElementToBody(res)
 		}
 
+
 		function appendAccountNameToHeader(res) {
 			const headerOne = document.querySelector('.main__top')
 
@@ -29,6 +30,7 @@ xhr.onreadystatechange = function() {
 
 
 
+
 		function showAllPropsInObject(object) {
 			for (prop in res) {
 				console.log(`${prop} ${res[prop]}`)
@@ -39,28 +41,64 @@ xhr.onreadystatechange = function() {
 }
 
 /**
- * Adds a single fund to the list.
+
+ * Sets up the account's name in the header.
+ * 
+ * @param res
+ *            A response from the original GET HTTP call for funds.
+ * @returns
  */
+function appendAccountNameToHeader(res) {
+
+	res = res instanceof Array ? res[0] : res;
+
+	// let headerOne = ...;
+	let existingAccntHeader = document.querySelector('.accountNameContainer')
+	if (existingAccntHeader)
+		existingAccntHeader.parentElement.removeChild(existingAccntHeader)// remove
+		// headerOne;
+
+	const headerOne = document.querySelector('.main__top')
+
+	const accountNameContainer = document.createElement('div')
+	accountNameContainer.classList.add('accountNameContainer')
+
+	appendElement(accountNameContainer, createElement('p',
+			res.account.accountName))
+
+	let fundsAmntContainer = createElement('p', '$');
+	let fundsAmnt = createElement('span', res.account.fundsTotalAmnt.toFixed(2))
+
+	appendElement(fundsAmntContainer, fundsAmnt)
+	fundsAmnt.setAttribute('id', 'fundsAmnt')
+
+	appendElement(accountNameContainer, fundsAmntContainer)
+	accountNameContainer.setAttribute('data-fund-id', res.id)
+	appendElement(headerOne, accountNameContainer)
+}
+
 function appendOneElementToBody(res) {
 	const body = document.querySelector('.fundContainer')
 
 	const fundContainer = document.createElement('div')
 	fundContainer.classList.add('fundContainer')
-	
+
 	let xButton = createElement('button', 'x')
 	xButton.className = 'removeButton'
 	xButton.onclick = removeFund
 	let fund = createElement('h2', res.fundName)
+
 	fund.className = 'fundInformation'
 
 	let editButton = createElement('button', 'edit')
 	editButton.className = 'editButton'
 	
+
 	appendElement(fundContainer, fund)
 	appendElement(fund, xButton)
 	appendElement(fund, editButton)
 	appendElement(fundContainer, createElement('p', res.fundAmount))
-	
+
 	fundContainer.setAttribute('data-fund-id', res.id)
 
 	appendElement(body, fundContainer)
