@@ -36,10 +36,12 @@ function addFund(event) {
 	const xhr = new XMLHttpRequest()// ajax request
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
-			const res = JSON.parse(xhr.response)
+			const newFund = JSON.parse(xhr.response)
+			fundsApp.funds.push(newFund);
 			console.log(xhr.responseText);
-			appendOneElementToBody(res)
-			appendAccountNameToHeader(res)
+			appendOneElementToBody(newFund)
+			appendAccountNameToHeader(newFund)
+			drawChart(fundsApp.funds);
 		}
 	}
 
