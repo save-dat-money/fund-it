@@ -103,20 +103,20 @@ function appendOneElementToBody(res) {
 
 	appendElement(body, fundContainer)
 
-	let modal = document.querySelector(".modal");
-    //let testTrigger =  document.querySelectorAll("[data-fund-id='"+res.id+"'] .editButton") //an array
+	// let modal = document.querySelector(".modal");
+ //    //let testTrigger =  document.querySelectorAll("[data-fund-id='"+res.id+"'] .editButton") //an array
     
-    let closeButton = document.querySelector(".close-button")
+ //    let closeButton = document.querySelector(".close-button")
 
     // testTrigger.forEach(function (elem){
     // 	elem.addEventListener("click", toggleModal);
     // })
-    editButton.addEventListener("click", toggleModal);
+    // editButton.addEventListener("click", toggleModal);
     
-    function toggleModal() {
-    	modal.classList.toggle("show-modal");
-    	console.log('Here')
-    }
+    // function toggleModal() {
+    // 	modal.classList.toggle("show-modal");
+    // 	console.log('Here')
+    // }
 
 
     // function windowOnClick(event) {
@@ -126,7 +126,6 @@ function appendOneElementToBody(res) {
     // }
 
 
-    closeButton.addEventListener("click", toggleModal);
 
 }
 
