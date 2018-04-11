@@ -21,9 +21,9 @@ xhr.onreadystatechange = function() {
 			accountNameContainer.classList.add('accountNameContainer')
 
 			appendElement(accountNameContainer, createElement('p',
-				res[0].account.accountName))
-			appendElement(accountNameContainer, createElement('p',
-				res[0].account.balance))
+				res[0].account.accountName + ": " + res[0].account.balance))
+//			appendElement(accountNameContainer, createElement('p',
+//				res[0].account.balance))
 			appendElement(headerOne, accountNameContainer)
 		}
 
