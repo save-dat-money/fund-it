@@ -95,7 +95,7 @@ function appendOneElementToBody(res) {
 	
 
 	appendElement(fundContainer, fund)
-	appendElement(fund, xButton)
+	appendElement(fundContainer, xButton)
 	appendElement(fund, editButton)
 	appendElement(fundContainer, createElement('p', res.fundAmount))
 
