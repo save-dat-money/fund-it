@@ -64,10 +64,10 @@ public class AccountTest {
 
 	@Test
 	public void fundsWithDefaultAmountAreEqualToAcctBalance() {
-		Account account = new Account("Savings", 100.00);
+		Account account = new Account("Savings", 200.00);
 		Fund fund1 = new Fund("Emergency", account);
 		Fund fund2 = new Fund("House", account);
-		account = new Account("Savings", 100.00, fund1, fund2);
+		account = new Account("Savings", 200.00, fund1, fund2);
 
 		double accntBalance = fund1.getAccount().getBalance();
 
@@ -75,5 +75,32 @@ public class AccountTest {
 
 		assertThat(accountTotal, is(accntBalance));
 
+	}
+	@Test
+	public void shouldGetUnassignedFund() {
+		Account account = new Account("Savings", 1000);
+		Fund fund1 = new Fund("Emergency", account, 500);
+		Fund fund2 = new Fund("Dog", account, 500);
+		account = new Account("Savings", 1000, fund1, fund2);
+		double unassignedFundAmnt = account.getUnassignedFundAmount();
+		assertThat(unassignedFundAmnt, is(0.0));
+	}
+	@Test
+	public void shouldGetUnassignedFundAgain() {
+		Account account = new Account("Savings", 1000);
+		Fund fund1 = new Fund("Emergency", account, 500);
+		Fund fund2 = new Fund("Dog", account, 200);
+		account = new Account("Savings", 1000, fund1, fund2);
+		double unassignedFundAmnt = account.getUnassignedFundAmount();
+		assertThat(unassignedFundAmnt, is(300.0));
+	}
+	@Test
+	public void shouldGetUnassignedFundAgainOver() {
+		Account account = new Account("Savings", 1000);
+		Fund fund1 = new Fund("Emergency", account, 500);
+		Fund fund2 = new Fund("Dog", account, 800);
+		account = new Account("Savings", 1000, fund1, fund2);
+		double unassignedFundAmnt = account.getUnassignedFundAmount();
+		assertThat(unassignedFundAmnt, is(-300.0));
 	}
 }
