@@ -34,9 +34,13 @@ closeButtonWithdraw.addEventListener("click", toggleModalWithdraw);
 
 function editAccountDeposit(event) {
     const theButtonDeposit = event.target
-    const amountBalance = document.querySelector('#amountDeposit').value; // Fund name
+    const amountDeposit = document.querySelector('#amountDeposit').value; // Fund name
     
-    console.log(amountBalance)
+    const accountBalanceBeforeDeposit = accountHeaderBalance.innerText
+    accountHeaderBalance.innerText = document.querySelector('#amountDeposit').value
+
+
+    console.log(amountDeposit)
 
     const xhrDeposit = new XMLHttpRequest()
     xhrDeposit.onreadystatechange = function() {
@@ -47,7 +51,7 @@ function editAccountDeposit(event) {
         }
 
     }
-    xhrDeposit.open('POST', 'http://localhost:8080/account/1', true)
+    xhrDeposit.open('PUT', '/edit-account/account/1?amountDeposit='+ encodeURI(amountDeposit), true)
     xhrDeposit.send()
 
 }

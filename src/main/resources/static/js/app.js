@@ -36,8 +36,16 @@ xhr.onreadystatechange = function() {
 
 			appendElement(accountNameContainer, createElement('p',
 				res[0].account.accountName))
-			appendElement(accountNameContainer, createElement('p',
-				res[0].account.balance))
+			// appendElement(accountNameContainer, createElement('p',
+			// 	res[0].account.balance))
+
+			//new code so that deposit modal can attach value to Account after AJAX call
+			const accountHeaderBalance = document.createElement('p')
+			accountHeaderBalance.classList.add('accountBalance')
+			accountHeaderBalance.innerText = res[0].account.balance
+			appendElement(accountNameContainer, accountHeaderBalance)
+			
+
 			appendElement(headerOne, accountNameContainer)
 		
 
