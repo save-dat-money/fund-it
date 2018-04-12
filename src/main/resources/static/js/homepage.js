@@ -81,20 +81,61 @@ google.charts.load('current', {'packages':['corechart']});
         		if (xhr2.readyState === 4 && xhr2.status === 200) {
         			const fund = JSON.parse(xhr2.response);
         			
+        			const fundDetailsHeader = document.createElement('div');
+        			fundDetailsHeader.className = "fund__details__header";
         			const fundNameText = createElement('p', fund.fundName);
-        			fundNameText.className = "fund__details__header";
+        			fundNameText.className = "fund__details__header__text";
+        			const fundNameEditButton = createElement('button', "edit");
+//        			fundNameEditButton.innerHTML= "<img class='fund__name__edit__button__img' src='./images/pencil-icon.png'></img>"
+        			fundNameEditButton.className = "fund__name__edit__button";
+        			fundDetailsHeader.appendChild(fundNameText);
+        			fundDetailsHeader.appendChild(fundNameEditButton);
+        			
+        			
+        			const fundBalanceDiv = document.createElement('div');
+        			fundBalanceDiv.className = "fund__details__balance";
         			const fundBalanceAmount = createElement('h2', "Balance: " + fund.fundAmount);
+        			const addToFundButton = createElement('button', "+");
+        			const removeFromFundButton = createElement('button', "-"); 
+        			addToFundButton.className = "add__to__fund__button";
+        			removeFromFundButton.className = "remove__from__fund__button";
+        			fundBalanceDiv.appendChild(fundBalanceAmount);
+        			fundBalanceDiv.appendChild(addToFundButton);
+        			fundBalanceDiv.appendChild(removeFromFundButton);
+        			
+        			const fundMileMarkerDiv = document.createElement('div');
+        			fundMileMarkerDiv.className = "fund__details__mile__marker";
+
         			const mileMarkerAmount = createElement('h2', "Mile Marker: 2000");
+        			const addToMileMarkerButton = createElement('button', "+");
+        			const removeFromMileMarkerButton = createElement('button', "-"); 
+        			addToMileMarkerButton.className = "add__to__mile__button";
+        			removeFromMileMarkerButton.className = "remove__from__mile__button";
+        			fundMileMarkerDiv.appendChild(mileMarkerAmount);
+        			fundMileMarkerDiv.appendChild(addToMileMarkerButton);
+        			fundMileMarkerDiv.appendChild(removeFromMileMarkerButton);
+        			
+        			const mileMarkerProgressDiv = document.createElement('div');
+        			const mileMarkerProgressText = createElement('h2', "Progress:");
         			const mileMarkerProgress = document.createElement('div');
         			mileMarkerProgress.className = "meter";
         			const mileMarkerProgressSpan = document.createElement('span');
         			mileMarkerProgress.appendChild(mileMarkerProgressSpan);
+        			mileMarkerProgressDiv.appendChild(mileMarkerProgressText);
+        			mileMarkerProgressDiv.appendChild(mileMarkerProgress);
+        			
+        			const bottomButtonDiv = document.createElement('div');
+        			const backToOverviewButton = createElement('button', "Back");
+        			const deleteFundButton = createElement('button', "Delete");
+        			bottomButtonDiv.appendChild(backToOverviewButton);
+        			bottomButtonDiv.appendChild(deleteFundButton);
         			
         			
-        			fundDetails.appendChild(fundNameText);
-        			fundDetails.appendChild(fundBalanceAmount);
-        			fundDetails.appendChild(mileMarkerAmount);
-        			fundDetails.appendChild(mileMarkerProgress);
+        			fundDetails.appendChild(fundDetailsHeader);
+        			fundDetails.appendChild(fundBalanceDiv);
+        			fundDetails.appendChild(fundMileMarkerDiv);
+        			fundDetails.appendChild(mileMarkerProgressDiv);
+        			fundDetails.appendChild(bottomButtonDiv);
         			mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[1]);
         			
         			

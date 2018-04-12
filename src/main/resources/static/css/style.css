@@ -54,13 +54,42 @@ footer {
 .fund__details{
 	display: flex;
 	flex-direction: column;
+	justify-content: space-around;
+	height: 80%
 }
 .fund__details__header {
+	align-items: flex-end;
+}
+.fund__details__header, .fund__details__balance, .fund__details__mile__marker {
+	display: flex;
+	flex-direction: row;
+}
+.add__to__fund__button, .remove__from__fund__button, .add__to__mile__button, .remove__from__mile__button {
+	background-color: rgba(0,0,0,0);
+	border: none;
+}
+.fund__details__header__text {
 	display: flex;
 	font-size: 56px;
 	align-self: center;
 	font-family: "Permanent Marker";
 }
+.fund__name__edit__button {
+	background-color: rgba(0,0,0,0);
+	color: grey;
+	margin-bottom: 1rem;
+	width: 3%;
+	height: 3%;
+	border: none;
+}
+.fund__name__edit__button__img {
+	width: 100%;
+	height: 100%;
+}
+
+
+
+
 
 @keyframes expandWidth {
    0% { width: 0; }
@@ -78,7 +107,7 @@ footer {
   border-style: solid;
   border-width: 2px;
   border-color: lightgrey;
-  width: 30%;
+  width: 90%;
 }
 .meter > span {
   animation-name: expandWidth;
