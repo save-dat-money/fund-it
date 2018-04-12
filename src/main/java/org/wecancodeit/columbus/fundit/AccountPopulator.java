@@ -31,7 +31,6 @@ public class AccountPopulator implements CommandLineRunner {
 		Fund fund3 = new Fund("Test Fund", account2, 400);
 		fundRepo.save(fund3);
 		
-		//DefaultFund defaultFund = new DefaultFund ("unassigned cash", account);
 
 	}
 

@@ -11,7 +11,7 @@ public class Fund {
 	@GeneratedValue
 	private long id;
 	private String fundName;
-	private double fundAmount;
+	protected double fundAmount;
 
 	@ManyToOne
 	public Account account;
@@ -32,6 +32,7 @@ public class Fund {
 		return id;
 	}
 
+	//add-fund AJAX
 	public Fund(String fundName, Account account) {
 		this.fundName = fundName;
 		this.account = account;
@@ -80,6 +81,20 @@ public class Fund {
 	@Override
 	public String toString() {
 		return " " + fundName;
+	}
+
+	public void fundChangeName(String fundNameToChange) {
+		fundName = fundNameToChange;  
+	}
+
+	public void fundAmountChangeDecrease(double fundDecrease) {
+		account.balance += fundDecrease;
+		fundAmount -= fundDecrease;
+	}
+
+	public void fundAmountChangeIncrease(double fundIncrease) {
+		account.balance -= fundIncrease;
+		fundAmount += fundIncrease; 
 	}
 
 
