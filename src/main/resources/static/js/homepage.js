@@ -48,7 +48,8 @@ google.charts.load('current', {'packages':['corechart']});
         		height: '85%',
         	},
         	legend: {position: 'none'},
-        	backgroundColor: { fill: 'transparent'},
+        	backgroundColor: { 
+        		fill: 'transparent'},
         	colors: [
            		'#6A99CB',
             	'#FA9856',
