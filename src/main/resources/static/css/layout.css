@@ -7,10 +7,12 @@
 	display: grid;
 	grid-template-rows: 10% auto 10%;
 	height: 100vh;
+	overflow-x: hidden;
 }
 header {
 	display: flex;
 	justify-content: center;
+
 }
 .header__container {
 	display: flex;
@@ -19,6 +21,14 @@ header {
 	height: 11	em;
 	width: 90%;
 	margin: auto;
+	position: relative;
+}
+.coffee {
+	position: absolute;
+	overflow: hidden;
+	left: 90%;
+	bottom: 10%;
+	transform: rotate(-45deg);
 }
 .nav__menu {
 	position: relative;
@@ -54,6 +64,7 @@ main {
 }
 
 @media screen and (min-width: 700px) {
+	
 	.main__bottom {
 		display: grid;
 		grid-template-columns: 50% 50%;

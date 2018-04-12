@@ -16,7 +16,7 @@ public class AccountPopulator implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Account account = new Account("Account 1", 700);
+		Account account = new Account("Account 1", 1000);
 		accountRepo.save(account);
 		
 		Account account2 = new Account("Account 2", 1000);
@@ -30,6 +30,8 @@ public class AccountPopulator implements CommandLineRunner {
 		
 		Fund fund3 = new Fund("Test Fund", account2, 400);
 		fundRepo.save(fund3);
+		
+		//DefaultFund defaultFund = new DefaultFund ("unassigned cash", account);
 
 	}
 

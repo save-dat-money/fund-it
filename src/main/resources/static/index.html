@@ -1,50 +1,49 @@
 
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title>Account</title>
-	<link class="layout" rel="stylesheet" type="text/css" href="/css/layout.css" />
-	<link class="style" rel="stylesheet" type="text/css" href="/css/style.css" />
-	<link class="layout" rel="stylesheet" type="text/css" href="/css/post-it.css" />
-	<link class="layout" rel="stylesheet" type="text/css" href="/css/notepad.css" />
-	<link class="layout" rel="stylesheet" type="text/css" href="/css/modalbox.css" />
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-</head>
-<body>
-	<section class="container">
-		<header>
-			<section class="header__container">
-				<div class ="post-it">
-					<h2>Fundit!LOGO</h2>
-				</div>
-				<div class="nav__menu">
-					<img src="./images/nav_icon.png" class="header__nav__button">
-					<nav class="header__nav">
+	<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Account</title>
+		<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+		<link class="layout" rel="stylesheet" type="text/css" href="/css/layout.css" />
+		<link class="style" rel="stylesheet" type="text/css" href="/css/style.css" />
+		<link class="layout" rel="stylesheet" type="text/css" href="/css/post-it.css" />
+		<link class="layout" rel="stylesheet" type="text/css" href="/css/notepad.css" />
+		<link class="layout" rel="stylesheet" type="text/css" href="/css/modalbox.css" />
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	</head>
+	<body>
+		<section class="container">
+			<header>
+				<section class="header__container">
+					<div class ="post-it">
+						<h2>Fundit!LOGO</h2>
 						<ul>
-							<li>Resources</li>
-							<li>About us</li>
-							<li>Preferences</li>
+								<li>Resources</li>
+								<li>|</li>
+								<li>About</li>
+								<li>|</li>
+								<li>Settings</li>
 						</ul>
-					</nav>
-				</div>
-			</section>
-		</header>
-		<main>
-			<section class="main__top">
-				<!-- <h1>Account Balance: 12565.65</h1> -->
-
-			</section>
-			<section class="main__bottom">
-				<section class="main__bottom__left" id="piechart" >
-					<!-- <div id="piechart" style="width: 100%; height: 100%;"></div> -->
+					</div>
+					<img class="coffee" src="./images/coffee-cup.png" />
+					
 				</section>
-				<section class="main__bottom__right">
-					<span class="fundContainer">
-						<h3>Funds:</h3>
-					</span>
-					<article class="fund-input-form">
-						<h3>Add Fund:</h3>
-
+			</header>
+			<main>
+				<section class="main__top">
+				<section class="main__bottom">
+					<section class="main__bottom__left" id="piechart" >
+					</section>
+					<section class="main__bottom__right">
+						<span class="defaultFundContainer">
+							<h3>Default Fund:</h3>
+						</span>
+						<span class="fundContainer">
+							<h3>Funds:</h3>
+						</span>
+						<article class="fund-input-form">
+							<h3>Add Fund:</h3>
 						<form method="POST">
 							<div>
 								<label>Fund:</label> <input id="fund_input" type="text" id="fundName" required="true" />

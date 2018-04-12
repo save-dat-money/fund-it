@@ -2,19 +2,17 @@ const xhr = new XMLHttpRequest()
 xhr.onreadystatechange = function() {
 	if (xhr.readyState === 4 && xhr.status === 200) {
 		// console.warn(xhr.responseText)
-		const res = JSON.parse(xhr.response)
+		const funds = JSON.parse(xhr.response)
 
-		if (res.length) {
-			appendAccountNameToHeader(res)
-			res.forEach(function(account) {
-				appendOneElementToBody(account)
+		
+			appendUnassignedFundToBody(funds[0])
+			appendAccountNameToHeader(funds)
+			funds.forEach(function(fund) {
+				appendOneElementToBody(fund)
 			})
-		} else {
-			appendOneElementToBody(res)
-		}
+		
 
-
-		function appendAccountNameToHeader(res) {
+		function appendAccountNameToHeader(funds) {
 			const headerOne = document.querySelector('.main__top')
 
 			const accountNameContainer = document.createElement('div')
@@ -23,7 +21,6 @@ xhr.onreadystatechange = function() {
 			let accntAmnt = createElement('p', funds[0].account.balance.toFixed(2))
 			accntAmnt.classList.add('accntAmnt')
 			
-
 			const modalDepositAmount = document.createElement('div')
 			appendElement(modalDepositAmount , createElement('p',res[0].account.balance))
 
@@ -38,77 +35,43 @@ xhr.onreadystatechange = function() {
 
 
 			appendElement(accountNameContainer, createElement('p',
-				res[0].account.accountName))
-			// appendElement(accountNameContainer, createElement('p',
-			// 	res[0].account.balance))
-
-			//new code so that deposit modal can attach value to Account after AJAX call
-			const accountHeaderBalance = document.createElement('p')
-			accountHeaderBalance.classList.add('accountBalance')
-			accountHeaderBalance.innerText = res[0].account.balance
-			appendElement(accountNameContainer, accountHeaderBalance)
-			
+					funds[0].account.accountName + ": $"))
+			appendElement(accountNameContainer, accntAmnt)
 
 			appendElement(headerOne, accountNameContainer)
 		
 
 		}
 
-
-
-
-
 		function showAllPropsInObject(object) {
-			for (prop in res) {
-				console.log(`${prop} ${res[prop]}`)
+			for (prop in funds) {
+				console.log(`${prop} ${funds[prop]}`)
 			}
 		}
-		console.log(res)
+		console.log(funds)
 	}
 }
 
-/**
+ function appendUnassignedFundToBody(fund) {
+ const thirdBody = document.querySelector('.defaultFundContainer')
 
- * Sets up the account's name in the header.
- * 
- * @param res
- *            A response from the original GET HTTP call for funds.
- * @returns
- */
-function appendAccountNameToHeader(res) {
+ const defaultFundContainer = document.createElement('div')
+ defaultFundContainer.classList.add('defaultFundContainer')
 
-	res = res instanceof Array ? res[0] : res;
+ let defaultFund = createElement('h2', 'Unassigned Funds')
+ defaultFund.className = 'defaultFund'
+ // default fund attempt
+ appendElement(defaultFundContainer, defaultFund)
+ appendElement(defaultFundContainer, createElement('p',
+ fund.account.unassignedFundAmount))
+ appendElement(thirdBody, defaultFundContainer)
+ 
+ }
 
-	// let headerOne = ...;
-	let existingAccntHeader = document.querySelector('.accountNameContainer')
-	if (existingAccntHeader)
-		existingAccntHeader.parentElement.removeChild(existingAccntHeader)// remove
-		// headerOne;
-
-	const headerOne = document.querySelector('.main__top')
-
-	const accountNameContainer = document.createElement('div')
-	accountNameContainer.classList.add('accountNameContainer')
-
-	appendElement(accountNameContainer, createElement('p',
-			res.account.accountName))
-
-	let fundsAmntContainer = createElement('p', '$');
-	let fundsAmnt = createElement('span', res.account.balance.toFixed(2))
-
-	appendElement(fundsAmntContainer, fundsAmnt)
-	fundsAmnt.setAttribute('id', 'fundsAmnt')
-
-	appendElement(accountNameContainer, fundsAmntContainer)
-	accountNameContainer.setAttribute('data-fund-id', res.id)
-	appendElement(headerOne, accountNameContainer)
-
-
-}
 
 function appendOneElementToBody(res) {
-	const body = document.querySelector('.fundContainer')
 
+	const body = document.querySelector('.fundContainer')
 	const fundContainer = document.createElement('div')
 	fundContainer.classList.add('fundContainer')
 
@@ -121,7 +84,6 @@ function appendOneElementToBody(res) {
 
 	let editButton = createElement('button', 'edit')
 	editButton.className = 'editButton'
-	
 
 	appendElement(fundContainer, fund)
 	appendElement(fundContainer, xButton)
@@ -131,35 +93,20 @@ function appendOneElementToBody(res) {
 	fundContainer.setAttribute('data-fund-id', res.id)
 
 	appendElement(body, fundContainer)
+	
+	let modal = document.querySelector(".modal");
 
+	let closeButton = document.querySelector(".close-button")
 
+	editButton.addEventListener("click", toggleModal);
 
-	// let modal = document.querySelector(".modal");
- //    //let testTrigger =  document.querySelectorAll("[data-fund-id='"+res.id+"'] .editButton") //an array
-    
- //    let closeButton = document.querySelector(".close-button")
-
-    // testTrigger.forEach(function (elem){
-    // 	elem.addEventListener("click", toggleModal);
-    // })
-    // editButton.addEventListener("click", toggleModal);
-    
-    // function toggleModal() {
-    // 	modal.classList.toggle("show-modal");
-    // 	console.log('Here')
-    // }
-
-
-    // function windowOnClick(event) {
-    // 	if (event.target === modal) {
-    // 		toggleModal()
-    // 	}
-    // }
-
+	function toggleModal() {
+		modal.classList.toggle("show-modal");
+		console.log('Here')
+	}
 
 
 }
-
 
 xhr.open('GET', 'http://localhost:8080/account/1/funds', true)
 xhr.send()
