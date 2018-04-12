@@ -5,7 +5,6 @@ xhr.onreadystatechange = function() {
 		const funds = JSON.parse(xhr.response)
 
 		
-		
 			appendUnassignedFundToBody(funds[0])
 			appendAccountNameToHeader(funds)
 			funds.forEach(function(fund) {
@@ -20,12 +19,14 @@ xhr.onreadystatechange = function() {
 			accountNameContainer.classList.add('accountNameContainer')
 
 			appendElement(accountNameContainer, createElement('p',
+					(funds[0].account.accountName 
+					+ ": " + funds[0].account.balance)))
+					
+					
+//			appendElement(accountNameContainer, createElement('p',
+//					funds[0].account.balance))
 
-					funds[0].account.accountName))
-			appendElement(accountNameContainer, createElement('p',
-					funds[0].account.balance))
-
-				res[0].account.accountName + ": " + res[0].account.balance))
+//				res[0].account.accountName + ": " + res[0].account.balance
 //			appendElement(accountNameContainer, createElement('p',
 //				res[0].account.balance))
 			appendElement(headerOne, accountNameContainer)
@@ -87,10 +88,10 @@ function appendAccountNameToHeader(res) {
  let defaultFund = createElement('h2', 'Unassigned Funds')
  defaultFund.className = 'defaultFund'
  // default fund attempt
+ appendElement(defaultFundContainer, defaultFund)
  appendElement(defaultFundContainer, createElement('p',
  fund.account.unassignedFundAmount))
- appendElement(defaultFundContainer, defaultFund)
- appendElement(thirdBody, defaultFundContainer)
+// appendElement(thirdBody, defaultFundContainer)
  
  }
 
