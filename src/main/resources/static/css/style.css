@@ -55,7 +55,7 @@ footer {
 	display: flex;
 	flex-direction: column;
 }
-.fund__details__header {
+.fund__details__header__text {
 	display: flex;
 	font-size: 56px;
 	align-self: center;
@@ -78,7 +78,7 @@ footer {
   border-style: solid;
   border-width: 2px;
   border-color: lightgrey;
-  width: 30%;
+  width: 90%;
 }
 .meter > span {
   animation-name: expandWidth;

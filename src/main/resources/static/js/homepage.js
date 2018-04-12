@@ -81,19 +81,41 @@ google.charts.load('current', {'packages':['corechart']});
         		if (xhr2.readyState === 4 && xhr2.status === 200) {
         			const fund = JSON.parse(xhr2.response);
         			
+        			const fundDetailsHeader = document.createElement('div');
+        			fundDetailsHeader.className = "fund__details__header";
         			const fundNameText = createElement('p', fund.fundName);
-        			fundNameText.className = "fund__details__header";
+        			fundNameText.className = "fund__details__header__text";
+        			const fundNameEditButton = createElement('button', "edit");
+        			fundDetailsHeader.appendChild(fundNameText);
+        			fundDetailsHeader.appendChild(fundNameEditButton);
+        			
+        			
+        			const fundBalanceDiv = document.createElement('div');
+        			fundBalanceDiv.className = "fund__details__balance";
         			const fundBalanceAmount = createElement('h2', "Balance: " + fund.fundAmount);
+        			const addToFundButton = createElement('button', "+");
+        			const removeFromFundButton = createElement('button', "-"); 
+        			fundBalanceDiv.appendChild(fundBalanceAmount);
+        			fundBalanceDiv.appendChild(addToFundButton);
+        			fundBalanceDiv.appendChild(removeFromFundButton);
+        			
+        			const fundMileMarkerDiv = document.createElement('div');
         			const mileMarkerAmount = createElement('h2', "Mile Marker: 2000");
+        			const addToMileMarkerButton = createElement('button', "+");
+        			const removeFromMileMarkerButton = createElement('button', "-"); 
+        			fundMileMarkerDiv.appendChild(mileMarkerAmount);
+        			fundMileMarkerDiv.appendChild(addToMileMarkerButton);
+        			fundMileMarkerDiv.appendChild(removeFromMileMarkerButton);
+        			
         			const mileMarkerProgress = document.createElement('div');
         			mileMarkerProgress.className = "meter";
         			const mileMarkerProgressSpan = document.createElement('span');
         			mileMarkerProgress.appendChild(mileMarkerProgressSpan);
         			
         			
-        			fundDetails.appendChild(fundNameText);
-        			fundDetails.appendChild(fundBalanceAmount);
-        			fundDetails.appendChild(mileMarkerAmount);
+        			fundDetails.appendChild(fundDetailsHeader);
+        			fundDetails.appendChild(fundBalanceDiv);
+        			fundDetails.appendChild(fundMileMarkerDiv);
         			fundDetails.appendChild(mileMarkerProgress);
         			mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[1]);
         			
