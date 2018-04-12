@@ -84,11 +84,16 @@ google.charts.load('current', {'packages':['corechart']});
         			fundNameText.className = "fund__details__header";
         			const fundBalanceAmount = createElement('h2', "Balance: " + fund.fundAmount);
         			const mileMarkerAmount = createElement('h2', "Mile Marker: 2000");
+        			const mileMarkerProgress = document.createElement('div');
+        			mileMarkerProgress.className = "meter";
+        			const mileMarkerProgressSpan = document.createElement('span');
+        			mileMarkerProgress.appendChild(mileMarkerProgressSpan);
         			
         			
         			fundDetails.appendChild(fundNameText);
         			fundDetails.appendChild(fundBalanceAmount);
         			fundDetails.appendChild(mileMarkerAmount);
+        			fundDetails.appendChild(mileMarkerProgress);
         			mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[1]);
         			
         			
