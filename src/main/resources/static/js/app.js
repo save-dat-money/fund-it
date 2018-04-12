@@ -21,12 +21,26 @@ xhr.onreadystatechange = function() {
 			let accntAmnt = createElement('p', funds[0].account.balance.toFixed(2))
 			accntAmnt.classList.add('accntAmnt')
 			
+			const modalDepositAmount = document.createElement('div')
+			appendElement(modalDepositAmount , createElement('p',res[0].account.balance))
+
+			const modalWithdrawAmount = document.createElement('div')
+			appendElement(modalWithdrawAmount , createElement('p',res[0].account.balance))
+
+			const modalContentDeposit = document.querySelector('.modal-content-deposit')
+			appendElement(modalContentDeposit, modalDepositAmount)
+
+			const modalContentWithdraw = document.querySelector('.modal-content-withdraw')
+			appendElement(modalContentWithdraw, modalWithdrawAmount)
+
+
 			appendElement(accountNameContainer, createElement('p',
 					funds[0].account.accountName + ": $"))
 			appendElement(accountNameContainer, accntAmnt)
 
-					
 			appendElement(headerOne, accountNameContainer)
+		
+
 		}
 
 		function showAllPropsInObject(object) {
@@ -54,21 +68,8 @@ xhr.onreadystatechange = function() {
  
  }
 
-function appendOneElementToBody(res) {
 
-//	// default fund attempt
-//	const thirdbody = document.querySelector('.defaultFundContainer')
-//	const defaultFundContainer = document.createElement('div')
-//
-//	 defaultFundContainer.classList.add('defaultFundContainer')
-//	
-//	 let defaultFund = createElement('h2', 'Unassigned Funds')
-//	 defaultFund.className = 'defaultFunds'
-//	 appendElement(defaultFundContainer, defaultFund)
-//	 appendElement(defaultFundContainer, createElement('p',
-//	 res.account.unassignedFundAmount))
-//	 appendElement(thirdbody, defaultFundContainer)
-//	// default fund attempt ends
+function appendOneElementToBody(res) {
 
 	const body = document.querySelector('.fundContainer')
 	const fundContainer = document.createElement('div')
@@ -93,16 +94,10 @@ function appendOneElementToBody(res) {
 
 	appendElement(body, fundContainer)
 	
-
 	let modal = document.querySelector(".modal");
-	// let testTrigger = document.querySelectorAll("[data-fund-id='"+res.id+"']
-	// .editButton") //an array
 
 	let closeButton = document.querySelector(".close-button")
 
-	// testTrigger.forEach(function (elem){
-	// elem.addEventListener("click", toggleModal);
-	// })
 	editButton.addEventListener("click", toggleModal);
 
 	function toggleModal() {
@@ -110,13 +105,6 @@ function appendOneElementToBody(res) {
 		console.log('Here')
 	}
 
-	// function windowOnClick(event) {
-	// if (event.target === modal) {
-	// toggleModal()
-	// }
-	// }
-
-	closeButton.addEventListener("click", toggleModal);
 
 }
 

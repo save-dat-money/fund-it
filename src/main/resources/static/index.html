@@ -32,8 +32,6 @@
 			</header>
 			<main>
 				<section class="main__top">
-
-				</section>
 				<section class="main__bottom">
 					<section class="main__bottom__left" id="piechart" >
 					</section>
@@ -46,37 +44,74 @@
 						</span>
 						<article class="fund-input-form">
 							<h3>Add Fund:</h3>
+						<form method="POST">
+							<div>
+								<label>Fund:</label> <input id="fund_input" type="text" id="fundName" required="true" />
+							</div>
 
-							<form method="POST">
-								<div>
-									<label>Fund:</label> <input id="fund_input" type="text" id="fundName" required="true" />
-								</div>
-
-								<div>
-									<input type="button" class="fund-add-button"  value="Submit"></input>
-								</div>
-							</form>
-						</article>
-					</section>
+							<div>
+								<input type="button" class="fund-add-button"  value="Submit"></input>
+							</div>
+						</form>
+					</article>
 				</section>
-				<div class="modal">
-				<div class="modal-content">
-					<span class="close-button">&times;</span>
-					<h1>Anything</h1>
-				</div>
-			</div>
-			</main>
+			</section>
+			<div class="modal-depoist"><!-- .modal -->
 			
-			<footer></footer>
-		</section>
-		<script type="text/javascript" src="/js/app.js"></script>
+				<div class="modal-content-deposit">
+					<span class="close-button-deposit">&times;</span>
+					<h1>Current Account Balance:</h1>
+					<form method="PUT">
+							
+							<div>
+								<label>Amount To Deposit:</label> <input id="amountDeposit" type="number"  required="true"  min="1" max = "700"/>
+							</div>
 
-		<script type="text/javascript" src="/js/homepage.js"></script>
 
-		<script type="text/javascript" src="/js/add-remove.js"></script>
+							<div>
+								<input type="button" class="amount-deposit-button"  value="Submit"></input>
+							</div>
+						</form>
+			</div>
+				</div>
+				
+			<div class="modal-withdraw"><!-- .modal -->
+				
+				<div class="modal-content-withdraw">
+					<span class="close-button-withdraw">&times;</span>
+					<h1>Current Account Balance:</h1>
+			
+					<form method="PUT">
+							<div>
+								<label>Amount to Withdraw:</label> <input id="amountWithdraw" type="number" required="true" min="1" max="700"/>
+							</div>
+							<div>
+								<input type="button" class="amount-withdraw-button"  value="Submit"></input>
+							</div>
+						</form>
 
-		<script type="text/javascript" src="/js/modal.js"></script>
+				</div>
+				
+			</div>
+		</main>
+
+		<footer>
+			<div class="accountAction">
+
+				<button id="deposit">Deposit</button>
+				<button id="withdraw">Withdraw</button>
+
+			</div>
+		</footer>
+	</section>
+	<script type="text/javascript" src="/js/app.js"></script>
+
+	<script type="text/javascript" src="/js/homepage.js"></script>
+
+	<script type="text/javascript" src="/js/add-remove.js"></script>
+
+	<script type="text/javascript" src="/js/modal.js"></script>
 
 
-	</body>
-	</html>
+</body>
+</html>
