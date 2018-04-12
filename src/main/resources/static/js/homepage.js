@@ -10,34 +10,35 @@ const toggleMenu = () => {
 	});
 };
 
-toggleMenu()
+toggleMenu();
 
 
-const xhr1 = new XMLHttpRequest()
+const xhr1 = new XMLHttpRequest();
 xhr1.onreadystatechange = function() {
 	if (xhr1.readyState === 4 && xhr1.status === 200) {
-		const fundsArray = JSON.parse(xhr1.response)
+		const fundsArray = JSON.parse(xhr1.response);
 		fundsApp.funds = fundsArray;
 		console.log(fundsArray);
 		
-		drawChart(fundsArray);
+		drawChart(fundsApp.funds);
 	 
 	}
 		
-}
+};
 
 google.charts.load('current', {'packages':['corechart']});
-//google.charts.setOnLoadCallback();
+// google.charts.setOnLoadCallback();
       function drawChart(fundsArray) {
 
       const data = new google.visualization.DataTable();
     	  data.addColumn('string', 'fundName');
           data.addColumn('number', 'fundAmount');
+          data.addColumn('number', 'fundId');
           console.log(fundsArray);
           fundsArray.forEach(function(item){
         	  data.addRows([
-        		  [item.fundName, item.fundAmount]
-        	  ])
+        		  [item.fundName, item.fundAmount, item.id]
+        	  ]);
           });
           console.log(fundsArray);
          
@@ -59,21 +60,39 @@ google.charts.load('current', {'packages':['corechart']});
      
        
       const chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      google.visualization.events.addListener(chart, 'select', selectHandler);
 
         chart.draw(data, options);
       
-google.visualization.events.addListener(chart, 'select', selectHandler);
-
-function selectHandler() {
-  var selection = chart.getSelection();
-  const otherside = document.querySelector('.main__bottom__right');
-  const value = data.getValue(selection[0].row || 0, selection[0].column || 0); 
-  var t = document.createTextNode(value);
-  otherside.replaceChild(t, otherside.childNodes[0]);
-}
-      }
-//The event listener is so that it reloads repeatedly
-window.addEventListener('load', evt => {
-      xhr1.open('GET', 'http://localhost:8080/account/1/funds', true)
-      xhr1.send()
-})
+        function selectHandler() {
+        	var selection = chart.getSelection();
+        	console.log(selection);
+        	if (!selection.length) return;
+        	const otherside = document.querySelector('.main__bottom__right');
+        	const value = data.getValue(selection[0].row || 0, 2);
+        	
+        	
+        	const xhr2 = new XMLHttpRequest();
+        	xhr2.onreadystatechange = function() {
+        		if (xhr2.readyState === 4 && xhr2.status === 200) {
+        			const fund = JSON.parse(xhr2.response);
+        			
+        			const fundNameText = document.createTextNode(fund.fundName);
+        			const fundBalanceText = document.createTextNode(fund.fundAmount);
+        			
+        			
+        			otherside.appendChild(fundNameText, otherside.childNodes[0]);
+        			otherside.appendChild(fundBalanceText, otherside.childNodes[0]);
+        			
+        			
+        		}
+        	};
+        	
+        	xhr2.open('GET', 'http://localhost:8080/funds/' + value, true);
+        	xhr2.send();
+        }
+      } 
+      window.addEventListener('load', evt => {
+    	  xhr1.open('GET', 'http://localhost:8080/account/1/funds', true);
+    	  xhr1.send();
+      });

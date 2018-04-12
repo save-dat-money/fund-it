@@ -20,9 +20,14 @@ xhr.onreadystatechange = function() {
 			accountNameContainer.classList.add('accountNameContainer')
 
 			appendElement(accountNameContainer, createElement('p',
+
 					funds[0].account.accountName))
 			appendElement(accountNameContainer, createElement('p',
 					funds[0].account.balance))
+
+				res[0].account.accountName + ": " + res[0].account.balance))
+//			appendElement(accountNameContainer, createElement('p',
+//				res[0].account.balance))
 			appendElement(headerOne, accountNameContainer)
 		}
 
@@ -61,8 +66,9 @@ function appendAccountNameToHeader(res) {
 	appendElement(accountNameContainer, createElement('p',
 			res.account.accountName))
 
-	let fundsAmntContainer = createElement('p', '$');
-	let fundsAmnt = createElement('span', res.account.balance.toFixed(2))
+
+	let fundsAmntContainer = createElement('p', ': ');
+	let fundsAmnt = createElement('span', res.account.fundsTotalAmnt.toFixed(2))
 
 	appendElement(fundsAmntContainer, fundsAmnt)
 	fundsAmnt.setAttribute('id', 'fundsAmnt')
