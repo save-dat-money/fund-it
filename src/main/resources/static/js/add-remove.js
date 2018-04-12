@@ -49,12 +49,9 @@ function addFund(event) {
 			//ajax for updating unassigned fund amnt
 			let unFndAmnt = newFund.account.unassignedFundAmount
 			document.querySelector('.defaultFundAmnt').textContent = unFndAmnt
-			//works to update value in webpage but it is not current
+			//working with 100 set as add fund amnt
 			drawChart(fundsApp.funds);
 		}	
-	}
-	function appendUnassignedFundAmntValue(funds) {
-		
 	}
 
 	xhr.open('POST', '/add-fund/account/1/' + fundName, true)
