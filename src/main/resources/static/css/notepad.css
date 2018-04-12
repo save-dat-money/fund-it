@@ -1,12 +1,9 @@
 .main__bottom__right {
 	padding: 10px;
+  border-radius: 5px; 
   padding-left: 14%;
-	/*border-left-style: solid;
-	border-left-width: 2px;
-	border-left-color: black;*/
 	background-color: #fff;
  	z-index:1;
-	/*This puts in the notepad paper effect*/
 	background-image: 
 	linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
 	linear-gradient(#eee .1em, transparent .1em);
@@ -16,15 +13,15 @@
 .main__bottom__right {
   display: inline-block;
   position: relative;
-  width: 95%;
-  height: 100%;
+  width: 70%;
+  height: 110%;
   min-height: 20em;
   box-shadow: 1px -1px 5px #555;
   border-top: 1px solid #946947;
   box-sizing: border-box;
   margin: auto;
 }
-
+/*
 .main__bottom__right:after {
     position: absolute;
     content: '';
@@ -46,4 +43,7 @@
     width: 99%;
     background-size: 9px 12px;
     background-image: radial-gradient(circle at 5% 40%, transparent 70%, #555 20%);
-}
+}*/
+
+
+
