@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -38,6 +39,18 @@ public class AccountRestController {
 	public Iterable<Fund> getFunds(@PathVariable("accountId") long accountId) {
 		return fundRepo.findByAccountId(accountId);
 	}
+
+	
+	//account edit controller
+	@RequestMapping(path = "/edit-account/account/1", method = RequestMethod.PUT)
+	public Account depositAccount(@RequestParam(value = "amountDeposit", required=true) double amountDeposit) {
+		Account editAccount = accountRepo.findById(1L);
+		editAccount.deposit(amountDeposit);
+		accountRepo.save(editAccount);
+		return editAccount; 
+	}
+	
+	
 
 	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}", method = RequestMethod.POST)
 	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName) {

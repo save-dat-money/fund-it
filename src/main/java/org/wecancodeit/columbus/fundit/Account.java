@@ -102,4 +102,8 @@ public class Account {
 		return unassignedFund;
 	}
 
+	public void deposit(double balanceDeposit) {
+		balance += balanceDeposit;
+	}
+
 }
