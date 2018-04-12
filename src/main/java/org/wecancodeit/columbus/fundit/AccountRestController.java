@@ -50,17 +50,6 @@ public class AccountRestController {
 		return editAccount; 
 	}
 
-//	//edit FUND
-//	@RequestMapping(path = "/edit-fund/account/1", method = RequestMethod.PUT)
-//	public Fund editFund(@PathVariable("fundName") String fundName) {
-//		Account newFundAccount = accountRepo.findById(1L);
-//		Fund newFund = new Fund(fundName, newFundAccount);
-//		fundRepo.save(newFund);
-//		accountRepo.save(newFundAccount);
-//		return newFund;
-//	}
-//	
-	
 	
 
 	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}", method = RequestMethod.POST)
