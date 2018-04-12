@@ -68,8 +68,10 @@ google.charts.load('current', {'packages':['corechart']});
         	var selection = chart.getSelection();
         	console.log(selection);
         	if (!selection.length) return;
-        	const otherside = document.querySelector('.main__bottom__right');
         	const value = data.getValue(selection[0].row || 0, 2);
+        	const fundDetails = document.createElement('div');
+        	const mainBottomRight = document.querySelector('.main__bottom__right');
+        	
         	
         	
         	const xhr2 = new XMLHttpRequest();
@@ -81,8 +83,9 @@ google.charts.load('current', {'packages':['corechart']});
         			const fundBalanceText = document.createTextNode(fund.fundAmount);
         			
         			
-        			otherside.appendChild(fundNameText, otherside.childNodes[0]);
-        			otherside.appendChild(fundBalanceText, otherside.childNodes[0]);
+        			fundDetails.appendChild(fundNameText);
+        			fundDetails.appendChild(fundBalanceText);
+        			mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[0]);
         			
         			
         		}
