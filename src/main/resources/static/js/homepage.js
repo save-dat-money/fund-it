@@ -70,6 +70,7 @@ google.charts.load('current', {'packages':['corechart']});
         	if (!selection.length) return;
         	const value = data.getValue(selection[0].row || 0, 2);
         	const fundDetails = document.createElement('div');
+        	fundDetails.className = "fund__details";
         	const mainBottomRight = document.querySelector('.main__bottom__right');
         	
         	
@@ -81,11 +82,13 @@ google.charts.load('current', {'packages':['corechart']});
         			
         			const fundNameText = createElement('p', fund.fundName);
         			fundNameText.className = "fund__details__header";
-        			const fundBalanceText = document.createTextNode(fund.fundAmount);
+        			const fundBalanceAmount = createElement('h2', "Balance: " + fund.fundAmount);
+        			const mileMarkerAmount = createElement('h2', "Mile Marker: 2000");
         			
         			
         			fundDetails.appendChild(fundNameText);
-        			fundDetails.appendChild(fundBalanceText);
+        			fundDetails.appendChild(fundBalanceAmount);
+        			fundDetails.appendChild(mileMarkerAmount);
         			mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[1]);
         			
         			
