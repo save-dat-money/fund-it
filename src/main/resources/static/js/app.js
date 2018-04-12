@@ -18,10 +18,12 @@ xhr.onreadystatechange = function() {
 			const accountNameContainer = document.createElement('div')
 			accountNameContainer.classList.add('accountNameContainer')
 
+			let accntAmnt = createElement('p', funds[0].account.balance.toFixed(2))
+			accntAmnt.classList.add('accntAmnt')
+			
 			appendElement(accountNameContainer, createElement('p',
-					funds[0].account.accountName + ": "))
-			appendElement(accountNameContainer, createElement('p',
-					funds[0].account.balance))
+					funds[0].account.accountName + ": $"))
+			appendElement(accountNameContainer, accntAmnt)
 
 					
 			appendElement(headerOne, accountNameContainer)
@@ -34,45 +36,6 @@ xhr.onreadystatechange = function() {
 		}
 		console.log(funds)
 	}
-}
-
-/**
- * 
- * Sets up the account's name in the header.
- * 
- * @param res
- *            A response from the original GET HTTP call for funds.
- * @returns
- */
-function appendAccountNameToHeader(res) {
-
-	res = res instanceof Array ? res[0] : res;
-
-	// let headerOne = ...;
-	let existingAccntHeader = document.querySelector('.accountNameContainer')
-	if (existingAccntHeader)
-		existingAccntHeader.parentElement.removeChild(existingAccntHeader)// remove
-		// headerOne;
-
-	const headerOne = document.querySelector('.main__top')
-
-	const accountNameContainer = document.createElement('div')
-	accountNameContainer.classList.add('accountNameContainer')
-
-	appendElement(accountNameContainer, createElement('p',
-			res.account.accountName))
-
-
-	let fundsAmntContainer = createElement('p', ': ');
-
-	let fundsAmnt = createElement('span', res.account.balance.toFixed(2))
-
-	appendElement(fundsAmntContainer, fundsAmnt)
-	fundsAmnt.setAttribute('id', 'fundsAmnt')
-
-	appendElement(accountNameContainer, fundsAmntContainer)
-	accountNameContainer.setAttribute('data-fund-id', res.id)
-	appendElement(headerOne, accountNameContainer)
 }
 
  function appendUnassignedFundToBody(fund) {
