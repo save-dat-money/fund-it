@@ -79,13 +79,14 @@ google.charts.load('current', {'packages':['corechart']});
         		if (xhr2.readyState === 4 && xhr2.status === 200) {
         			const fund = JSON.parse(xhr2.response);
         			
-        			const fundNameText = document.createTextNode(fund.fundName);
+        			const fundNameText = createElement('p', fund.fundName);
+        			fundNameText.className = "fund__details__header";
         			const fundBalanceText = document.createTextNode(fund.fundAmount);
         			
         			
         			fundDetails.appendChild(fundNameText);
         			fundDetails.appendChild(fundBalanceText);
-        			mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[0]);
+        			mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[1]);
         			
         			
         		}
@@ -99,3 +100,10 @@ google.charts.load('current', {'packages':['corechart']});
     	  xhr1.open('GET', 'http://localhost:8080/account/1/funds', true);
     	  xhr1.send();
       });
+      
+      function createElement(elem, textValue) {
+    		const newElem = document.createElement(elem)
+    		newElem.innerText = textValue
+
+    		return newElem
+    	}
