@@ -28,36 +28,44 @@ public class AccountRestController {
 	public Iterable<Fund> getFunds() {
 		return fundRepo.findAll();
 	}
+
 	@RequestMapping(path = "/funds/{fundId}", method = RequestMethod.GET)
 	public Fund getFund(@PathVariable("fundId") long fundId) {
 		Fund displayFund = fundRepo.findOne(fundId);
 		return displayFund;
 	}
-	
+
 	@CrossOrigin("*")
 	@RequestMapping(path = "/account/{accountId}/funds", method = RequestMethod.GET)
 	public Iterable<Fund> getFunds(@PathVariable("accountId") long accountId) {
 		return fundRepo.findByAccountId(accountId);
 	}
 
-	
-	//account edit controller
+	// account edit controller
 	@RequestMapping(path = "/edit-account/account/1", method = RequestMethod.PUT)
-	public Account depositAccount(@RequestParam(value = "amountDeposit", required=true) double amountDeposit) {
+	public Account depositAccount(@RequestParam(value = "amountDeposit", required = true) double amountDeposit) {
 		Account editAccount = accountRepo.findById(1L);
 		editAccount.deposit(amountDeposit);
 		accountRepo.save(editAccount);
-		return editAccount; 
+		return editAccount;
 	}
 
-	
-
-	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}", method = RequestMethod.POST)
-	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName) {
+	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}/{fundAmount}", method = RequestMethod.POST)
+	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName,
+			@PathVariable("fundAmount") double fundAmount) {
 		Account newFundAccount = accountRepo.findById(1L);
-		Fund newFund = new Fund(fundName, newFundAccount);
+		double newFundAmount;
+		if (newFundAccount.getUnassignedFundAmount() < fundAmount) {
+			newFundAmount = newFundAccount.getUnassignedFundAmount();
+		}else {
+			newFundAmount = fundAmount;
+		}
+		Fund newFund = new Fund(fundName, newFundAccount, newFundAmount);
+		// if(newFundAccount.getUnassignedFundAmount() < fundAmount) {
+		// newFund = new Fund(fundName, newFundAccount,
+		// newFundAccount.getUnassignedFundAmount());
+		// }
 		fundRepo.save(newFund);
-		accountRepo.save(newFundAccount);
 		return newFund;
 	}
 
