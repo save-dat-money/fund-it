@@ -4,13 +4,11 @@ xhr.onreadystatechange = function() {
 		// console.warn(xhr.responseText)
 		const funds = JSON.parse(xhr.response)
 
-		
-			appendUnassignedFundToBody(funds[0])
-			appendAccountNameToHeader(funds)
-			funds.forEach(function(fund) {
-				appendOneElementToBody(fund)
-			})
-		
+		appendUnassignedFundToBody(funds[0])
+		appendAccountNameToHeader(funds)
+		funds.forEach(function(fund) {
+			appendOneElementToBody(fund)
+		})
 
 		function appendAccountNameToHeader(funds) {
 			const headerOne = document.querySelector('.main__top')
@@ -18,28 +16,31 @@ xhr.onreadystatechange = function() {
 			const accountNameContainer = document.createElement('div')
 			accountNameContainer.classList.add('accountNameContainer')
 
-			let accntAmnt = createElement('p', funds[0].account.balance.toFixed(2))
+			let accntAmnt = createElement('p', funds[0].account.balance
+					.toFixed(2))
 			accntAmnt.classList.add('accntAmnt')
-			
+
 			const modalDepositAmount = document.createElement('div')
-			appendElement(modalDepositAmount , createElement('p',funds[0].account.balance))
+			appendElement(modalDepositAmount, createElement('p',
+					funds[0].account.balance))
 
 			const modalWithdrawAmount = document.createElement('div')
-			appendElement(modalWithdrawAmount , createElement('p',funds[0].account.balance))
+			appendElement(modalWithdrawAmount, createElement('p',
+					funds[0].account.balance))
 
-			const modalContentDeposit = document.querySelector('.modal-content-deposit')
+			const modalContentDeposit = document
+					.querySelector('.modal-content-deposit')
 			appendElement(modalContentDeposit, modalDepositAmount)
 
-			const modalContentWithdraw = document.querySelector('.modal-content-withdraw')
+			const modalContentWithdraw = document
+					.querySelector('.modal-content-withdraw')
 			appendElement(modalContentWithdraw, modalWithdrawAmount)
-
 
 			appendElement(accountNameContainer, createElement('p',
 					funds[0].account.accountName + ": $"))
 			appendElement(accountNameContainer, accntAmnt)
 
 			appendElement(headerOne, accountNameContainer)
-		
 
 		}
 
@@ -52,22 +53,25 @@ xhr.onreadystatechange = function() {
 	}
 }
 
- function appendUnassignedFundToBody(fund) {
- const thirdBody = document.querySelector('.defaultFundContainer')
+function appendUnassignedFundToBody(fund) {
+	const thirdBody = document.querySelector('.defaultFundContainer')
 
- const defaultFundContainer = document.createElement('div')
- defaultFundContainer.classList.add('defaultFundContainer')
+	const defaultFundContainer = document.createElement('div')
+	defaultFundContainer.classList.add('defaultFundContainer')
 
- let defaultFund = createElement('h2', 'Unassigned Funds')
- defaultFund.className = 'defaultFund'
- // default fund attempt
- appendElement(defaultFundContainer, defaultFund)
- appendElement(defaultFundContainer, createElement('p',
- fund.account.unassignedFundAmount))
- appendElement(thirdBody, defaultFundContainer)
- 
- }
+	let defaultFund = createElement('h2', 'Unassigned Funds')
+	defaultFund.className = 'defaultFund'
+	// default fund attempt
+	appendElement(defaultFundContainer, defaultFund)
+	let unFndAmnt = createElement('p', fund.account.unassignedFundAmount)
+	unFndAmnt.className = 'defaultFundAmnt'
+	appendElement(defaultFundContainer, unFndAmnt)
 
+	appendElement(thirdBody, defaultFundContainer)
+
+	// defaultFundContainer.setAttribute('data-unassigned-funds',
+	// fund.account.unassignedFundAmount)
+}
 
 function appendOneElementToBody(res) {
 
@@ -93,7 +97,7 @@ function appendOneElementToBody(res) {
 	fundContainer.setAttribute('data-fund-id', res.id)
 
 	appendElement(body, fundContainer)
-	
+
 	let modal = document.querySelector(".modal");
 
 	let closeButton = document.querySelector(".close-button")
@@ -104,7 +108,6 @@ function appendOneElementToBody(res) {
 		modal.classList.toggle("show-modal");
 		console.log('Here')
 	}
-
 
 }
 

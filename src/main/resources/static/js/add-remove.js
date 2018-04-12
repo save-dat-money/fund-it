@@ -41,11 +41,20 @@ function addFund(event) {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			const newFund = JSON.parse(xhr.response)
-			fundsApp.funds.push(newFund);
+			console.log(newFund);
 			console.log(xhr.responseText);
+			fundsApp.funds.push(newFund);
 			appendOneElementToBody(newFund)
+			//appendUnassignedFundToBody(newFund)
+			//ajax for updating unassigned fund amnt
+			let unFndAmnt = newFund.account.unassignedFundAmount
+			document.querySelector('.defaultFundAmnt').textContent = unFndAmnt
+			//works to update value in webpage but it is not current
 			drawChart(fundsApp.funds);
-		}
+		}	
+	}
+	function appendUnassignedFundAmntValue(funds) {
+		
 	}
 
 	xhr.open('POST', '/add-fund/account/1/' + fundName, true)
