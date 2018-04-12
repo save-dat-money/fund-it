@@ -20,6 +20,9 @@ xhr.onreadystatechange = function() {
 			const accountNameContainer = document.createElement('div')
 			accountNameContainer.classList.add('accountNameContainer')
 
+			let accntAmnt = createElement('p', funds[0].account.balance.toFixed(2))
+			accntAmnt.classList.add('accntAmnt')
+			
 
 			const modalDepositAmount = document.createElement('div')
 			appendElement(modalDepositAmount , createElement('p',res[0].account.balance))
