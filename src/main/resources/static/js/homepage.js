@@ -68,8 +68,11 @@ google.charts.load('current', {'packages':['corechart']});
         	var selection = chart.getSelection();
         	console.log(selection);
         	if (!selection.length) return;
-        	const otherside = document.querySelector('.main__bottom__right');
         	const value = data.getValue(selection[0].row || 0, 2);
+        	const fundDetails = document.createElement('div');
+        	fundDetails.className = "fund__details";
+        	const mainBottomRight = document.querySelector('.main__bottom__right');
+        	
         	
         	
         	const xhr2 = new XMLHttpRequest();
@@ -77,12 +80,21 @@ google.charts.load('current', {'packages':['corechart']});
         		if (xhr2.readyState === 4 && xhr2.status === 200) {
         			const fund = JSON.parse(xhr2.response);
         			
-        			const fundNameText = document.createTextNode(fund.fundName);
-        			const fundBalanceText = document.createTextNode(fund.fundAmount);
+        			const fundNameText = createElement('p', fund.fundName);
+        			fundNameText.className = "fund__details__header";
+        			const fundBalanceAmount = createElement('h2', "Balance: " + fund.fundAmount);
+        			const mileMarkerAmount = createElement('h2', "Mile Marker: 2000");
+        			const mileMarkerProgress = document.createElement('div');
+        			mileMarkerProgress.className = "meter";
+        			const mileMarkerProgressSpan = document.createElement('span');
+        			mileMarkerProgress.appendChild(mileMarkerProgressSpan);
         			
         			
-        			otherside.appendChild(fundNameText, otherside.childNodes[0]);
-        			otherside.appendChild(fundBalanceText, otherside.childNodes[0]);
+        			fundDetails.appendChild(fundNameText);
+        			fundDetails.appendChild(fundBalanceAmount);
+        			fundDetails.appendChild(mileMarkerAmount);
+        			fundDetails.appendChild(mileMarkerProgress);
+        			mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[1]);
         			
         			
         		}
@@ -96,3 +108,10 @@ google.charts.load('current', {'packages':['corechart']});
     	  xhr1.open('GET', 'http://localhost:8080/account/1/funds', true);
     	  xhr1.send();
       });
+      
+      function createElement(elem, textValue) {
+    		const newElem = document.createElement(elem)
+    		newElem.innerText = textValue
+
+    		return newElem
+    	}
