@@ -35,7 +35,7 @@ public class Fund {
 	public Fund(String fundName, Account account) {
 		this.fundName = fundName;
 		this.account = account;
-		this.fundAmount = account.getUnassignedFundAmount();
+		this.fundAmount = 100;
 	}
 
 	// AJAX uses only
