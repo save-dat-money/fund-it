@@ -18,7 +18,7 @@ public class Account {
 	@GeneratedValue
 	private long id;
 	private String accountName;
-	private double balance;
+	protected double balance;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")

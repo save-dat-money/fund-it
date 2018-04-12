@@ -63,7 +63,7 @@ public class FundTest {
 		double check = before - withdraw;
 		
 		assertThat(underTest.getFundAmount(), is(check));
-		
+		assertThat(account.getBalance(), is(1200.00));
 	}
 	
 	@Test
@@ -76,10 +76,13 @@ public class FundTest {
 		underTest.fundAmountChangeIncrease(deposit);
 		
 		double check = before + deposit;
+		 
 		
 		assertThat(underTest.getFundAmount(), is(check));
-		
+		assertThat(account.getBalance(), is(800.00));
 	}
+	
+	
 	
 	
 }

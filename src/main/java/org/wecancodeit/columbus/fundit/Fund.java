@@ -88,10 +88,12 @@ public class Fund {
 	}
 
 	public void fundAmountChangeDecrease(double fundDecrease) {
+		account.balance += fundDecrease;
 		fundAmount -= fundDecrease;
 	}
 
 	public void fundAmountChangeIncrease(double fundIncrease) {
+		account.balance -= fundIncrease;
 		fundAmount += fundIncrease; 
 	}
 
