@@ -29,6 +29,7 @@ function removeFund(event) {
 	}
 	xhr.open('POST', '/account/1/fund/' + fundId + '/remove-fund', true)
 	xhr.send()
+	location.reload();
 }
 
 function addFund(event) {
