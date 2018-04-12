@@ -69,7 +69,7 @@ function appendAccountNameToHeader(res) {
 
 
 	let fundsAmntContainer = createElement('p', ': ');
-	let fundsAmnt = createElement('span', res.account.fundsTotalAmnt.toFixed(2))
+	let fundsAmnt = createElement('span', res.account.balance.toFixed(2))
 
 	appendElement(fundsAmntContainer, fundsAmnt)
 	fundsAmnt.setAttribute('id', 'fundsAmnt')
@@ -91,7 +91,7 @@ function appendAccountNameToHeader(res) {
  appendElement(defaultFundContainer, defaultFund)
  appendElement(defaultFundContainer, createElement('p',
  fund.account.unassignedFundAmount))
-// appendElement(thirdBody, defaultFundContainer)
+ appendElement(thirdBody, defaultFundContainer)
  
  }
 
