@@ -22,10 +22,10 @@ xhr.onreadystatechange = function() {
 			accntAmnt.classList.add('accntAmnt')
 			
 			const modalDepositAmount = document.createElement('div')
-			appendElement(modalDepositAmount , createElement('p',res[0].account.balance))
+			appendElement(modalDepositAmount , createElement('p',funds[0].account.balance))
 
 			const modalWithdrawAmount = document.createElement('div')
-			appendElement(modalWithdrawAmount , createElement('p',res[0].account.balance))
+			appendElement(modalWithdrawAmount , createElement('p',funds[0].account.balance))
 
 			const modalContentDeposit = document.querySelector('.modal-content-deposit')
 			appendElement(modalContentDeposit, modalDepositAmount)
