@@ -37,7 +37,7 @@ function editAccountDeposit(event) {
     const amountDeposit = document.querySelector('#amountDeposit').value; // deposit to add
     
 
-    let accountBalanceBeforeDeposit = document.querySelector('.accountBalance')
+    let accountBalanceBeforeDeposit = document.querySelector('.accntAmnt')
     // let accountFinalBalance = document.querySelector('.accountBalance')
 
     accountBalanceBeforeDeposit.innerText = +accountBalanceBeforeDeposit.innerText + +amountDeposit
