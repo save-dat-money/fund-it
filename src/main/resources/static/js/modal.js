@@ -1,31 +1,71 @@
-// document.addEventListener("DOMContentLoaded", function() {
-     console.log('running')
-    let modal = document.querySelector(".modal");
-    let testTrigger = document.querySelectorAll(".editButton") //an array
-    let closeButton = document.querySelector(".close-button")
+//eventlistener assignment for deposit amount
+const submitDepositButton = document.querySelector('.amount-deposit-button')
+submitDepositButton.addEventListener('click', editAccountDeposit)
 
-    testTrigger.forEach(function (elem){
-        elem.addEventListener("click", toggleModal);
-    })
+
+
+function toggleModalDeposit() {
+    modalDepoist.classList.toggle("show-modal");   
+}
+function toggleModalWithdraw() {
+   modalWithdraw.classList.toggle("show-modal");
+
+}
+
+
+//eventlistener assignment for modal 
+let depositButton = document.querySelector('#deposit')
+let withdrawButton = document.querySelector('#withdraw')
+
+let modalDepoist = document.querySelector(".modal-depoist")
+let modalWithdraw = document.querySelector(".modal-withdraw")
+
+depositButton.addEventListener("click", toggleModalDeposit);
+withdrawButton.addEventListener("click", toggleModalWithdraw);
+
+let closeButtonDeposit = document.querySelector(".close-button-deposit")
+closeButtonDeposit.addEventListener("click", toggleModalDeposit);
+
+
+let closeButtonWithdraw = document.querySelector(".close-button-withdraw")
+closeButtonWithdraw.addEventListener("click", toggleModalWithdraw);
+
+
+
+function editAccountDeposit(event) {
+    const theButtonDeposit = event.target
+    const amountDeposit = document.querySelector('#amountDeposit').value; // deposit to add
     
-     function toggleModal() {
-        modal.classList.toggle("show-modal");
-        console.log('Here')
-    }
+
+    let accountBalanceBeforeDeposit = document.querySelector('.accntAmnt')
+    // let accountFinalBalance = document.querySelector('.accountBalance')
+
+    accountBalanceBeforeDeposit.innerText = +accountBalanceBeforeDeposit.innerText + +amountDeposit
 
 
-    function windowOnClick(event) {
-        if (event.target === modal) {
-            toggleModal()
+    console.log(accountBalanceBeforeDeposit)
+
+    const xhrDeposit = new XMLHttpRequest()
+    xhrDeposit.onreadystatechange = function() {
+        if (xhrDeposit.readyState === 4 && xhrDeposit.status === 200) {
+            console.log(xhrDeposit)
+            const res = JSON.parse(xhrDeposit.response)
+
         }
+
     }
+    xhrDeposit.open('PUT', '/edit-account/account/1?amountDeposit='+ encodeURI(amountDeposit), true)
+    xhrDeposit.send()
+
+}
 
 
-    closeButton.addEventListener("click", toggleModal);
-    window.addEventListener("click", windowOnClick);
 
-// });
 
- 
+
+
+
+
+
 
 
