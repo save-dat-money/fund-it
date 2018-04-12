@@ -34,13 +34,16 @@ closeButtonWithdraw.addEventListener("click", toggleModalWithdraw);
 
 function editAccountDeposit(event) {
     const theButtonDeposit = event.target
-    const amountDeposit = document.querySelector('#amountDeposit').value; // Fund name
+    const amountDeposit = document.querySelector('#amountDeposit').value; // deposit to add
     
-    const accountBalanceBeforeDeposit = accountHeaderBalance.innerText
-    accountHeaderBalance.innerText = document.querySelector('#amountDeposit').value
+
+    let accountBalanceBeforeDeposit = document.querySelector('.accountBalance')
+    // let accountFinalBalance = document.querySelector('.accountBalance')
+
+    accountBalanceBeforeDeposit.innerText = +accountBalanceBeforeDeposit.innerText + +amountDeposit
 
 
-    console.log(amountDeposit)
+    console.log(accountBalanceBeforeDeposit)
 
     const xhrDeposit = new XMLHttpRequest()
     xhrDeposit.onreadystatechange = function() {
