@@ -58,7 +58,7 @@ footer {
 	display: flex;
 	flex-direction: row;
 }
-.add__to__fund__button, .remove__from__fund__button, .add__mile__button, .remove__from__mile__button {
+.add__to__fund__button, .remove__from__fund__button, .add__mile__button, .remove__from__mile__button, .edit__mile__button {
 	background-color: rgba(0,0,0,0);
 	border: none;
 }
