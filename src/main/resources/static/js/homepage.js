@@ -70,6 +70,7 @@ google.charts.load('current', {'packages':['corechart']});
         	console.log(selection);
         	if (!selection.length) return;
         	const value = data.getValue(selection[0].row || 0, 2);
+        	fundsApp.selectedId = value;
         	const fundDetails = document.createElement('div');
         	fundDetails.className = "fund__details";
         	const mainBottomRight = document.querySelector('.main__bottom__right');
@@ -105,15 +106,14 @@ google.charts.load('current', {'packages':['corechart']});
         			
         			const fundMileMarkerDiv = document.createElement('div');
         			fundMileMarkerDiv.className = "fund__details__mile__marker";
-
-        			const mileMarkerAmount = createElement('h2', "Mile Marker: 2000");
-        			const addToMileMarkerButton = createElement('button', "+");
-        			const removeFromMileMarkerButton = createElement('button', "-"); 
-        			addToMileMarkerButton.className = "add__to__mile__button";
-        			removeFromMileMarkerButton.className = "remove__from__mile__button";
+        			const mileMarkerAmount = createElement('h2', "Mile Marker: ");
+        			const addMileMarkerButton = createElement('button', "add");
+//        			const removeFromMileMarkerButton = createElement('button', "-"); 
+        			addMileMarkerButton.className = "add__mile__button";
+//        			removeFromMileMarkerButton.className = "remove__from__mile__button";
         			fundMileMarkerDiv.appendChild(mileMarkerAmount);
-        			fundMileMarkerDiv.appendChild(addToMileMarkerButton);
-        			fundMileMarkerDiv.appendChild(removeFromMileMarkerButton);
+        			fundMileMarkerDiv.appendChild(addMileMarkerButton);
+//        			fundMileMarkerDiv.appendChild(removeFromMileMarkerButton);
         			
         			const mileMarkerProgressDiv = document.createElement('div');
         			const mileMarkerProgressText = createElement('h2', "Progress:");
@@ -137,7 +137,7 @@ google.charts.load('current', {'packages':['corechart']});
         			fundDetails.appendChild(mileMarkerProgressDiv);
         			fundDetails.appendChild(bottomButtonDiv);
         			mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[1]);
-        			
+        			addMileMarker();
         			
         		}
         	};
@@ -150,6 +150,31 @@ google.charts.load('current', {'packages':['corechart']});
     	  xhr1.open('GET', 'http://localhost:8080/account/1/funds', true);
     	  xhr1.send();
       });
+      
+      const addMileMarker = () => {
+    	  const addMileButton = document.querySelector('.add__mile__button');
+    	  addMileButton.addEventListener('click', () => {
+    		  const xhr3 = new XMLHttpRequest();
+          	xhr3.onreadystatechange = function() {
+          		if (xhr3.readyState === 4 && xhr3.status === 200) {
+          			const fund = JSON.parse(xhr3.response);
+          			
+          			const mileMarkerDiv = document.querySelector(".fund__details__mile__marker");
+          			const mileMarkerAmount = createElement('h2', fund.mileMarker);
+          			mileMarkerDiv.replaceChild(mileMarkerAmount, mileMarkerDiv.childNodes[1]);
+          			const editMileMarkerButton = createElement('button', "edit");
+          			mileMarkerDiv.appendChild(editMileMarkerButton);
+
+          			
+          			
+          		}
+          	}
+          	const fundId = fundsApp.selectedId;
+          	xhr3.open('POST', 'http://localhost:8080/funds/' + fundId + '/addMile', true);
+          	xhr3.send();
+    	  });
+      }
+     
       
       function createElement(elem, textValue) {
     		const newElem = document.createElement(elem)
