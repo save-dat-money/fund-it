@@ -1,5 +1,5 @@
 //eventlistener assignment for fund incr amount
-const editFundButton = document.querySelector('.add__to__fund__button') 
+const editFundButton = document.querySelector('.amount-incr-button') 
 editFundButton.addEventListener('click', editFundAmnt)
 
 function toggleEditFundAmntModal() {
@@ -7,9 +7,9 @@ function toggleEditFundAmntModal() {
 }
 
 //make everything in here match with our edit fun button
-let editFundButton = document.querySelector('#deposit') // figure out what this does
+let editFundButton = document.querySelector('.add__to__fund__button') // figure out what this does
 
-let modalDeposit = document.querySelector(".edit-fund-modal")
+let editFundAmntModal = document.querySelector(".edit-fund-modal")
 
 editFundButton.addEventListener("click", toggleEditFundAmntModal);
 

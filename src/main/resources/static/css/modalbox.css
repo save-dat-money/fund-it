@@ -97,7 +97,7 @@
     background-color: darkgray;
 }
 
-.show-modal, .show-edit-fund-modal {
+.show-modal {
     opacity: 1;
     visibility: visible;
     transform: scale(1.0);
