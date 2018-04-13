@@ -60,6 +60,38 @@ function editAccountDeposit(event) {
 }
 
 
+function editAccountWithdraw(event) {
+    const theButtonDeposit = event.target
+    const amountDeposit = document.querySelector('#amountWithdraw').value; // deposit to add
+    
+
+    let accountBalanceBeforeDeposit = document.querySelector('.accntAmnt')
+    // let accountFinalBalance = document.querySelector('.accountBalance')
+
+    accountBalanceBeforeDeposit.innerText = +accountBalanceBeforeDeposit.innerText + +amountDeposit
+
+
+    console.log(accountBalanceBeforeDeposit)
+
+    const xhrDeposit = new XMLHttpRequest()
+    xhrDeposit.onreadystatechange = function() {
+        if (xhrDeposit.readyState === 4 && xhrDeposit.status === 200) {
+            console.log(xhrDeposit)
+            const res = JSON.parse(xhrDeposit.response)
+
+        }
+
+    }
+    xhrDeposit.open('PUT', '/edit-account/account/1?amountDeposit='+ encodeURI(amountDeposit), true)
+    xhrDeposit.send()
+
+}
+
+
+
+
+
+
 
 
 

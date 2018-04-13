@@ -8,6 +8,8 @@ xhr.onreadystatechange = function() {
 		appendAccountNameToHeader(funds)
 		funds.forEach(function(fund) {
 			appendOneElementToBody(fund)
+			//modal fund information
+			modalFundInformation(fund)
 		})
 
 		function appendAccountNameToHeader(funds) {
@@ -36,6 +38,10 @@ xhr.onreadystatechange = function() {
 					.querySelector('.modal-content-withdraw')
 			appendElement(modalContentWithdraw, modalWithdrawAmount)
 
+			const modalFundsHolder = document.createElement('div') // attach all input fund info to this div
+			modalFundsHolder.classList.add('modal-funds-holder')
+			appendElement(modalContentWithdraw ,modalFundsHolder) // attach to modal Withdrawal windo
+
 			appendElement(accountNameContainer, createElement('p',
 					funds[0].account.accountName + ": $"))
 			appendElement(accountNameContainer, accntAmnt)
@@ -43,6 +49,47 @@ xhr.onreadystatechange = function() {
 			appendElement(headerOne, accountNameContainer)
 
 		}
+
+		function modalFundInformation(fund) {
+			//for withdraw modal only 
+			const modalContentWithdraw = document.querySelector('.modal-funds-holder')//modal withdraw container - append divs to this
+			const fundsModalInformationContainer = document.createElement('div') //1 indivi
+			fundsModalInformationContainer.classList.add('indiv-fund')
+
+			const fundModalInfo = document.createElement('p')
+			fundModalInfo.innerText = 'Fund Name:' + fund.fundName +  'Amount: $' + fund.fundAmount
+			//class name needed?
+			appendElement(fundsModalInformationContainer,fundModalInfo)
+
+			const fundLabel = document.createElement('label')
+			fundLabel.innerText = 'Amount to Withdraw:'
+
+			const fundInput = document.createElement('input')
+			fundInput.setAttribute('id', fund.fundName)
+			fundInput.setAttribute('type', 'number')
+			fundInput.setAttribute('required', 'true')
+			fundInput.setAttribute('min', 1)
+			fundInput.setAttribute('max', fund.fundAmount)
+
+			appendElement(fundLabel, fundInput)
+			appendElement(fundsModalInformationContainer, fundLabel)
+			modalContentWithdraw.appendChild(fundsModalInformationContainer) //
+
+		}
+
+
+		// <div> 1
+		//fund name: res.
+		//fund amount: res.
+		// 						<label>Amount To Deposit:</label> <input id="amountDeposit" type="number"  required="true"  min="1" max = "700"/>
+		// 					</div>
+
+
+		// 					<div>
+		// 						<input type="button" class="amount-deposit-button"  value="Submit"></input>
+		// 					</div> 
+
+
 
 		function showAllPropsInObject(object) {
 			for (prop in funds) {
@@ -108,6 +155,7 @@ function appendOneElementToBody(res) {
 		modal.classList.toggle("show-modal");
 		console.log('Here')
 	}
+
 
 }
 

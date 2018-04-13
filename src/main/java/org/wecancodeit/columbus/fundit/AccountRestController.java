@@ -49,7 +49,6 @@ public class AccountRestController {
 		accountRepo.save(editAccount);
 		return editAccount; 
 	}
-
 	
 
 	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}", method = RequestMethod.POST)
