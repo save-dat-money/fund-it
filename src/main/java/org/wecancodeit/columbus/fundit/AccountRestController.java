@@ -37,7 +37,7 @@ public class AccountRestController {
 	@RequestMapping(path = "/funds/{fundId}/addMile", method = RequestMethod.POST)
 	public Fund addMileMarker(@PathVariable("fundId") long fundId) {
 		Fund addMileMarkerFund = fundRepo.findOne(fundId);
-		addMileMarkerFund.mileMarker = 2000;
+		addMileMarkerFund.mileMarker = 500;
 		fundRepo.save(addMileMarkerFund);
 		
 		return addMileMarkerFund;

@@ -115,7 +115,8 @@ google.charts.load('current', {'packages':['corechart']});
               			fundMileMarkerDiv.appendChild(mileMarkerAmountText);
               			fundMileMarkerDiv.appendChild(mileMarkerAmount);
               			fundMileMarkerDiv.appendChild(editMileMarkerButton);
-              			editMileMarkerButton.className = "add__mile__button";
+              			editMileMarkerButton.className = "edit__mile__button";
+              			fundMileMarkerDiv.appendChild(editMileMarkerButton);
         			}else {
         				const addMileMarkerButton = createElement('button', "add");
         				addMileMarkerButton.className = "add__mile__button";
@@ -127,8 +128,9 @@ google.charts.load('current', {'packages':['corechart']});
         			const mileMarkerProgressText = createElement('h2', "Progress:");
         			const mileMarkerProgress = document.createElement('div');
         			mileMarkerProgress.className = "meter";
-        			const progressWidth = fund.mileMarker/fund.fundAmount;
-        			mileMarkerProgress.style.setProperty("--progress-width", progressWidth);
+        			const progressWidth = (fund.fundAmount/fund.mileMarker)*100;
+        			console.log(progressWidth);
+        			mileMarkerProgress.style.setProperty("--progress-width", progressWidth + "%");
         			const mileMarkerProgressSpan = document.createElement('span');
         			mileMarkerProgress.appendChild(mileMarkerProgressSpan);
         			mileMarkerProgressDiv.appendChild(mileMarkerProgressText);
@@ -162,7 +164,8 @@ google.charts.load('current', {'packages':['corechart']});
       });
       
       const addMileMarker = () => {
-    	  const addMileButton = document.querySelector('.add__mile__button');
+    	 let addMileButton
+    	 if ( addMileButton = document.querySelector('.add__mile__button'))
     	  addMileButton.addEventListener('click', () => {
     		  const xhr3 = new XMLHttpRequest();
           	xhr3.onreadystatechange = function() {
@@ -172,8 +175,13 @@ google.charts.load('current', {'packages':['corechart']});
           			const mileMarkerDiv = document.querySelector(".fund__details__mile__marker");
           			const mileMarkerAmount = createElement('h2', fund.mileMarker);
           			mileMarkerDiv.replaceChild(mileMarkerAmount, mileMarkerDiv.childNodes[1]);
-          			const editMileMarkerButton = createElement('button', "edit");
-          			mileMarkerDiv.appendChild(editMileMarkerButton);
+      				editMileMarkerButton = createElement('button', "edit");
+      				editMileMarkerButton.className = "edit__mile__button";
+      				mileMarkerDiv.appendChild(editMileMarkerButton);
+          			const mileMarkerProgress = document.querySelector(".meter");
+          			const progressWidth = (fund.fundAmount/fund.mileMarker)*100;
+        			console.log(progressWidth);
+        			mileMarkerProgress.style.setProperty("--progress-width", progressWidth + "%");
 
           			
           			
