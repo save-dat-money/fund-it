@@ -9,6 +9,12 @@
 	height: 100vh;
 	overflow-x: hidden;
 }
+.funds__overview {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 80%;
+}
 header {
 	display: flex;
 	justify-content: center;

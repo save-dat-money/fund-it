@@ -150,6 +150,8 @@ const backToOverview = () => {
     			 		funds.forEach(function(fund) {
     			 			appendOneElementToBody(fund)
     			 		})
+    			 		console.log(fundsApp);
+    			 		fundsOverview.appendChild(fundsApp.newFundForm);
     			 	}
     			 }
     			 xhr.open('GET', 'http://localhost:8080/account/1/funds', true)

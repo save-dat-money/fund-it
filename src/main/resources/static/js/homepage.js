@@ -1,6 +1,7 @@
 window.fundsApp = {
 		funds: [],
 };
+fundsApp.newFundForm = document.querySelector(".fund-input-form");
 
 const toggleMenu = () => {
 	const navButton = document.querySelector(".header__nav__button");
