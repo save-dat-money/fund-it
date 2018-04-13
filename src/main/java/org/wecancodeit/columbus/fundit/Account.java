@@ -18,7 +18,7 @@ public class Account {
 	@GeneratedValue
 	private long id;
 	private String accountName;
-	private double balance;
+	protected double balance;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
@@ -86,7 +86,9 @@ public class Account {
 
 	public double getFundsTotalAmnt() {
 		double totalAmnt = 0;
+		
 		for (Fund fund : funds) {
+			
 			totalAmnt += fund.getFundAmount();
 		}
 		return totalAmnt;
@@ -94,10 +96,10 @@ public class Account {
 
 	public double getUnassignedFundAmount() {
 		double unassignedFund = 0.0;
-		if (balance >= getFundsTotalAmnt()) {
+		if (this.balance >= this.getFundsTotalAmnt()) {
 			unassignedFund = balance - getFundsTotalAmnt();
 		} else {
-			unassignedFund = -(getFundsTotalAmnt() - balance);
+			unassignedFund = -1*(getFundsTotalAmnt() - balance);
 		}
 		return unassignedFund;
 	}

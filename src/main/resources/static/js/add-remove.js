@@ -29,27 +29,35 @@ function removeFund(event) {
 	}
 	xhr.open('POST', '/account/1/fund/' + fundId + '/remove-fund', true)
 	xhr.send()
+	location.reload();
 }
 
 function addFund(event) {
 	event.preventDefault();// prevents forms from refreshing
 	const theButtonAdd = event.target;
-	const fundName = document.querySelector('#fund_input').value; // Fund name
+	const fundName = document.querySelector('#fund_input').value;
+	const fundAmount = document.querySelector('#fund_amount_input').value; // Fund name
 
 	console.log(fundName);
 	const xhr = new XMLHttpRequest()// ajax request
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			const newFund = JSON.parse(xhr.response)
-			fundsApp.funds.push(newFund);
-			console.log(xhr.responseText);
+			console.log(newFund);
+	
+			fundsApp.funds.push(newFund); // pie chart
 			appendOneElementToBody(newFund)
+			//ajax for updating unassigned fund amnt
+			let unFndAmnt = newFund.account.unassignedFundAmount
+			document.querySelector('.defaultFundAmnt').textContent = unFndAmnt
+			//working with 100 set as add fund amnt
 			drawChart(fundsApp.funds);
-		}
+		}	
 	}
 
-	xhr.open('POST', '/add-fund/account/1/' + fundName, true)
+	xhr.open('POST', '/add-fund/account/1/' + fundName + '/' +fundAmount, true)
 	xhr.send()
+	location.reload();
 }
 
 function createElement(elem, textValue) {
