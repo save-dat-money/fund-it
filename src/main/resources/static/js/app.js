@@ -16,8 +16,7 @@ xhr.onreadystatechange = function() {
 			const accountNameContainer = document.createElement('div')
 			accountNameContainer.classList.add('accountNameContainer')
 
-			let accntAmnt = createElement('p', funds[0].account.balance
-					.toFixed(2))
+			let accntAmnt = createElement('p', funds[0].account.balance.toFixed(2))
 			accntAmnt.classList.add('accntAmnt')
 
 			const modalDepositAmount = document.createElement('div')
@@ -25,19 +24,15 @@ xhr.onreadystatechange = function() {
 					funds[0].account.balance.toFixed(2)))
 
 			const modalWithdrawAmount = document.createElement('div')
-			appendElement(modalWithdrawAmount, createElement('p',
-					funds[0].account.balance.toFixed(2)))
+			appendElement(modalWithdrawAmount, createElement('p', funds[0].account.balance.toFixed(2)))
 
-			const modalContentDeposit = document
-					.querySelector('.modal-content-deposit')
+			const modalContentDeposit = document.querySelector('.modal-content-deposit')
 			appendElement(modalContentDeposit, modalDepositAmount)
 
-			const modalContentWithdraw = document
-					.querySelector('.modal-content-withdraw')
+			const modalContentWithdraw = document.querySelector('.modal-content-withdraw')
 			appendElement(modalContentWithdraw, modalWithdrawAmount)
 
-			appendElement(accountNameContainer, createElement('p',
-					funds[0].account.accountName + ": $"))
+			appendElement(accountNameContainer, createElement('p', funds[0].account.accountName + ": $"))
 			appendElement(accountNameContainer, accntAmnt)
 
 			appendElement(headerOne, accountNameContainer)
@@ -62,7 +57,8 @@ function appendUnassignedFundToBody(fund) {
 	let defaultFund = createElement('h2', 'Unassigned Funds')
 	defaultFund.className = 'defaultFund'
 	appendElement(defaultFundContainer, defaultFund)
-	let unFndAmnt = createElement('p', fund.account.unassignedFundAmount.toFixed(2))
+	let unFndAmnt = createElement('p', fund.account.unassignedFundAmount
+			.toFixed(2))
 	unFndAmnt.className = 'defaultFundAmnt'
 	appendElement(defaultFundContainer, unFndAmnt)
 
@@ -82,31 +78,31 @@ function appendOneElementToBody(res) {
 
 	fund.className = 'fundInformation'
 
-	let editButton = createElement('button', 'edit')
-	editButton.className = 'editButton'
+//	let editButton = createElement('button', 'edit')
+//	editButton.className = 'editButton'
 
 	appendElement(fundContainer, fund)
 	appendElement(fundContainer, xButton)
-	appendElement(fund, editButton)
+//	appendElement(fund, editButton)
 	appendElement(fundContainer, createElement('p', res.fundAmount.toFixed(2)))
 
 	fundContainer.setAttribute('data-fund-id', res.id)
 	fundContainer.setAttribute('data-fund-amount', res.fundAmount)
-	fundContainer.setAttribute('data-unassigned-fund-amount', res.account.unassignedFundAmount)
+	fundContainer.setAttribute('data-unassigned-fund-amount',
+			res.account.unassignedFundAmount)
 
-		
 	appendElement(body, fundContainer)
 
-	let modal = document.querySelector(".modal");
+//	let modal = document.querySelector(".modal");
 
-	let closeButton = document.querySelector(".close-button")
+//	let closeButton = document.querySelector(".close-button")
 
-	editButton.addEventListener("click", toggleModal);
+//	editButton.addEventListener("click", toggleModal);
 
-	function toggleModal() {
-		modal.classList.toggle("show-modal");
-		console.log('Here')
-	}
+//	function toggleModal() {
+//		modal.classList.toggle("show-modal");
+//		console.log('Here')
+//	}
 
 }
 

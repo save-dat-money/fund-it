@@ -146,7 +146,7 @@ public class AccountJpaTest {
 		entityManager.flush();
 		entityManager.clear();
 	
-		assertThat(fund.getFundAmount(), is(900.00));
+		assertThat(fund.getFundAmount(), is(1000.00));
 		//assertThat(account.getUnassignedFundAmount(), is(0.00));
 
 	}

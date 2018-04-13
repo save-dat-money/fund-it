@@ -94,16 +94,11 @@ public class Fund {
 	}
 
 	public void decreaseFundAmnt(double fundDecrease) {
-		account.unassignedFund += fundDecrease;
 		fundAmount -= fundDecrease;
 		// when fundDecrease is greater than fundAmount, the fund has a value of 0
 	}
 
 	public void increaseFundAmnt(double fundIncrease) {
-		if (fundIncrease > account.unassignedFund) {
-			fundIncrease = account.unassignedFund;
-		}
-		account.unassignedFund -= fundIncrease;
 		fundAmount += fundIncrease;
 
 		// if fundIncrease is more than unassignedFundAmount,

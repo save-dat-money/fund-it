@@ -98,13 +98,10 @@ google.charts.load('current', {'packages':['corechart']});
         			const fundBalanceDiv = document.createElement('div');
         			fundBalanceDiv.className = "fund__details__balance";
         			const fundBalanceAmount = createElement('h2', "Balance: " + fund.fundAmount);
-        			const addToFundButton = createElement('button', "+");
-        			const removeFromFundButton = createElement('button', "-"); 
+        			const addToFundButton = createElement('button', "edit fund amount");
         			addToFundButton.className = "add__to__fund__button";
-        			removeFromFundButton.className = "remove__from__fund__button";
         			fundBalanceDiv.appendChild(fundBalanceAmount);
         			fundBalanceDiv.appendChild(addToFundButton);
-        			fundBalanceDiv.appendChild(removeFromFundButton);
         			
         			const fundMileMarkerDiv = document.createElement('div');
         			fundMileMarkerDiv.className = "fund__details__mile__marker";
