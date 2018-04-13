@@ -12,9 +12,14 @@ public class Fund {
 	private long id;
 	private String fundName;
 	protected double fundAmount;
+	int mileMarker;
 
 	@ManyToOne
 	public Account account;
+
+	public int getMileMarker() {
+		return mileMarker;
+	}
 
 	public double getFundAmount() {
 		return fundAmount;
@@ -48,7 +53,9 @@ public class Fund {
 		this.fundName = fundName;
 		this.account = account;
 		this.fundAmount = fundAmount;
+		this.mileMarker = 0;
 	}
+
 
 	@Override
 	public int hashCode() {
