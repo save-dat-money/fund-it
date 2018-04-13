@@ -5,7 +5,7 @@ submitDepositButton.addEventListener('click', editAccountDeposit)
 
 
 function toggleModalDeposit() {
-    modalDepoist.classList.toggle("show-modal");   
+    modalDeposit.classList.toggle("show-modal");   
 }
 function toggleModalWithdraw() {
    modalWithdraw.classList.toggle("show-modal");
@@ -17,7 +17,7 @@ function toggleModalWithdraw() {
 let depositButton = document.querySelector('#deposit')
 let withdrawButton = document.querySelector('#withdraw')
 
-let modalDepoist = document.querySelector(".modal-depoist")
+let modalDeposit = document.querySelector(".modal-deposit")
 let modalWithdraw = document.querySelector(".modal-withdraw")
 
 depositButton.addEventListener("click", toggleModalDeposit);

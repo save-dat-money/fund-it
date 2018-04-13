@@ -31,6 +31,8 @@ google.charts.load('current', {'packages':['corechart']});
       function drawChart(fundsArray) {
 
       const data = new google.visualization.DataTable();
+//      	  const unassignedFundAmount = getUnassignedFundAmount();
+//      	  console.log(unassignedFundAmount);
     	  data.addColumn('string', 'fundName');
           data.addColumn('number', 'fundAmount');
           data.addColumn('number', 'fundId');
@@ -106,19 +108,27 @@ google.charts.load('current', {'packages':['corechart']});
         			
         			const fundMileMarkerDiv = document.createElement('div');
         			fundMileMarkerDiv.className = "fund__details__mile__marker";
-        			const mileMarkerAmount = createElement('h2', "Mile Marker: ");
-        			const addMileMarkerButton = createElement('button', "add");
-//        			const removeFromMileMarkerButton = createElement('button', "-"); 
-        			addMileMarkerButton.className = "add__mile__button";
-//        			removeFromMileMarkerButton.className = "remove__from__mile__button";
-        			fundMileMarkerDiv.appendChild(mileMarkerAmount);
-        			fundMileMarkerDiv.appendChild(addMileMarkerButton);
-//        			fundMileMarkerDiv.appendChild(removeFromMileMarkerButton);
+        			const mileMarkerAmountText = createElement('h2', "Mile Marker: ");
+        			if (fund.mileMarker > 0) {
+              			const mileMarkerAmount = createElement('h2', fund.mileMarker);
+              			const editMileMarkerButton = createElement('button', "edit");
+              			fundMileMarkerDiv.appendChild(mileMarkerAmountText);
+              			fundMileMarkerDiv.appendChild(mileMarkerAmount);
+              			fundMileMarkerDiv.appendChild(editMileMarkerButton);
+              			editMileMarkerButton.className = "add__mile__button";
+        			}else {
+        				const addMileMarkerButton = createElement('button', "add");
+        				addMileMarkerButton.className = "add__mile__button";
+              			fundMileMarkerDiv.appendChild(mileMarkerAmountText);
+        				fundMileMarkerDiv.appendChild(addMileMarkerButton);
+        			}
         			
         			const mileMarkerProgressDiv = document.createElement('div');
         			const mileMarkerProgressText = createElement('h2', "Progress:");
         			const mileMarkerProgress = document.createElement('div');
         			mileMarkerProgress.className = "meter";
+        			const progressWidth = fund.mileMarker/fund.fundAmount;
+        			mileMarkerProgress.style.setProperty("--progress-width", progressWidth);
         			const mileMarkerProgressSpan = document.createElement('span');
         			mileMarkerProgress.appendChild(mileMarkerProgressSpan);
         			mileMarkerProgressDiv.appendChild(mileMarkerProgressText);
