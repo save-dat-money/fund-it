@@ -23,7 +23,7 @@ public class Fund {
 	public String getFundName() {
 		return fundName;
 	}
-	
+
 	public Account getAccount() {
 		return account;
 	}
@@ -32,11 +32,10 @@ public class Fund {
 		return id;
 	}
 
-	//add-fund AJAX
+	// add-fund AJAX
 	public Fund(String fundName, Account account) {
 		this.fundName = fundName;
 		this.account = account;
-		this.fundAmount = 100;
 	}
 
 	// AJAX uses only
@@ -84,18 +83,30 @@ public class Fund {
 	}
 
 	public void fundChangeName(String fundNameToChange) {
-		fundName = fundNameToChange;  
+		fundName = fundNameToChange;
 	}
 
-	public void fundAmountChangeDecrease(double fundDecrease) {
-		account.balance += fundDecrease;
+	public void decreaseFundAmnt(double fundDecrease) {
+		account.unassignedFund += fundDecrease;
 		fundAmount -= fundDecrease;
+		// when fundDecrease is greater than fundAmount, the fund has a value of 0
 	}
 
-	public void fundAmountChangeIncrease(double fundIncrease) {
-		account.balance -= fundIncrease;
-		fundAmount += fundIncrease; 
-	}
+	public void increaseFundAmnt(double fundIncrease) {
+		if (fundIncrease > account.unassignedFund) {
+			fundIncrease = account.unassignedFund;
+		}
+		account.unassignedFund -= fundIncrease;
+		fundAmount += fundIncrease;
 
+		// if fundIncrease is more than unassignedFundAmount,
+		// then give fundAmount the remainder in unassigned fund and have account
+		// balance be zero
+
+		// modal box to alert user
+		// if there is time, let user take fund cash from another fund.... or something
+		// else
+
+	}
 
 }
