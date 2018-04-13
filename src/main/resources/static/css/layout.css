@@ -80,5 +80,8 @@ main {
 }
 
 .accountAction {
+	display: flex;
+	justify-content: space-around;
 	z-index: 4; 
-}
+	width:50vw;}
+
