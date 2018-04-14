@@ -108,4 +108,9 @@ public class Account {
 		balance += balanceDeposit;
 	}
 
+	public void withdraw(double balanceWithdraw) {
+		// TODO Auto-generated method stub
+		balance -= balanceWithdraw;
+	}
+
 }

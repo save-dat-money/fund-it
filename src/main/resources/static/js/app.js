@@ -9,7 +9,7 @@ xhr.onreadystatechange = function() {
 		funds.forEach(function(fund) {
 			appendOneElementToBody(fund)
 			//modal fund information
-			modalFundInformation(fund)
+			
 		})
 
 		function appendAccountNameToHeader(funds) {
@@ -50,32 +50,7 @@ xhr.onreadystatechange = function() {
 
 		}
 
-		function modalFundInformation(fund) {
-			//for withdraw modal only 
-			const modalContentWithdraw = document.querySelector('.modal-funds-holder')//modal withdraw container - append divs to this
-			const fundsModalInformationContainer = document.createElement('div') //1 indivi
-			fundsModalInformationContainer.classList.add('indiv-fund')
-
-			const fundModalInfo = document.createElement('p')
-			fundModalInfo.innerText = 'Fund Name:' + fund.fundName +  'Amount: $' + fund.fundAmount
-			//class name needed?
-			appendElement(fundsModalInformationContainer,fundModalInfo)
-
-			const fundLabel = document.createElement('label')
-			fundLabel.innerText = 'Amount to Withdraw:'
-
-			const fundInput = document.createElement('input')
-			fundInput.setAttribute('id', fund.fundName)
-			fundInput.setAttribute('type', 'number')
-			fundInput.setAttribute('required', 'true')
-			fundInput.setAttribute('min', 1)
-			fundInput.setAttribute('max', fund.fundAmount)
-
-			appendElement(fundLabel, fundInput)
-			appendElement(fundsModalInformationContainer, fundLabel)
-			modalContentWithdraw.appendChild(fundsModalInformationContainer) //
-
-		}
+		
 
 
 		// <div> 1

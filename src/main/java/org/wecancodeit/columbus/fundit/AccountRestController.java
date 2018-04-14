@@ -42,7 +42,7 @@ public class AccountRestController {
 
 	
 	//account edit controller
-	@RequestMapping(path = "/edit-account/account/1", method = RequestMethod.PUT)
+	@RequestMapping(path = "/edit-account-deposit/account/1", method = RequestMethod.PUT)
 	public Account depositAccount(@RequestParam(value = "amountDeposit", required=true) double amountDeposit) {
 		Account editAccount = accountRepo.findById(1L);
 		editAccount.deposit(amountDeposit);
@@ -50,6 +50,19 @@ public class AccountRestController {
 		return editAccount; 
 	}
 	
+	@RequestMapping(path = "/edit-account-withdraw/account/1", method = RequestMethod.PUT)
+	public Iterable<Fund> withdrawAccount(@RequestParam(value = "amountWithdraw", required=true) double amountWithdraw) {
+		Account editAccount = accountRepo.findById(1L);
+		editAccount.withdraw(amountWithdraw);
+		accountRepo.save(editAccount);	
+		return fundRepo.findAll(); 
+	}
+	
+//	edit-account-withdraw/populate/account/1
+	@RequestMapping(path = "/edit-account-withdraw/populate/account/1", method = RequestMethod.GET)
+	public Iterable<Fund> withdrawPopulation() {	
+		return fundRepo.findAll(); 
+	}
 
 	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}", method = RequestMethod.POST)
 	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName) {
