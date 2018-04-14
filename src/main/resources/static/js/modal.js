@@ -11,18 +11,18 @@ function toggleModalDeposit() {
 }
 function toggleModalWithdraw() {
  modalWithdraw.classList.toggle("show-modal");
-
 }
 
-
-//eventlistener assignment for modal 
+//eventlistener assignment for modal (deposit, withdraw, miles-stone)
 let depositButton = document.querySelector('#deposit')
 let withdrawButton = document.querySelector('#withdraw')
+
 
 let modalDepoist = document.querySelector(".modal-depoist")
 let modalWithdraw = document.querySelector(".modal-withdraw")
 
 depositButton.addEventListener("click", toggleModalDeposit);
+
 withdrawButton.addEventListener("click", toggleModalWithdraw);
 withdrawButton.addEventListener("click", withdrawModalPopulation);
 
@@ -35,10 +35,13 @@ closeButtonWithdraw.addEventListener("click", toggleModalWithdraw);
 
 
 
+
 function editAccountDeposit(event) {
     const theButtonDeposit = event.target
     const amountDeposit = document.querySelector('#amountDeposit').value; // deposit to add
     
+
+
 
     let accountBalanceBeforeDeposit = document.querySelector('.accntAmnt')
     
@@ -135,7 +138,7 @@ function modalFundInformation(res) {
             const fundInput = document.createElement('input')
             fundInput.setAttribute('id', res.fundName)
             fundInput.setAttribute('type', 'number')
-            fundInput.setAttribute('required', 'true')
+            fundInput.setAttribute('required', 'required')
             fundInput.setAttribute('min', 1)
             fundInput.setAttribute('max', res.fundAmount)
 
@@ -145,6 +148,23 @@ function modalFundInformation(res) {
             console.log(fundsModalInformationContainer)
             return fundsModalInformationContainer
         }
+
+
+function modalMilesStoneDepiction(){
+    //add__to__mile__button
+
+
+
+
+}
+
+
+
+
+
+
+
+
 
 
 function createElement(elem, textValue) {
