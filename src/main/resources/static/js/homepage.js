@@ -99,7 +99,7 @@ google.charts.load('current', {'packages':['corechart']});
         			fundBalanceDiv.className = "fund__details__balance";
         			const fundBalanceAmount = createElement('h2', "Balance: " + fund.fundAmount);
         			const addToFundButton = createElement('button', "edit fund amount");
-        			addToFundButton.className = "add__to__fund__button";
+        			addToFundButton.id = "add__to__fund__button";
         			fundBalanceDiv.appendChild(fundBalanceAmount);
         			fundBalanceDiv.appendChild(addToFundButton);
         			

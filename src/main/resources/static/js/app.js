@@ -93,17 +93,16 @@ function appendOneElementToBody(res) {
 
 	appendElement(body, fundContainer)
 
-	let modal = document.querySelector(".modal");
+//	let modal = document.querySelector(".modal");
 
-	let closeButton = document.querySelector(".close-button")
+//	let closeButton = document.querySelector(".close-button")
 
-	editButton.addEventListener("click", toggleModal);
+//	editButton.addEventListener("click", toggleModal);
 
-	function toggleModal() {
-		modal.classList.toggle("show-modal");
-		console.log('Here')
-	}
-
+//	function toggleModal() {
+//		modal.classList.toggle("show-modal");
+//		console.log('Here')
+//	}
 }
 
 xhr.open('GET', 'http://localhost:8080/account/1/funds', true)
