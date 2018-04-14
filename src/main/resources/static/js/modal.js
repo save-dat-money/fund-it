@@ -98,10 +98,6 @@ function withdrawModalPopulation(event){
     xhrPopulate.open('GET', '/edit-account-withdraw/populate/account/1', true)
     xhrPopulate.send()
 }
-
-
-
-
 function editAccountWithdraw(event) {
     const theButtonDeposit = event.target //submit button
     const amountWithdraw = document.querySelector('#amountWithdraw').value; // deposit to add
@@ -120,14 +116,13 @@ function editAccountWithdraw(event) {
             const res = JSON.parse(xhrWithdraw.response)
             console.log(res)
             console.log('here')
-            
-
-
         }
-        xhrWithdraw.open('PUT', '/edit-account-withdraw/account/1?amountWithdraw='+ encodeURI(amountWithdraw), true)
-        xhrWithdraw.send()
+
+      
 
     }
+      xhrWithdraw.open('PUT', '/edit-account-withdraw/account/1?amountWithdraw='+ encodeURI(amountWithdraw), true)
+      xhrWithdraw.send()
 }
 
 
@@ -172,4 +167,5 @@ function createElement(elem, textValue) {
 
 function appendElement(parent, child) {
     parent.appendChild(child)
+
 }

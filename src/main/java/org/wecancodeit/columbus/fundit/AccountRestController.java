@@ -50,12 +50,13 @@ public class AccountRestController {
 		return editAccount; 
 	}
 	
+	//actual withdraw of account balance
 	@RequestMapping(path = "/edit-account-withdraw/account/1", method = RequestMethod.PUT)
-	public Iterable<Fund> withdrawAccount(@RequestParam(value = "amountWithdraw", required=true) double amountWithdraw) {
+	public Account withdrawAccount(@RequestParam(value = "amountWithdraw", required=true) double amountWithdraw) {
 		Account editAccount = accountRepo.findById(1L);
 		editAccount.withdraw(amountWithdraw);
 		accountRepo.save(editAccount);	
-		return fundRepo.findAll(); 
+		return editAccount; 
 	}
 	
 //	edit-account-withdraw/populate/account/1
