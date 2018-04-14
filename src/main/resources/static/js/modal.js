@@ -41,7 +41,7 @@ function editAccountDeposit(event) {
     
 
     let accountBalanceBeforeDeposit = document.querySelector('.accntAmnt')
-    // let accountFinalBalance = document.querySelector('.accountBalance')
+    
 
     accountBalanceBeforeDeposit.innerText = +accountBalanceBeforeDeposit.innerText + +amountDeposit
 
@@ -71,7 +71,6 @@ function withdrawModalPopulation(event){
             const res = JSON.parse(xhrPopulate.response)
             console.log(res)
             const modalContentWithdraw = document.querySelector('.modal-content-withdraw')
-            console.log('here populate')
            
             modalContentWithdrawReplace = document.createElement('div')
             modalContentWithdrawReplace.classList.add('modal-funds-holder')
@@ -81,13 +80,6 @@ function withdrawModalPopulation(event){
             appendElement(modalContentWithdrawReplace, modalFundInformation(res))
             })
             console.log(modalContentWithdrawReplace)
-            
-            
-           
-
-            // arrayOfFunds.forEach(function(fund){
-            //     
-            // })
 
            const toReplace = modalContentWithdraw.lastElementChild
            toReplace.replaceWith(modalContentWithdrawReplace)
@@ -128,15 +120,12 @@ function editAccountWithdraw(event) {
 
 function modalFundInformation(res) {
             
-            //for withdraw modal only 
-            //modal withdraw container - append divs to this
-            
             //individual fund div info
             const fundsModalInformationContainer = document.createElement('div') //1 indivi
             fundsModalInformationContainer.classList.add('indiv-fund')
 
             const fundModalInfo = document.createElement('p')
-            fundModalInfo.innerText = 'Fund Name:' + res.fundName +  'Amount: $' + res.fundAmount
+            fundModalInfo.innerText = 'Fund Name:' + res.fundName +  '\nAmount: $' + res.fundAmount
             //class name needed?
             appendElement(fundsModalInformationContainer,fundModalInfo)
 
