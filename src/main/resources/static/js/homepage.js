@@ -60,6 +60,22 @@ function drawChart(fundsArray) {
       ]
   };
 
+let closeButtonMilesStone = document.querySelector('.close-button-miles-stone')
+                    
+closeButtonMilesStone.addEventListener('click', toggleModalMilesStone)
+
+function toggleModalMilesStone(){
+    let modalMilesStone = document.querySelector('.modal-progess')
+    modalMilesStone.classList.toggle("show-modal-miles-stone");
+
+}
+
+
+
+
+
+
+
 
   const chart = new google.visualization.PieChart(document.getElementById('piechart'));
   google.visualization.events.addListener(chart, 'select', selectHandler);
@@ -140,20 +156,16 @@ function drawChart(fundsArray) {
                     mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[1]);
 
                     //modal functionality is here
+                    
+
                     const modalProgressContainer = document.querySelector('.modal-content-progress')
-                    modalProgressContainer.appendChild(mileMarkerProgressDiv)
+                    const lastChild = modalProgressContainer.lastElementChild
+                    lastChild.replaceWith(mileMarkerProgressDiv)
 
                     let milesStoneEditButton = document.querySelector('.add__to__mile__button')
 
                     let modalMilesStone = document.querySelector('.modal-progess')
                     milesStoneEditButton.addEventListener('click',toggleModalMilesStone)
-
-                    let closeButtonMilesStone = document.querySelector('.close-button-miles-stone')
-                    closeButtonMilesStone.addEventListener('click', toggleModalMilesStone)
-
-                    function toggleModalMilesStone(){
-                    modalMilesStone.classList.toggle("show-modal-miles-stone");
-                    }
 
                 }
             };
@@ -174,6 +186,7 @@ function drawChart(fundsArray) {
 
       return newElem
   }
+
 
   
 
