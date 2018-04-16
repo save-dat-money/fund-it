@@ -125,5 +125,17 @@ public class AccountRestController {
 		accountRepo.save(account); 
 		return fundToIncr;
 	}
+	
+	@RequestMapping(path = "/decrease-fund/account/{accountId}/{fundId}/{fundDecrease}", method = RequestMethod.POST)
+	public Fund decreaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId, @PathVariable("fundDecrease") double fundDecrease) {
+		Account account = accountRepo.findById(1L);
+		Fund fundToDecr = fundRepo.findOne(fundId);
+		
+		fundToDecr.decreaseFundAmnt(fundDecrease);
+
+		fundRepo.save(fundToDecr);
+		accountRepo.save(account); 
+		return fundToDecr;
+	}
 
 }
