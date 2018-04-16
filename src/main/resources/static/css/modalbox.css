@@ -24,7 +24,7 @@
 	border-radius: 0.5rem;
 }
 
-.close-edit-fund-button {
+.close-edit-fund-button, .close-decr-fund-button {
 	float: right;
 	width: 1.5rem;
 	line-height: 1.5rem;
@@ -35,7 +35,7 @@
 }
 
 
-.close-edit-fund-button:hover {
+.close-edit-fund-button:hover, .close-decr-fund-button:hover {
 	background-color: darkgray;
 }
 
@@ -168,8 +168,18 @@
 	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
-.edit-fund-amount-modal{
+.edit-fund-amount-modal, .decrease-fund-amount-modal{
 	display: none;
+}
+
+.decrease-fund-amount-modal.show-edit-fund-modal {
+	display: block;
+	transform: scale(1.0);
+	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .edit-fund-amount-modal.show-edit-fund-modal {
