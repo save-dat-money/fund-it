@@ -117,7 +117,7 @@ function toggleModalMilesStone(){
         			
         			const fundBalanceAmount = createElement('h2', "Balance: " + indvidualFundAmnt);
         			fundBalanceAmount.id = "fundAmountBefore";
-        			const addToFundButton = createElement('button', "edit fund amount");
+        			const addToFundButton = createElement('button', "edit");
         			addToFundButton.id = "add__to__fund__button";
         			fundBalanceDiv.appendChild(fundBalanceAmount);
         			fundBalanceDiv.appendChild(addToFundButton);

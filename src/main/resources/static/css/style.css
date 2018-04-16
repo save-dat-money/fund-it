@@ -53,6 +53,7 @@ footer {
 .fund__details__header, .fund__details__balance, .fund__details__mile__marker {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 }
 .add__to__fund__button, .remove__from__fund__button, .add__mile__button, .remove__from__mile__button, .edit__mile__button {
 	background-color: rgba(0,0,0,0);
@@ -64,18 +65,66 @@ footer {
 	align-self: center;
 	font-family: "Permanent Marker";
 }
-.fund__name__edit__button {
-	background-color: rgba(0,0,0,0);
-	color: grey;
-	margin-bottom: 1rem;
-	width: 3%;
-	height: 3%;
-	border: none;
-}
-.fund__name__edit__button__img {
 
-	width: 100%;
-	height: 100%;
+.defaultFundHeader{
+	font-size: 56px;
+}
+.fund__name__edit__button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding: .1rem 1rem;
+    margin:0 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    font-weight: bold;
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:dashed 2px #41403E;
+}
+
+.fund-add-button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding: .1rem 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:dashed 2px #41403E;
+}
+
+#add__to__mile__button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding: .1rem 1rem;
+    margin:0 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    font-weight: bold;
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:dashed 2px #41403E;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Patrick+Hand+SC);
@@ -107,7 +156,28 @@ footer {
 	box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
 }
 
+#fund__details__balance{
+}
 
+#add__to__fund__button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding: .1rem 1rem;
+    margin:0 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    font-weight: bold;
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:dashed 2px #41403E;
+}
 
 
 
