@@ -89,6 +89,7 @@ function toggleModalMilesStone(){
      console.log(selection);
      if (!selection.length) return;
      const value = data.getValue(selection[0].row || 0, 2);
+     window.fundsApp.selectedId = value;
      const fundDetails = document.createElement('div');
      fundDetails.className = "fund__details";
      const mainBottomRight = document.querySelector('.main__bottom__right');
