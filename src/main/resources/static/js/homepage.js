@@ -141,6 +141,7 @@ google.charts.load('current', {'packages':['corechart']});
         			const backToOverviewButton = createElement('button', "Back");
         			backToOverviewButton.className = "back-to-overview";
         			const deleteFundButton = createElement('button', "Delete");
+        			deleteFundButton.className = "delete-fund-button";
         			bottomButtonDiv.appendChild(backToOverviewButton);
         			bottomButtonDiv.appendChild(deleteFundButton);
         			
@@ -153,6 +154,7 @@ google.charts.load('current', {'packages':['corechart']});
         			mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[1]);
         			addMileMarker();
         			backToOverview();
+        			removeFund();
         			
         		}
         	};
