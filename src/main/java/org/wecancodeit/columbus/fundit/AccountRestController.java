@@ -88,8 +88,8 @@ public class AccountRestController {
 		return currentFundAccount;
 	}
 
-	@RequestMapping(path = "/increase-fund/account/{accountId}/{fundId}/{fundAmount}", method = RequestMethod.POST)
-	public Fund increaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId, @PathVariable("fundAmount") double fundAmount, @RequestParam(value = "fundIncrease", required = true) double fundIncrease) {
+	@RequestMapping(path = "/increase-fund/account/{accountId}/{fundId}/{fundIncrease}", method = RequestMethod.POST)
+	public Fund increaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId, @PathVariable("fundIncrease") double fundIncrease) {
 		Account account = accountRepo.findById(1L);
 		Fund fundToIncr = fundRepo.findOne(fundId);
 		
