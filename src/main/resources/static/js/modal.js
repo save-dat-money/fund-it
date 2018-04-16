@@ -34,7 +34,9 @@ closeButtonDeposit.addEventListener("click", toggleModalDeposit);
 let closeButtonWithdraw = document.querySelector(".close-button-withdraw")
 closeButtonWithdraw.addEventListener("click", toggleModalWithdraw);
 
-
+//withdrawal blur event
+const inputWithdrawal = document.querySelector('#amountWithdraw')
+inputWithdrawal.addEventListener('blur', withdrawalInnerText)//funcion
 
 
 function editAccountDeposit(event) {
@@ -92,10 +94,13 @@ function withdrawModalPopulation(event){
             appendElement(modalContentWithdrawReplace, modalFundInformation(res))
             })
 
-            const unAssignedFundFinder = document.querySelector('.defaultFundAmnt')
-            let unAssignedFund =  createElement('p', unAssignedFundFinder.innerText)
-         
 
+
+            const unAssignedFundFinder = document.querySelector('.defaultFundAmnt')
+            let innerTextToAdd = 'Unassigned Fund: $' + unAssignedFundFinder.innerText 
+            let unAssignedFund =  createElement('p', innerTextToAdd)
+            unAssignedFund.classList.add('unassigned-fund')
+            
 
             console.log(modalContentWithdrawReplace)
 
@@ -115,11 +120,9 @@ function editAccountWithdraw(event) {
     const theButtonDeposit = event.target //submit button
     const amountWithdraw = document.querySelector('#amountWithdraw').value; // deposit to add
 
- 
+    let accountBalanceBeforeWithdraw = document.querySelector('.accntAmnt')// value in account balance
 
-    let accountBalanceBeforeWithdraw = document.querySelector('.accntAmnt')
-
-    //logic needed
+    //logic to ensure that we do not overdraft 
     if (amountWithdraw > +accountBalanceBeforeWithdraw.innerText){
         console.log('Value too large')
         //event to gray out submit
@@ -128,7 +131,11 @@ function editAccountWithdraw(event) {
     }
 
 
-    accountBalanceBeforeWithdraw.innerText = +accountBalanceBeforeWithdraw.innerText - +amountWithdraw
+    //logic for fund allocation
+    // on blur 
+    
+
+    accountBalanceBeforeWithdraw.innerText = +accountBalanceBeforeWithdraw.innerText - +amountWithdraw // take money from account balance
 
 
     console.log(accountBalanceBeforeWithdraw)
@@ -190,7 +197,32 @@ function modalMilesStoneDepiction(){
 }
 
 
+function withdrawalInnerText(){
+    // let withdrawUnassigned = document.querySelector('.unassigned-fund').innerText // value of unassigned
 
+    let amountWithdraw = document.querySelector('#amountWithdraw').value; //amount to withdraw 
+
+    let unAssignedFundFinder = document.querySelector('.defaultFundAmnt')
+    let withdrawUnassigned = unAssignedFundFinder.innerText
+
+    let amountNewWithdraw =  +withdrawUnassigned - +amountWithdraw 
+    let innerTextToAdd = 'Unassigned Fund: $' + amountNewWithdraw
+    
+    let newWithdraw = document.createElement('p', innerTextToAdd)
+    
+    // newWithdraw.innerText = newWithdraw.innerText + +amountNewWithdraw
+    
+    let modalAppend = document.querySelector('.modal-funds-holder')
+    const lastChild = modalAppend.lastElementChild
+    lastChild.replaceWith(newWithdraw)
+    // appendElement(modalAppend,newWithdraw)
+    // logic for unassigned funds --> blackout submit button
+    // withdrawUnassigned.innerText = newWithdraw.innerText
+
+    console.log('event triggered')
+    console.log(newWithdraw)
+
+}
 
 
 
@@ -205,7 +237,16 @@ function createElement(elem, textValue) {
     return newElem
 }
 
+function createElementHTML(elem, textValue){
+    const newElem = document.createElement(elem)
+    newElem.innerHTML = textValue
+    return newWithdraw
+
+
+}
+
 function appendElement(parent, child) {
     parent.appendChild(child)
 
 }
+
