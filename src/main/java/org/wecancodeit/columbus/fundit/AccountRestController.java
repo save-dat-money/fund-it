@@ -34,14 +34,13 @@ public class AccountRestController {
 		Fund displayFund = fundRepo.findOne(fundId);
 		return displayFund;
 	}
+
 	@RequestMapping(path = "/funds/{fundId}/addMile", method = RequestMethod.POST)
 	public Fund addMileMarker(@PathVariable("fundId") long fundId) {
 		Fund addMileMarkerFund = fundRepo.findOne(fundId);
 		addMileMarkerFund.mileMarker = 500;
 		fundRepo.save(addMileMarkerFund);
-		
 		return addMileMarkerFund;
-		
 	}
 
 	@CrossOrigin("*")
@@ -50,23 +49,48 @@ public class AccountRestController {
 		return fundRepo.findByAccountId(accountId);
 	}
 
-	// account edit controller
-	@RequestMapping(path = "/edit-account/account/1", method = RequestMethod.PUT)
-	public Account depositAccount(@RequestParam(value = "amountDeposit", required = true) double amountDeposit) {
+
+	
+	//account edit controller
+	@RequestMapping(path = "/edit-account-deposit/account/1", method = RequestMethod.PUT)
+	public Account depositAccount(@RequestParam(value = "amountDeposit", required=true) double amountDeposit) {
+
 		Account editAccount = accountRepo.findById(1L);
 		editAccount.deposit(amountDeposit);
 		accountRepo.save(editAccount);
 		return editAccount;
 	}
 
+	
+	//actual withdraw of account balance
+	@RequestMapping(path = "/edit-account-withdraw/account/1", method = RequestMethod.PUT)
+	public Account withdrawAccount(@RequestParam(value = "amountWithdraw", required=true) double amountWithdraw) {
+		Account editAccount = accountRepo.findById(1L);
+		editAccount.withdraw(amountWithdraw);
+		accountRepo.save(editAccount);	
+		return editAccount; 
+	}
+	
+//	edit-account-withdraw/populate/account/1
+	@RequestMapping(path = "/edit-account-withdraw/populate/account/1", method = RequestMethod.GET)
+	public Iterable<Fund> withdrawPopulation() {	
+		return fundRepo.findAll(); 
+	}
+
+	
+	
+	
+	
+	
+
+
 	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}/{fundAmount}", method = RequestMethod.POST)
-	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName,
-			@PathVariable("fundAmount") double fundAmount) {
+	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName, @PathVariable("fundAmount") double fundAmount) {
 		Account newFundAccount = accountRepo.findById(1L);
 		double newFundAmount;
 		if (newFundAccount.getUnassignedFundAmount() < fundAmount) {
 			newFundAmount = newFundAccount.getUnassignedFundAmount();
-		}else {
+		} else {
 			newFundAmount = fundAmount;
 		}
 		Fund newFund = new Fund(fundName, newFundAccount, newFundAmount);
@@ -88,7 +112,18 @@ public class AccountRestController {
 		}
 		accountRepo.save(currentFundAccount);
 		return fundRepo.findByAccountId(accountId);
+	}
 
+	@RequestMapping(path = "/increase-fund/account/{accountId}/{fundId}/{fundIncrease}", method = RequestMethod.POST)
+	public Fund increaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId, @PathVariable("fundIncrease") double fundIncrease) {
+		Account account = accountRepo.findById(1L);
+		Fund fundToIncr = fundRepo.findOne(fundId);
+		
+		fundToIncr.increaseFundAmnt(fundIncrease);
+
+		fundRepo.save(fundToIncr);
+		accountRepo.save(account); 
+		return fundToIncr;
 	}
 
 }

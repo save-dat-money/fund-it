@@ -16,14 +16,14 @@ function fundsOverviewSetup (funds) {
 	})
 }
 
+
 		function appendAccountNameToHeader(funds) {
 			const headerOne = document.querySelector('.main__top')
 
 			const accountNameContainer = document.createElement('div')
 			accountNameContainer.classList.add('accountNameContainer')
 
-			let accntAmnt = createElement('p', funds[0].account.balance
-					.toFixed(2))
+			let accntAmnt = createElement('p', funds[0].account.balance.toFixed(2))
 			accntAmnt.classList.add('accntAmnt')
 
 			const modalDepositAmount = document.createElement('div')
@@ -31,16 +31,18 @@ function fundsOverviewSetup (funds) {
 					funds[0].account.balance.toFixed(2)))
 
 			const modalWithdrawAmount = document.createElement('div')
-			appendElement(modalWithdrawAmount, createElement('p',
-					funds[0].account.balance.toFixed(2)))
+			appendElement(modalWithdrawAmount, createElement('p', funds[0].account.balance.toFixed(2)))
 
-			const modalContentDeposit = document
-					.querySelector('.modal-content-deposit')
+			const modalContentDeposit = document.querySelector('.modal-content-deposit')
 			appendElement(modalContentDeposit, modalDepositAmount)
 
-			const modalContentWithdraw = document
-					.querySelector('.modal-content-withdraw')
+			const modalContentWithdraw = document.querySelector('.modal-content-withdraw')
 			appendElement(modalContentWithdraw, modalWithdrawAmount)
+
+
+			const modalFundsHolder = document.createElement('div') // attach all input fund info to this div
+			modalFundsHolder.classList.add('modal-funds-holder')
+			appendElement(modalContentWithdraw ,modalFundsHolder) // attach to modal Withdrawal windo
 
 			appendElement(accountNameContainer, createElement('p',
 					funds[0].account.accountName + ": $"))
@@ -49,6 +51,22 @@ function fundsOverviewSetup (funds) {
 			appendElement(headerOne, accountNameContainer)
 
 		}
+
+		
+
+
+		// <div> 1
+		//fund name: res.
+		//fund amount: res.
+		// 						<label>Amount To Deposit:</label> <input id="amountDeposit" type="number"  required="true"  min="1" max = "700"/>
+		// 					</div>
+
+
+		// 					<div>
+		// 						<input type="button" class="amount-deposit-button"  value="Submit"></input>
+		// 					</div> 
+
+
 
 		function showAllPropsInObject(object) {
 			for (prop in funds) {
@@ -70,7 +88,8 @@ function appendUnassignedFundToBody(fund) {
 	appendElement(defaultFundContainer, defaultFundHeader);
 
 	appendElement(defaultFundContainer, defaultFund)
-	let unFndAmnt = createElement('p', fund.account.unassignedFundAmount.toFixed(2))
+	let unFndAmnt = createElement('p', fund.account.unassignedFundAmount
+			.toFixed(2))
 	unFndAmnt.className = 'defaultFundAmnt'
 	appendElement(defaultFundContainer, unFndAmnt)
 
@@ -83,41 +102,27 @@ function appendOneElementToBody(res) {
 	const fundContainer = document.createElement('div')
 	fundContainer.classList.add('fundContainer')
 
-//	let xButton = createElement('button', 'x')
-//	xButton.className = 'removeButton'
-//	xButton.onclick = removeFund
+	let xButton = createElement('button', 'x')
+	xButton.className = 'removeButton'
+	xButton.onclick = removeFund
 	let fund = createElement('h2', res.fundName)
 
 	fund.className = 'fundInformation'
 
 //	let editButton = createElement('button', 'edit')
 //	editButton.className = 'editButton'
+//	appendElement(fund, editButton)
 
 	appendElement(fundContainer, fund)
-
-//	appendElement(fundContainer, xButton)
-//	appendElement(fund, editButton)
-	appendElement(fundContainer, createElement('p', res.fundAmount))
-
-
+	appendElement(fundContainer, xButton)
+	appendElement(fundContainer, createElement('p', res.fundAmount.toFixed(2)))
 
 	fundContainer.setAttribute('data-fund-id', res.id)
 	fundContainer.setAttribute('data-fund-amount', res.fundAmount)
-	fundContainer.setAttribute('data-unassigned-fund-amount', res.account.unassignedFundAmount)
+	fundContainer.setAttribute('data-unassigned-fund-amount',
+			res.account.unassignedFundAmount)
 
-		
 	appendElement(body, fundContainer)
-
-	let modal = document.querySelector(".modal");
-
-//	let closeButton = document.querySelector(".close-button")
-//
-//	editButton.addEventListener("click", toggleModal);
-
-	function toggleModal() {
-		modal.classList.toggle("show-modal");
-		console.log('Here')
-	}
 
 }
 
