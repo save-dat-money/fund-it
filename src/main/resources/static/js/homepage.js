@@ -99,16 +99,14 @@ google.charts.load('current', {'packages':['corechart']});
         			const fundBalanceDiv = document.createElement('div');
         			fundBalanceDiv.className = "fund__details__balance";
         			const indvidualFundAmnt = fund.fundAmount
-        			indvidualFundAmnt.className = "fundAmountBefore";
+        			
         			const fundBalanceAmount = createElement('h2', "Balance: " + indvidualFundAmnt);
-// fundBalanceAmount.className = "fundAmountBefore";
+        			fundBalanceAmount.id = "fundAmountBefore";
         			const addToFundButton = createElement('button', "edit fund amount");
         			addToFundButton.id = "add__to__fund__button";
         			fundBalanceDiv.appendChild(fundBalanceAmount);
         			fundBalanceDiv.appendChild(addToFundButton);
-        		// let addToFundButton =
-				// document.querySelector('#add__to__fund__button') // figure
-				// out what this does
+
 
         			let editFundAmntModal = document.querySelector(".edit-fund-amount-modal")
         			function toggleEditFundAmntModal() {

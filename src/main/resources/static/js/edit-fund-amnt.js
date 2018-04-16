@@ -14,11 +14,11 @@ function editFundAmnt(event) {
     
     let fundBalanceBeforeIncrease = window.fundsApp.funds.find(fund => fund.id === window.fundsApp.selectedId).fundAmount;
 
-    fundBalanceBeforeIncrease.innerText = +fundBalanceBeforeIncrease.innerText + +fundIncrease
-
-
+    let newFundAmnt = fundBalanceBeforeIncrease.innerText = +fundBalanceBeforeIncrease.innerText + +fundIncrease
+ 
+    
     console.log(fundBalanceBeforeIncrease)
-
+   
     const xhrFundIncrease = new XMLHttpRequest()
     xhrFundIncrease.onreadystatechange = function() {
     	if (xhrFundIncrease.readyState === 4 && xhrFundIncrease.status === 200) {
@@ -26,6 +26,9 @@ function editFundAmnt(event) {
             const res = JSON.parse(xhrFundIncrease.response)
             let editFundAmntModal = document.querySelector(".edit-fund-amount-modal")
             editFundAmntModal.classList.toggle("show-edit-fund-modal");
+            console.log(res.fundAmount)
+            document.querySelector('#fundAmountBefore').innerHTML = "Balance: " + res.fundAmount;
+            
         }
 
     }
