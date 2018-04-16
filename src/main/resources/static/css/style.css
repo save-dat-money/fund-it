@@ -7,15 +7,6 @@ body{
 }
 
 
-.show__menu {
-	display: flex;
-	background-color: white;
-	padding: 3px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: black;
-	border-radius: 5px;
-}
 ul li {
 	margin-bottom: 12px;
 }
@@ -27,6 +18,11 @@ ul {
 }
 footer {
 	display: flex;
+}
+
+.main__bottom__right{
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
 }
 
 
@@ -97,8 +93,9 @@ footer {
     padding:1rem 1rem;
     margin:0 1rem;
     transition:all .5s ease;
-    color:white;
+    color:black;
     font-size:1rem;
+    font-family: "Permanent Marker";
     font-weight: bold;
     letter-spacing:1px;
     outline:none;
