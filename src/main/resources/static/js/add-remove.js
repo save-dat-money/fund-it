@@ -6,7 +6,7 @@ function createAddFundButton() {
 	const addFundButton = document.querySelector('.fund-add-button');
 	addFundButton.addEventListener('click', addFund)
 }
-
+//dont delete this... susie
 function removeFund() {
 	let removeFundButton;
 	if (removeFundButton = document.querySelector('.delete-fund-button'))
@@ -61,9 +61,7 @@ function removeFund() {
 	}
 	xhr.open('POST', '/account/1/fund/' + fundId + '/remove-fund', true)
 	xhr.send()
-	//location.reload();
-
-	})
+	});
 }
 
 function addFund(event) {

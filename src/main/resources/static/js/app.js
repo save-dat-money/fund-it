@@ -115,6 +115,7 @@ function appendOneElementToBody(res) {
 
 	appendElement(fundContainer, fund)
 
+
 //	appendElement(fundContainer, xButton)
 //	appendElement(fund, editButton)
 
