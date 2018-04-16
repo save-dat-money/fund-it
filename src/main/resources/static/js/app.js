@@ -28,11 +28,11 @@ function fundsOverviewSetup (funds) {
 
 			const modalDepositAmount = document.createElement('div')
 			appendElement(modalDepositAmount, createElement('p',
-					funds[0].account.balance))
+					funds[0].account.balance.toFixed(2)))
 
 			const modalWithdrawAmount = document.createElement('div')
 			appendElement(modalWithdrawAmount, createElement('p',
-					funds[0].account.balance))
+					funds[0].account.balance.toFixed(2)))
 
 			const modalContentDeposit = document
 					.querySelector('.modal-content-deposit')
@@ -65,17 +65,16 @@ function appendUnassignedFundToBody(fund) {
 	const defaultFundHeader = createElement('h3', "Default Fund: ");
 	let defaultFund = createElement('h2', 'Unassigned Funds')
 	defaultFund.className = 'defaultFund'
+
 	// default fund attempt
 	appendElement(defaultFundContainer, defaultFundHeader);
+
 	appendElement(defaultFundContainer, defaultFund)
-	let unFndAmnt = createElement('p', fund.account.unassignedFundAmount)
+	let unFndAmnt = createElement('p', fund.account.unassignedFundAmount.toFixed(2))
 	unFndAmnt.className = 'defaultFundAmnt'
 	appendElement(defaultFundContainer, unFndAmnt)
 
 	appendElement(thirdBody, defaultFundContainer)
-
-	// defaultFundContainer.setAttribute('data-unassigned-funds',
-	// fund.account.unassignedFundAmount)
 }
 
 function appendOneElementToBody(res) {
@@ -95,12 +94,18 @@ function appendOneElementToBody(res) {
 //	editButton.className = 'editButton'
 
 	appendElement(fundContainer, fund)
+
 //	appendElement(fundContainer, xButton)
 //	appendElement(fund, editButton)
 	appendElement(fundContainer, createElement('p', res.fundAmount))
 
-	fundContainer.setAttribute('data-fund-id', res.id)
 
+
+	fundContainer.setAttribute('data-fund-id', res.id)
+	fundContainer.setAttribute('data-fund-amount', res.fundAmount)
+	fundContainer.setAttribute('data-unassigned-fund-amount', res.account.unassignedFundAmount)
+
+		
 	appendElement(body, fundContainer)
 
 	let modal = document.querySelector(".modal");

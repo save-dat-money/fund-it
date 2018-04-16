@@ -11,25 +11,26 @@ function removeFund(event) {
 	event.preventDefault();
 	const theButton = event.target
 	const fundId = theButton.parentElement.getAttribute('data-fund-id')
+
 	const arrayIndex = fundsApp.funds.indexOf(fundId)
 	fundsApp.funds.splice(arrayIndex, 1)
-	console.log(theButton)
 
 	const xhr = new XMLHttpRequest()// ajax request
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
-			console.log(xhr.responseText);
+			const newAccountState = JSON.parse(xhr.responseText)
 			let fundContainer = theButton.parentElement
+			const unassignedFundAmnt = newAccountState.unassignedFundAmount.toFixed(2)
 			fundContainer.parentElement.removeChild(fundContainer)
+			drawChart(fundsApp.funds)	
+			document.querySelector('.defaultFundAmnt').textContent = unassignedFundAmnt		
 
-			// document.querySelector('#fundsAmnt').textContent =
-			// xhr.responseText
-			drawChart(fundsApp.funds)
 		}
 	}
 	xhr.open('POST', '/account/1/fund/' + fundId + '/remove-fund', true)
 	xhr.send()
-	location.reload();
+	//location.reload();
+
 }
 
 function addFund(event) {
@@ -47,17 +48,20 @@ function addFund(event) {
 	
 			fundsApp.funds.push(newFund); // pie chart
 			appendOneElementToBody(newFund)
+			drawChart(fundsApp.funds);
 			//ajax for updating unassigned fund amnt
 			let unFndAmnt = newFund.account.unassignedFundAmount
-			document.querySelector('.defaultFundAmnt').textContent = unFndAmnt
-			//working with 100 set as add fund amnt
-			drawChart(fundsApp.funds);
+			let newUnassignedFundAmnt = unFndAmnt - fundAmount
+			if (newUnassignedFundAmnt < 0) {
+				newUnassignedFundAmnt = 0
+			} 
+			document.querySelector('.defaultFundAmnt').textContent = newUnassignedFundAmnt.toFixed(2)
 		}	
 	}
 
 	xhr.open('POST', '/add-fund/account/1/' + fundName + '/' +fundAmount, true)
 	xhr.send()
-	location.reload();
+	
 }
 
 function createElement(elem, textValue) {
