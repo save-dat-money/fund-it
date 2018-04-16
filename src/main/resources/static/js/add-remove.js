@@ -12,6 +12,7 @@ function removeFund() {
 	if (removeFundButton = document.querySelector('.delete-fund-button'))
 	removeFundButton.addEventListener('click', () => {
 	const fundId = fundsApp.selectedId;	
+	console.log("hi");
 
 	const arrayIndex = fundsApp.funds.indexOf(fundId)
 	fundsApp.funds.splice(arrayIndex, 1)

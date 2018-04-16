@@ -178,6 +178,7 @@ function toggleModalMilesStone(){
                     const backToOverviewButton = createElement('button', "Back");
                     backToOverviewButton.className = "back-to-overview";
                     const deleteFundButton = createElement('button', "Delete");
+                    deleteFundButton.className = "delete-fund-button";
                     bottomButtonDiv.appendChild(backToOverviewButton);
                     bottomButtonDiv.appendChild(deleteFundButton);
 
