@@ -1,6 +1,7 @@
 window.fundsApp = {
   funds: [],
 };
+fundsApp.newFundForm = document.querySelector(".fund-input-form");
 
 const toggleMenu = () => {
 	const navButton = document.querySelector(".header__nav__button");
@@ -29,6 +30,7 @@ xhr1.onreadystatechange = function() {
 
 google.charts.load('current', {'packages':['corechart']});
 // google.charts.setOnLoadCallback();
+
 function drawChart(fundsArray) {
 
   const data = new google.visualization.DataTable();
@@ -193,3 +195,4 @@ function toggleModalMilesStone(){
 
 
   
+

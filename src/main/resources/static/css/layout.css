@@ -9,6 +9,12 @@
 	height: 100vh;
 	overflow-x: hidden;
 }
+.funds__overview {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	
+}
 header {
 	display: flex;
 	justify-content: center;
@@ -80,5 +86,8 @@ main {
 }
 
 .accountAction {
+	display: flex;
+	justify-content: space-around;
 	z-index: 4; 
-}
+	width:50vw;}
+

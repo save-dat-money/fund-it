@@ -23,6 +23,7 @@ public class Account {
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
 	private Collection<Fund> funds;
+	protected double unassignedFund;
 
 	public long getId() {
 		return id;
@@ -48,6 +49,13 @@ public class Account {
 		this.accountName = accountName;
 		this.balance = balance;
 	}
+
+//	public Account(String accountName, double balance, double unassignedFund, Fund... funds) {
+//		this.accountName = accountName;
+//		this.balance = balance;
+//		this.unassignedFund = unassignedFund; 
+//		this.funds = new HashSet<>(asList(funds));
+//	}
 
 	public Account(String accountName, double balance, Fund... funds) {
 		this.accountName = accountName;
