@@ -20,7 +20,7 @@ function removeFund() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			const funds = JSON.parse(xhr.responseText)
-			console.log(funds);
+			console.log(funds)
 			
 			const fundsOverview = document.createElement('article');
 	 		fundsOverview.className = "funds__overview";
@@ -42,19 +42,18 @@ function removeFund() {
 	 		const mainBottomRight = document.querySelector('.main__bottom__right');
 	 		mainBottomRight.replaceChild(fundsOverview, mainBottomRight.childNodes[1]);
 	 		
-	 		
-	 		appendUnassignedFundToBody(funds[0]);
+	 		fundsApp.funds=funds;
+	 		appendUnassignedFundToBody(fundsApp.funds[0]);
 	 		funds.forEach(function(fund) {
 	 			appendOneElementToBody(fund)
 	 		})
-	 		console.log(fundsApp);
 	 		fundsOverview.appendChild(fundsApp.newFundForm);		
 	 		
 	 		/////
 //			let fundContainer = theButton.parentElement
 //			const unassignedFundAmnt = funds.unassignedFundAmount.toFixed(2)
 //			fundContainer.parentElement.removeChild(fundContainer)
-//			drawChart(fundsApp.funds)	
+			drawChart(fundsApp.funds)	
 //			document.querySelector('.defaultFundAmnt').textContent = unassignedFundAmnt		
 
 			

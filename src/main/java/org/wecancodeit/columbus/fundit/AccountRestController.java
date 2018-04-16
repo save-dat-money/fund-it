@@ -79,7 +79,7 @@ public class AccountRestController {
 	}
 
 	@RequestMapping(path = "/account/{accountId}/fund/{fundId}/remove-fund", method = RequestMethod.POST)
-	public Account removeFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId) {
+	public Iterable<Fund> removeFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId) {
 		Fund fundToRemove = fundRepo.findOne(fundId);
 		Account currentFundAccount = accountRepo.findById(accountId);
 		if (fundToRemove != null) {
@@ -87,7 +87,7 @@ public class AccountRestController {
 			fundRepo.delete(fundToRemove);
 		}
 		accountRepo.save(currentFundAccount);
-		return currentFundAccount;
+		return fundRepo.findByAccountId(accountId);
 
 	}
 
