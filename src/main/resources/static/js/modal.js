@@ -190,10 +190,6 @@ function modalFundInformation(res) {
 
 function modalMilesStoneDepiction(){
     //add__to__mile__button
-
-
-
-
 }
 
 
@@ -214,7 +210,7 @@ function withdrawalInnerText(){
     
     let modalAppend = document.querySelector('.modal-funds-holder')
     const lastChild = modalAppend.lastElementChild
-    lastChild.replaceWith(newWithdraw)
+    lastChild.replaceWith(innerTextToAdd)
     // appendElement(modalAppend,newWithdraw)
     // logic for unassigned funds --> blackout submit button
     // withdrawUnassigned.innerText = newWithdraw.innerText
