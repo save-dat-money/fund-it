@@ -145,6 +145,7 @@ function toggleModalMilesStone(){
 
                     const bottomButtonDiv = document.createElement('div');
                     const backToOverviewButton = createElement('button', "Back");
+                    backToOverviewButton.className = "back-to-overview";
                     const deleteFundButton = createElement('button', "Delete");
                     bottomButtonDiv.appendChild(backToOverviewButton);
                     bottomButtonDiv.appendChild(deleteFundButton);
@@ -156,6 +157,7 @@ function toggleModalMilesStone(){
                     fundDetails.appendChild(mileMarkerProgressDiv);
                     fundDetails.appendChild(bottomButtonDiv);
                     mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[1]);
+                    backToOverview();
 
                     //modal functionality is here
                     
