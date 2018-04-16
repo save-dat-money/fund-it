@@ -106,7 +106,7 @@ footer {
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
     border:solid 7px black;
 }
-#deposit, #withdraw:hover{
+#deposit:hover, #withdraw:hover{
 	box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
 }
 
