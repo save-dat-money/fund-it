@@ -7,15 +7,6 @@ body{
 }
 
 
-.show__menu {
-	display: flex;
-	background-color: white;
-	padding: 3px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: black;
-	border-radius: 5px;
-}
 ul li {
 	margin-bottom: 12px;
 }
@@ -27,6 +18,11 @@ ul {
 }
 footer {
 	display: flex;
+}
+
+.main__bottom__right{
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
 }
 
 
@@ -58,7 +54,7 @@ footer {
 	display: flex;
 	flex-direction: row;
 }
-.add__to__fund__button, .remove__from__fund__button, .add__mile__button, .remove__from__mile__button {
+.add__to__fund__button, .remove__from__fund__button, .add__mile__button, .remove__from__mile__button, .edit__mile__button {
 	background-color: rgba(0,0,0,0);
 	border: none;
 }
@@ -97,8 +93,9 @@ footer {
     padding:1rem 1rem;
     margin:0 1rem;
     transition:all .5s ease;
-    color:white;
+    color:black;
     font-size:1rem;
+    font-family: "Permanent Marker";
     font-weight: bold;
     letter-spacing:1px;
     outline:none;
@@ -106,7 +103,7 @@ footer {
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
     border:solid 7px black;
 }
-#deposit, #withdraw:hover{
+#deposit:hover, #withdraw:hover{
 	box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
 }
 

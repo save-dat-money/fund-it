@@ -38,7 +38,7 @@ public class AccountRestController {
 	@RequestMapping(path = "/funds/{fundId}/addMile", method = RequestMethod.POST)
 	public Fund addMileMarker(@PathVariable("fundId") long fundId) {
 		Fund addMileMarkerFund = fundRepo.findOne(fundId);
-		addMileMarkerFund.mileMarker = 2000;
+		addMileMarkerFund.mileMarker = 500;
 		fundRepo.save(addMileMarkerFund);
 		return addMileMarkerFund;
 	}
@@ -49,14 +49,40 @@ public class AccountRestController {
 		return fundRepo.findByAccountId(accountId);
 	}
 
-	// account edit controller
-	@RequestMapping(path = "/edit-account/account/1", method = RequestMethod.PUT)
-	public Account depositAccount(@RequestParam(value = "amountDeposit", required = true) double amountDeposit) {
+
+	
+	//account edit controller
+	@RequestMapping(path = "/edit-account-deposit/account/1", method = RequestMethod.PUT)
+	public Account depositAccount(@RequestParam(value = "amountDeposit", required=true) double amountDeposit) {
+
 		Account editAccount = accountRepo.findById(1L);
 		editAccount.deposit(amountDeposit);
 		accountRepo.save(editAccount);
 		return editAccount;
 	}
+
+	
+	//actual withdraw of account balance
+	@RequestMapping(path = "/edit-account-withdraw/account/1", method = RequestMethod.PUT)
+	public Account withdrawAccount(@RequestParam(value = "amountWithdraw", required=true) double amountWithdraw) {
+		Account editAccount = accountRepo.findById(1L);
+		editAccount.withdraw(amountWithdraw);
+		accountRepo.save(editAccount);	
+		return editAccount; 
+	}
+	
+//	edit-account-withdraw/populate/account/1
+	@RequestMapping(path = "/edit-account-withdraw/populate/account/1", method = RequestMethod.GET)
+	public Iterable<Fund> withdrawPopulation() {	
+		return fundRepo.findAll(); 
+	}
+
+	
+	
+	
+	
+	
+
 
 	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}/{fundAmount}", method = RequestMethod.POST)
 	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName, @PathVariable("fundAmount") double fundAmount) {
