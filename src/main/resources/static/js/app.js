@@ -16,6 +16,7 @@ function fundsOverviewSetup (funds) {
 	})
 }
 
+
 		function appendAccountNameToHeader(funds) {
 			const headerOne = document.querySelector('.main__top')
 
@@ -42,6 +43,10 @@ function fundsOverviewSetup (funds) {
 					.querySelector('.modal-content-withdraw')
 			appendElement(modalContentWithdraw, modalWithdrawAmount)
 
+			const modalFundsHolder = document.createElement('div') // attach all input fund info to this div
+			modalFundsHolder.classList.add('modal-funds-holder')
+			appendElement(modalContentWithdraw ,modalFundsHolder) // attach to modal Withdrawal windo
+
 			appendElement(accountNameContainer, createElement('p',
 					funds[0].account.accountName + ": $"))
 			appendElement(accountNameContainer, accntAmnt)
@@ -49,6 +54,22 @@ function fundsOverviewSetup (funds) {
 			appendElement(headerOne, accountNameContainer)
 
 		}
+
+		
+
+
+		// <div> 1
+		//fund name: res.
+		//fund amount: res.
+		// 						<label>Amount To Deposit:</label> <input id="amountDeposit" type="number"  required="true"  min="1" max = "700"/>
+		// 					</div>
+
+
+		// 					<div>
+		// 						<input type="button" class="amount-deposit-button"  value="Submit"></input>
+		// 					</div> 
+
+
 
 		function showAllPropsInObject(object) {
 			for (prop in funds) {
@@ -118,6 +139,7 @@ function appendOneElementToBody(res) {
 		modal.classList.toggle("show-modal");
 		console.log('Here')
 	}
+
 
 }
 

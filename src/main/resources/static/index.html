@@ -2,29 +2,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Account</title>
-<link href="https://fonts.googleapis.com/css?family=Permanent+Marker"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Indie+Flower"
-	rel="stylesheet">
-<link class="layout" rel="stylesheet" type="text/css"
-	href="/css/layout.css" />
-<link class="style" rel="stylesheet" type="text/css"
-	href="/css/style.css" />
-<link class="layout" rel="stylesheet" type="text/css"
-	href="/css/post-it.css" />
-<link class="layout" rel="stylesheet" type="text/css"
-	href="/css/notepad.css" />
-<link class="layout" rel="stylesheet" type="text/css"
-	href="/css/modalbox.css" />
-<script type="text/javascript"
-	src="https://www.gstatic.com/charts/loader.js"></script>
+
+	<title>Account</title>
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+	<link class="layout" rel="stylesheet" type="text/css" href="/css/layout.css" />
+	<link class="style" rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link class="layout" rel="stylesheet" type="text/css" href="/css/post-it.css" />
+	<link class="layout" rel="stylesheet" type="text/css" href="/css/notepad.css" />
+	<link class="layout" rel="stylesheet" type="text/css" href="/css/modalbox.css" />
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 <body>
 	<section class="container">
 		<header>
 			<section class="header__container">
-				<div class="post-it">
+				<div class ="post-it">
+
 					<h2>Fundit!LOGO</h2>
 					<ul>
 						<li>Resources</li>
@@ -39,6 +34,7 @@
 			</section>
 		</header>
 		<main>
+
 		<section class="main__top"></section>
 		<section class="main__bottom">
 			<section class="main__bottom__left" id="piechart"></section>
@@ -82,54 +78,74 @@
 								type="number" required="true" min="1" max="700" />
 						</div>
 
+							<div>
+								<input type="button" class="amount-deposit-button"  value="Submit"></input>
+							</div>
 
-						<div>
-							<input type="button" class="amount-deposit-button" value="Submit"></input>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
-			</div>
+				
+				<div class="modal-withdraw"><!-- .modal -->
 
-			<div class="modal-withdraw">
-				<!-- .modal -->
+					<div class="modal-content-withdraw">
+						<span class="close-button-withdraw">&times;</span>
+						<h1>Current Account Balance:</h1>
 
-				<div class="modal-content-withdraw">
-					<span class="close-button-withdraw">&times;</span>
-					<h1>Current Account Balance:</h1>
+						<form method="PUT">
+							<div>
+								<label>Amount to Withdraw:</label> <input id="amountWithdraw" type="number" required="true" min="1" max="700"/>
+							</div>
+							<div>
+								<input type="button" class="amount-withdraw-button"  value="Submit"></input>
+							</div>
+						</form>
 
+
+					</div>
+				</div>
+				<!-- Miles Stone modal -->
+				<div class="modal-progess">
+
+				<div class="modal-content-progress">
+					<span class="close-button-miles-stone">&times;</span>
+					<h1>Current Value: </h1>
 					<form method="PUT">
-						<div>
-							<label>Amount to Withdraw:</label> <input id="amountWithdraw"
-								type="number" required="true" min="1" max="700" />
-						</div>
-						<div>
-							<input type="button" class="amount-withdraw-button"
-								value="Submit"></input>
-						</div>
-					</form>
 
+						<div>
+							<label>Milstone Value:</label> <input id="milesStone" type="number" required="true" min="1" max="700"/>
+						</div>
+
+						<div>
+							<input type="button" class="amount-withdraw-button"  value="Edit"></input>
+						</div>
+
+					</form>
+					<div class="last-child-place-holder"> </div>
+					</div>
+					<!-- Where it ends -->
 				</div>
 
-			</div>
-		</main>
 
-		<footer>
-			<div class="accountAction">
+			</main>
 
-				<button id="deposit">Deposit</button>
-				<button id="withdraw">Withdraw</button>
+			<footer>
+				<div class="accountAction">
 
-			</div>
-		</footer>
-	</section>
-	<script type="text/javascript" src="/js/app.js"></script>
+					<button id="deposit">Deposit</button>
+					<button id="withdraw">Withdraw</button>
 
-	<script type="text/javascript" src="/js/homepage.js"></script>
+				</div>
+			</footer>
+		</section>
+		<script type="text/javascript" src="/js/app.js"></script>
 
-	<script type="text/javascript" src="/js/add-remove.js"></script>
+		<script type="text/javascript" src="/js/homepage.js"></script>
 
-	<script type="text/javascript" src="/js/modal.js"></script>
+		<script type="text/javascript" src="/js/add-remove.js"></script>
+
+		<script type="text/javascript" src="/js/modal.js"></script>
 
 
-</body>
-</html>
+	</body>
+	</html>
