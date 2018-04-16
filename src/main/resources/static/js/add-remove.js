@@ -6,7 +6,7 @@ function createAddFundButton() {
 	const addFundButton = document.querySelector('.fund-add-button');
 	addFundButton.addEventListener('click', addFund)
 }
-
+//dont delete this... susie
 function removeFund() {
 	let removeFundButton;
 	if (removeFundButton = document.querySelector('.delete-fund-button'))
