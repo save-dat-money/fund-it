@@ -42,7 +42,6 @@
 				<article class="funds__overview">
 
 					<span class="defaultFundContainer">
-						<!-- <h3>Default Fund:</h3> -->
 					</span> <span class="fundContainer">
 						<h3>Funds:</h3>
 					</span>
@@ -64,10 +63,29 @@
 					</article>
 				</article>
 			</section>
-
-			<div class="modal-deposit"><!-- .modal -->
 			
 
+			<div class="edit-fund-amount-modal">
+				<!-- .modal -->
+				<div class="modal-content-incr">
+					<span class="close-edit-fund-button">&times;</span>
+					<h1>Enter Amount To Increase:</h1>
+					<form method="PUT">
+
+						<div>
+							<label>Amount To Increase Fund:</label> <input id="fundIncrAmnt"
+								type="number" required="true" min="1" max="700" />
+						</div>
+
+						<div>
+							<input type="button" class="amount-incr-button" value="Submit"></input>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+			
+			<div class="modal-deposit"><!-- .modal -->
 				<div class="modal-content-deposit">
 					<span class="close-button-deposit">&times;</span>
 					<h1>Current Account Balance:</h1>
@@ -144,7 +162,10 @@
 
 		<script type="text/javascript" src="/js/add-remove.js"></script>
 
-		<script type="text/javascript" src="/js/modal.js"></script>
+	<script type="text/javascript" src="/js/modal.js"></script>
+	
+	<script type="text/javascript" src="/js/edit-fund-amnt.js"></script>
+
 
 
 	</body>

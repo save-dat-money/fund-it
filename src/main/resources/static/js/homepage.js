@@ -110,17 +110,29 @@ function toggleModalMilesStone(){
                     fundDetailsHeader.appendChild(fundNameText);
                     fundDetailsHeader.appendChild(fundNameEditButton);
 
+	const fundBalanceDiv = document.createElement('div');
+        			fundBalanceDiv.className = "fund__details__balance";
+        			const indvidualFundAmnt = fund.fundAmount
+        			
+        			const fundBalanceAmount = createElement('h2', "Balance: " + indvidualFundAmnt);
+        			fundBalanceAmount.id = "fundAmountBefore";
+        			const addToFundButton = createElement('button', "edit fund amount");
+        			addToFundButton.id = "add__to__fund__button";
+        			fundBalanceDiv.appendChild(fundBalanceAmount);
+        			fundBalanceDiv.appendChild(addToFundButton);
 
-                    const fundBalanceDiv = document.createElement('div');
-                    fundBalanceDiv.className = "fund__details__balance";
-                    const fundBalanceAmount = createElement('h2', "Balance: " + fund.fundAmount);
-                    const addToFundButton = createElement('button', "+");
-                    const removeFromFundButton = createElement('button', "-"); 
-                    addToFundButton.className = "add__to__fund__button";
-                    removeFromFundButton.className = "remove__from__fund__button";
-                    fundBalanceDiv.appendChild(fundBalanceAmount);
-                    fundBalanceDiv.appendChild(addToFundButton);
-                    fundBalanceDiv.appendChild(removeFromFundButton);
+
+        			let editFundAmntModal = document.querySelector(".edit-fund-amount-modal")
+        			function toggleEditFundAmntModal() {
+        			editFundAmntModal.classList.toggle("show-edit-fund-modal");   
+        			}
+
+        			addToFundButton.addEventListener("click", toggleEditFundAmntModal);
+
+        			let closeButtonFundAmount = document.querySelector(".close-edit-fund-button")
+        			closeButtonFundAmount.addEventListener("click", toggleEditFundAmntModal);
+
+
 
                     const fundMileMarkerDiv = document.createElement('div');
                     fundMileMarkerDiv.className = "fund__details__mile__marker";
