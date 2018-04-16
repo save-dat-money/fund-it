@@ -74,11 +74,6 @@ function toggleModalMilesStone(){
 
 
 
-
-
-
-
-
   const chart = new google.visualization.PieChart(document.getElementById('piechart'));
   google.visualization.events.addListener(chart, 'select', selectHandler);
 

@@ -40,12 +40,17 @@ closeButtonWithdraw.addEventListener("click", toggleModalWithdraw);
 function editAccountDeposit(event) {
     const theButtonDeposit = event.target
     const amountDeposit = document.querySelector('#amountDeposit').value; // deposit to add
-    
-
 
 
     let accountBalanceBeforeDeposit = document.querySelector('.accntAmnt')
     
+    if (amountDeposit<0){
+        console.log('Value too small')
+        //event to gray out submit
+        //method needed in Java 
+        return 
+
+    }
 
     accountBalanceBeforeDeposit.innerText = +accountBalanceBeforeDeposit.innerText + +amountDeposit
 
@@ -94,12 +99,23 @@ function withdrawModalPopulation(event){
     xhrPopulate.open('GET', '/edit-account-withdraw/populate/account/1', true)
     xhrPopulate.send()
 }
+
 function editAccountWithdraw(event) {
     const theButtonDeposit = event.target //submit button
     const amountWithdraw = document.querySelector('#amountWithdraw').value; // deposit to add
-    //logic needed
+
+ 
 
     let accountBalanceBeforeWithdraw = document.querySelector('.accntAmnt')
+
+    //logic needed
+    if (amountWithdraw > +accountBalanceBeforeWithdraw.innerText){
+        console.log('Value too large')
+        //event to gray out submit
+        //method needed in Java 
+        return //exit function
+    }
+
 
     accountBalanceBeforeWithdraw.innerText = +accountBalanceBeforeWithdraw.innerText - +amountWithdraw
 
