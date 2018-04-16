@@ -79,6 +79,9 @@ function withdrawModalPopulation(event){
         if (xhrPopulate.readyState === 4 && xhrPopulate.status === 200) {
             const res = JSON.parse(xhrPopulate.response)
             console.log(res)
+            
+
+
             const modalContentWithdraw = document.querySelector('.modal-content-withdraw')
            
             modalContentWithdrawReplace = document.createElement('div')
@@ -88,10 +91,18 @@ function withdrawModalPopulation(event){
             
             appendElement(modalContentWithdrawReplace, modalFundInformation(res))
             })
+
+            const unAssignedFundFinder = document.querySelector('.defaultFundAmnt')
+            let unAssignedFund =  createElement('p', unAssignedFundFinder.innerText)
+         
+
+
             console.log(modalContentWithdrawReplace)
 
            const toReplace = modalContentWithdraw.lastElementChild
            toReplace.replaceWith(modalContentWithdrawReplace)
+           appendElement(modalContentWithdrawReplace, unAssignedFund)
+
         }
 
     }
@@ -144,6 +155,8 @@ function modalFundInformation(res) {
             const fundsModalInformationContainer = document.createElement('div') //1 indivi
             fundsModalInformationContainer.classList.add('indiv-fund')
 
+
+
             const fundModalInfo = document.createElement('p')
             fundModalInfo.innerText = 'Fund Name:' + res.fundName +  '\nAmount: $' + res.fundAmount
             //class name needed?
@@ -159,6 +172,7 @@ function modalFundInformation(res) {
             fundInput.setAttribute('min', 1)
             fundInput.setAttribute('max', res.fundAmount)
 
+          
             appendElement(fundLabel, fundInput)
             appendElement(fundsModalInformationContainer, fundLabel)
 
