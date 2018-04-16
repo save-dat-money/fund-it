@@ -103,7 +103,7 @@ public class AccountRestController {
 	}
 
 	@RequestMapping(path = "/account/{accountId}/fund/{fundId}/remove-fund", method = RequestMethod.POST)
-	public Account removeFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId) {
+	public Iterable<Fund> removeFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId) {
 		Fund fundToRemove = fundRepo.findOne(fundId);
 		Account currentFundAccount = accountRepo.findById(accountId);
 		if (fundToRemove != null) {
@@ -111,7 +111,7 @@ public class AccountRestController {
 			fundRepo.delete(fundToRemove);
 		}
 		accountRepo.save(currentFundAccount);
-		return currentFundAccount;
+		return fundRepo.findByAccountId(accountId);
 	}
 
 	@RequestMapping(path = "/increase-fund/account/{accountId}/{fundId}/{fundIncrease}", method = RequestMethod.POST)
@@ -124,6 +124,18 @@ public class AccountRestController {
 		fundRepo.save(fundToIncr);
 		accountRepo.save(account); 
 		return fundToIncr;
+	}
+	
+	@RequestMapping(path = "/decrease-fund/account/{accountId}/{fundId}/{fundDecrease}", method = RequestMethod.POST)
+	public Fund decreaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId, @PathVariable("fundDecrease") double fundDecrease) {
+		Account account = accountRepo.findById(1L);
+		Fund fundToDecr = fundRepo.findOne(fundId);
+		
+		fundToDecr.decreaseFundAmnt(fundDecrease);
+
+		fundRepo.save(fundToDecr);
+		accountRepo.save(account); 
+		return fundToDecr;
 	}
 
 }
