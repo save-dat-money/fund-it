@@ -12,12 +12,12 @@ public class Fund {
 	private long id;
 	private String fundName;
 	protected double fundAmount;
-	int mileMarker;
+	double mileMarker;
 
 	@ManyToOne
 	public Account account;
 
-	public int getMileMarker() {
+	public double getMileMarker() {
 		return mileMarker;
 	}
 
