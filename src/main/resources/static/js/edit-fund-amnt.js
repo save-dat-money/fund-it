@@ -2,11 +2,6 @@
 const submitEditFundButton = document.querySelector('.amount-incr-button') 
 submitEditFundButton.addEventListener('click', editFundAmnt)
 
-
-
-
-
-
 //update everything below
 function editFundAmnt(event) {
     const editFundButton = event.target
