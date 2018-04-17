@@ -84,9 +84,10 @@ function appendUnassignedFundToBody(fund) {
 	defaultFundHeader.className = 'defaultFundHeader'
 	let defaultFund = createElement('h2', 'Unassigned Funds')
 	defaultFund.className = 'defaultFund'
+	const fundContainer = document.querySelector('.fundContainer');
 
 	// default fund attempt
-	appendElement(defaultFundContainer, defaultFundHeader);
+	appendElement(fundContainer, defaultFundHeader);
 
 	appendElement(defaultFundContainer, defaultFund)
 	let unFndAmnt = createElement('p', fund.account.unassignedFundAmount
