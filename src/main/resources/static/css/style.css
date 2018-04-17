@@ -156,10 +156,8 @@ footer {
 	box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
 }
 
-#fund__details__balance{
-}
 
-#add__to__fund__button{
+#add__to__fund__button, #remove__from__fund__button, .add__to__mile__button, .back-to-overview{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -179,6 +177,34 @@ footer {
     border:dashed 2px #41403E;
 }
 
+.delete-fund-button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+  background:transparent;
+  padding: .1rem 1rem;
+  margin:0 1rem;
+  transition:all .5s ease;
+  color:red;
+  font-size:1rem;
+  font-family: "Permanent Marker";
+  font-weight: bold;
+  letter-spacing:1px;
+  outline:none;
+  box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border:dashed 2px red;
+}
+
+.bottom__button__div{
+	display: flex;
+	justify-content: space-between;
+}
+.edit__fund__buttons {
+	display: flex;
+	flex-direction: row;
+}
 
 
 
