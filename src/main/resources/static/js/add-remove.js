@@ -11,6 +11,8 @@ function removeFund() {
 	let removeFundButton;
 	if (removeFundButton = document.querySelector('.delete-fund-button'))
 	removeFundButton.addEventListener('click', () => {
+	const r = confirm("Are you sure you want to delete this fund?")
+	if(r==true){
 	const fundId = fundsApp.selectedId;	
 
 	const arrayIndex = fundsApp.funds.indexOf(fundId)
@@ -61,6 +63,7 @@ function removeFund() {
 	}
 	xhr.open('POST', '/account/1/fund/' + fundId + '/remove-fund', true)
 	xhr.send()
+	}
 	});
 }
 
