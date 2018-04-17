@@ -86,10 +86,6 @@ public class AccountRestController {
 			newFundAmount = fundAmount;
 		}
 		Fund newFund = new Fund(fundName, newFundAccount, newFundAmount);
-		// if(newFundAccount.getUnassignedFundAmount() < fundAmount) {
-		// newFund = new Fund(fundName, newFundAccount,
-		// newFundAccount.getUnassignedFundAmount());
-		// }
 		fundRepo.save(newFund);
 		return newFund;
 	}
@@ -136,6 +132,17 @@ public class AccountRestController {
 		fundRepo.save(fundToDecr);
 		accountRepo.save(account);
 		return fundToDecr;
+	}
+	
+	//changing fund name in controller 
+	@RequestMapping(path = "/change-fund-name/account/{accountId}/{fundId}/{newFundName}", method = RequestMethod.POST)
+	public Fund newFundName(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId, @PathVariable("newFundName") String newFundName) {
+		Account fundAccount = accountRepo.findById(1L);
+		Fund fundToChangeName = fundRepo.findOne(fundId);
+		fundToChangeName.fundChangeName(newFundName);
+		fundRepo.save(fundToChangeName);
+		accountRepo.save(fundAccount);
+		return fundToChangeName;
 	}
 
 }

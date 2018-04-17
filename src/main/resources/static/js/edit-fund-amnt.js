@@ -5,10 +5,12 @@ submitEditFundButton.addEventListener('click', editFundAmnt)
 const decrFundButton = document.querySelector('.amount-decr-button') 
 decrFundButton.addEventListener('click', decrFundAmnt)
 
+const changeFundNameButton = document.querySelector('.name-change-button') 
+changeFundNameButton.addEventListener('click', editFundName)
+
 function editFundAmnt(event) {
     const editFundButton = event.target
-    const fundIncrease = document.querySelector('#fundIncrAmnt').value; // deposit to add
-    
+    const fundIncrease = document.querySelector('#fundIncrAmnt').value; 
     let fundBalanceBeforeIncrease = window.fundsApp.funds.find(fund => fund.id === window.fundsApp.selectedId).fundAmount;
 
     let newFundAmnt = fundBalanceBeforeIncrease.innerText = +fundBalanceBeforeIncrease.innerText + +fundIncrease
@@ -37,7 +39,7 @@ function editFundAmnt(event) {
 
 function decrFundAmnt(event) {
     const editFundButton = event.target
-    const fundDecrease = document.querySelector('#fundDecrAmnt').value; // deposit to add
+    const fundDecrease = document.querySelector('#fundDecrAmnt').value; 
     
     let fundBalanceBeforeDecrease = window.fundsApp.funds.find(fund => fund.id === window.fundsApp.selectedId).fundAmount;
 
@@ -63,6 +65,32 @@ function decrFundAmnt(event) {
     }
     xhrFundDecrease.open('POST', '/decrease-fund/account/1/' + window.fundsApp.selectedId + '/' + fundDecrease , true)
     xhrFundDecrease.send()
+
+}
+
+
+function editFundName(event) {
+    const editFundButton = event.target
+    const newNameForFund = document.querySelector('#newFundNameInput').value;
+       
+    const xhrChangeFundName = new XMLHttpRequest()
+    xhrChangeFundName.onreadystatechange = function() {
+    	if (xhrChangeFundName.readyState === 4 && xhrChangeFundName.status === 200) {
+            console.log(xhrChangeFundName)
+            
+            const res = JSON.parse(xhrChangeFundName.response)
+            
+            let editFundNameModal = document.querySelector(".edit-fund-name-modal")
+            editFundNameModal.classList.toggle("show-edit-fund-modal");
+      
+           // this is where we will change innerHTML of fund name
+           document.querySelector('.fund__details__header__text').innerHTML = newNameForFund;
+
+        }
+
+    }
+    xhrChangeFundName.open('POST', '/change-fund-name/account/1/' + window.fundsApp.selectedId + '/' + newNameForFund , true)
+    xhrChangeFundName.send()
 
 }
 

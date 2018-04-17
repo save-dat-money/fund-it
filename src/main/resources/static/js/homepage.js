@@ -107,7 +107,6 @@ function toggleModalMilesStone(){
        const fundNameText = createElement('p', fund.fundName);
        fundNameText.className = "fund__details__header__text";
        const fundNameEditButton = createElement('button', "edit");
-
       
         fundNameEditButton.className = "fund__name__edit__button";
         fundDetailsHeader.appendChild(fundNameText);
@@ -136,6 +135,8 @@ function toggleModalMilesStone(){
 		
 		let editFundAmntModal = document.querySelector(".edit-fund-amount-modal")
 		let decrFundAmntModal = document.querySelector(".decrease-fund-amount-modal")
+		let fundNameModal = document.querySelector(".edit-fund-name-modal")
+		
         			
         			function toggleEditFundAmntModal() {
         				editFundAmntModal.classList.toggle("show-edit-fund-modal");   
@@ -144,16 +145,23 @@ function toggleModalMilesStone(){
         			function toggleDecrFundAmntModal() {
             			decrFundAmntModal.classList.toggle("show-edit-fund-modal");   
             		}
+        			
+        			function toggleFundNameModal() {
+        				fundNameModal.classList.toggle("show-edit-fund-modal");   
+            		}
 
         			addToFundButton.addEventListener("click", toggleEditFundAmntModal);
         			decrFundButton.addEventListener("click", toggleDecrFundAmntModal);
+        			fundNameEditButton.addEventListener("click", toggleFundNameModal);
 
         			let closeButtonFundAmount = document.querySelector(".close-edit-fund-button")
         			closeButtonFundAmount.addEventListener("click", toggleEditFundAmntModal);
 
         			let closeButtonDecrFundAmount = document.querySelector(".close-decr-fund-button")
         			closeButtonDecrFundAmount.addEventListener("click", toggleDecrFundAmntModal);
-
+        			
+        			let closeButtonFundName = document.querySelector(".close-fund-name-button")
+        			closeButtonFundName.addEventListener("click", toggleFundNameModal);
 
                     const fundMileMarkerDiv = document.createElement('div');
                     fundMileMarkerDiv.className = "fund__details__mile__marker";
