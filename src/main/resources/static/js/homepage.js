@@ -108,14 +108,12 @@ function toggleModalMilesStone(){
        fundNameText.className = "fund__details__header__text";
        const fundNameEditButton = createElement('button', "edit");
 
-        // fundNameEditButton.innerHTML= "<img
-		// class='fund__name__edit__button__img'
-		// src='./images/pencil-icon.png'></img>"
+      
         fundNameEditButton.className = "fund__name__edit__button";
         fundDetailsHeader.appendChild(fundNameText);
         fundDetailsHeader.appendChild(fundNameEditButton);
 
-        const fundBalanceDiv = document.createElement('div');
+    const fundBalanceDiv = document.createElement('div');
 		fundBalanceDiv.className = "fund__details__balance";
 		const indvidualFundAmnt = fund.fundAmount.toFixed(2);
 		
