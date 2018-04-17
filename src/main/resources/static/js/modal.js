@@ -13,7 +13,7 @@ function toggleModalDeposit() {
     modalDeposit.classList.toggle("show-modal");   
 }
 function toggleModalWithdraw() {
- modalWithdraw.classList.toggle("show-modal");
+   modalWithdraw.classList.toggle("show-modal");
 }
 
 //eventlistener assignment for modal (deposit, withdraw, miles-stone)
@@ -90,14 +90,14 @@ function withdrawModalPopulation(event){
 
 
             const modalContentWithdraw = document.querySelector('.modal-content-withdraw')
-           
+
             modalContentWithdrawReplace = document.createElement('div')
             modalContentWithdrawReplace.classList.add('modal-funds-holder')
 
             res.forEach(function(res) {
-            
-            appendElement(modalContentWithdrawReplace, modalFundInformation(res))
-            
+
+                appendElement(modalContentWithdrawReplace, modalFundInformation(res))
+
             })
 
 
@@ -110,9 +110,9 @@ function withdrawModalPopulation(event){
 
             console.log(modalContentWithdrawReplace)
 
-           const toReplace = modalContentWithdraw.lastElementChild
-           toReplace.replaceWith(modalContentWithdrawReplace)
-           appendElement(modalContentWithdrawReplace, unAssignedFund)
+            const toReplace = modalContentWithdraw.lastElementChild
+            toReplace.replaceWith(modalContentWithdrawReplace)
+            appendElement(modalContentWithdrawReplace, unAssignedFund)
 
         }
 
@@ -154,16 +154,16 @@ function editAccountWithdraw(event) {
             console.log('here')
         }
 
-      
+
 
     }
-      xhrWithdraw.open('PUT', '/edit-account-withdraw/account/1?amountWithdraw='+ encodeURI(amountWithdraw), true)
-      xhrWithdraw.send()
+    xhrWithdraw.open('PUT', '/edit-account-withdraw/account/1?amountWithdraw='+ encodeURI(amountWithdraw), true)
+    xhrWithdraw.send()
 }
 
 
 function modalFundInformation(res) {
-            
+
             //individual fund div info
             const fundsModalInformationContainer = document.createElement('div') //1 indivi
             fundsModalInformationContainer.classList.add('indiv-fund')
@@ -186,7 +186,7 @@ function modalFundInformation(res) {
             fundInput.setAttribute('max', res.fundAmount)
             fundInput.addEventListener('change', withdrawalInnerText)
 
-          
+
             appendElement(fundLabel, fundInput)
             appendElement(fundsModalInformationContainer, fundLabel)
 
@@ -195,7 +195,7 @@ function modalFundInformation(res) {
         }
 
 
-function withdrawalInnerText(){
+        function withdrawalInnerText(){
     // let withdrawUnassigned = document.querySelector('.unassigned-fund').innerText // value of unassigned
     let amountWithdraw = document.querySelector('#amountWithdraw').value; //amount to withdraw 
 
@@ -215,7 +215,7 @@ function withdrawalInnerText(){
 
     if(0>+amountNewWithdraw){
         console.log(amountNewWithdraw)
-       
+
         let modalAppend = document.querySelector('.modal-funds-holder')
         const lastChild = modalAppend.lastElementChild
         lastChild.replaceWith(unAssignedFundToAdd)
@@ -223,7 +223,7 @@ function withdrawalInnerText(){
         unAssignedFundToAdd.style.color = "red"
        //submit unclickable --> function 
        submitWithdrawButton.disabled = true
-        console.log('too much')
+       console.log('too much')
         const childrenOfModalFunds = document.querySelectorAll('.input_fund_value_modal') //array
         //functio for childrenOfModalFunds
         let fundSum = 0
@@ -232,13 +232,18 @@ function withdrawalInnerText(){
         }) 
 
         console.log(fundSum)
+        console.log(amountNewWithdraw)
+        if (fundSum >= Math.abs(amountNewWithdraw)){
 
-        if (fundSum >= amountNewWithdraw)
+            console.log(+fundSum - -amountNewWithdraw)
 
-            console.log('fundSum - amountNewWithdraw:' + +fundSum - -amountNewWithdraw)
-            amountNewWithdraw = -amountNewWithdraw
 
+            submitWithdrawButton.disabled = false
+            amountNewWithdraw +=fundSum
+            console.log(+fundSum - -amountNewWithdraw)
             return
+        }
+        return
     }
 
     let modalAppend = document.querySelector('.modal-funds-holder')
