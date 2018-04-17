@@ -173,6 +173,7 @@ function toggleModalMilesStone(){
                     mileMarkerProgressDiv.appendChild(mileMarkerProgress);
 
                     const bottomButtonDiv = document.createElement('div');
+                    bottomButtonDiv.className = "bottom__button__div";
                     const backToOverviewButton = createElement('button', "Back");
                     backToOverviewButton.className = "back-to-overview";
                     const deleteFundButton = createElement('button', "Delete");
