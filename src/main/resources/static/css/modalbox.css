@@ -1,19 +1,6 @@
-.edit-fund-modal {
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	opacity: 0;
-	visibility: hidden;
-	transform: scale(1.1);
-	transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform
-		0.25s;
-	z-index: 3;
-}
 
-.modal-content-incr {
+
+.modal-content-incr, .modal-fund-name {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -24,7 +11,7 @@
 	border-radius: 0.5rem;
 }
 
-.close-edit-fund-button, .close-decr-fund-button {
+.close-edit-fund-button, .close-decr-fund-button, .close-fund-name-button {
 	float: right;
 	width: 1.5rem;
 	line-height: 1.5rem;
@@ -35,7 +22,7 @@
 }
 
 
-.close-edit-fund-button:hover, .close-decr-fund-button:hover {
+.close-edit-fund-button:hover, .close-decr-fund-button:hover, .close-fund-name-button:hover {
 	background-color: darkgray;
 }
 
@@ -168,7 +155,7 @@
 	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
-.edit-fund-amount-modal, .decrease-fund-amount-modal{
+.edit-fund-amount-modal, .decrease-fund-amount-modal, .edit-fund-name-modal{
 	display: none;
 }
 
@@ -183,6 +170,15 @@
 }
 
 .edit-fund-amount-modal.show-edit-fund-modal {
+	display: block;
+	transform: scale(1.0);
+	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.edit-fund-name-modal.show-edit-fund-modal {
 	display: block;
 	transform: scale(1.0);
 	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;

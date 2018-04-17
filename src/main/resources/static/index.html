@@ -50,10 +50,9 @@
 			<section class="main__bottom__right">
 				<article class="funds__overview">
 
-					<span class="fundContainer">
-<!-- 						<h3>Funds:</h3>
- -->					</span>
+					<span class="fundContainer"> </span>
 					<span class="defaultFundContainer"> </span>
+
 					<article class="fund-input-form">
 						<h3>Add Fund:</h3>
 						<form method="POST">
@@ -72,7 +71,27 @@
 					</article>
 				</article>
 			</section>
+			
+			<!--change fund name-->
+			<div class="edit-fund-name-modal">
+				<!-- .modal -->
+				<div class="modal-fund-name">
+					<span class="close-fund-name-button">&times;</span>
+					<h1>Enter a new fund name: </h1>
+					<form method="PUT">
 
+						<div>
+							<label>Name</label> <input id="newFundNameInput"
+								type="text" required="true" />
+						</div>
+						<div>
+							<input type="button" class="name-change-button" value="Submit"></input>
+						</div>
+
+					</form>
+				</div>
+			</div>
+			
 			<!--increase fund-->
 			<div class="edit-fund-amount-modal">
 				<!-- .modal -->
@@ -111,6 +130,7 @@
 					</form>
 				</div>
 			</div>
+			
 
 
 			<div class="modal-deposit">
