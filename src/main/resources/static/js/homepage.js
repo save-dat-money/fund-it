@@ -106,17 +106,17 @@ function toggleModalMilesStone(){
        const fundNameText = createElement('p', fund.fundName);
        fundNameText.className = "fund__details__header__text";
        const fundNameEditButton = createElement('button', "edit");
-
       
         fundNameEditButton.className = "fund__name__edit__button";
         fundDetailsHeader.appendChild(fundNameText);
         fundDetailsHeader.appendChild(fundNameEditButton);
 
-    const fundBalanceDiv = document.createElement('div');
+        const fundBalanceDiv = document.createElement('div');
 		fundBalanceDiv.className = "fund__details__balance";
 		const indvidualFundAmnt = fund.fundAmount.toFixed(2);
 		const fundBalanceAmount = createElement('h2', "Balance: " + indvidualFundAmnt);
 		fundBalanceAmount.id = "fundAmountBefore";
+
 		const editFundButtonDiv = document.createElement('div');
 		editFundButtonDiv.className = "edit__fund__buttons";
 		const addToFundButton = createElement('button', "+");
@@ -129,12 +129,15 @@ function toggleModalMilesStone(){
 		fundBalanceDiv.appendChild(editFundButtonDiv);
 		
 	    const fundDetailsUnassignedFundsDiv = document.createElement('div');
-		const unAsAmnt = createElement('h3', "Unassigned Funds Available: " + fund.account.unassignedFundAmount.toFixed(2));
+	    const unfundNumber = fund.account.unassignedFundAmount.toFixed(2); 
+		const unAsAmnt = createElement('h2', "Unassigned Funds Available: " + unfundNumber);
+		unAsAmnt.id = "unassigned_funds_in_fund";
 		fundDetailsUnassignedFundsDiv.appendChild(unAsAmnt);
-		fundDetailsUnassignedFundsDiv.id = "unassigned_funds_in_fund";
 		
 		let editFundAmntModal = document.querySelector(".edit-fund-amount-modal")
 		let decrFundAmntModal = document.querySelector(".decrease-fund-amount-modal")
+		let fundNameModal = document.querySelector(".edit-fund-name-modal")
+		
         			
         			function toggleEditFundAmntModal() {
         				editFundAmntModal.classList.toggle("show-edit-fund-modal");   
@@ -143,16 +146,23 @@ function toggleModalMilesStone(){
         			function toggleDecrFundAmntModal() {
             			decrFundAmntModal.classList.toggle("show-edit-fund-modal");   
             		}
+        			
+        			function toggleFundNameModal() {
+        				fundNameModal.classList.toggle("show-edit-fund-modal");   
+            		}
 
         			addToFundButton.addEventListener("click", toggleEditFundAmntModal);
         			decrFundButton.addEventListener("click", toggleDecrFundAmntModal);
+        			fundNameEditButton.addEventListener("click", toggleFundNameModal);
 
         			let closeButtonFundAmount = document.querySelector(".close-edit-fund-button")
         			closeButtonFundAmount.addEventListener("click", toggleEditFundAmntModal);
 
         			let closeButtonDecrFundAmount = document.querySelector(".close-decr-fund-button")
         			closeButtonDecrFundAmount.addEventListener("click", toggleDecrFundAmntModal);
-
+        			
+        			let closeButtonFundName = document.querySelector(".close-fund-name-button")
+        			closeButtonFundName.addEventListener("click", toggleFundNameModal);
 
                     const fundMileMarkerDiv = document.createElement('div');
                     fundMileMarkerDiv.className = "fund__details__mile__marker";
