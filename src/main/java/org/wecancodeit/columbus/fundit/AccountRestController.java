@@ -24,10 +24,10 @@ public class AccountRestController {
 
 	}
 
-	@RequestMapping(path = "/funds", method = RequestMethod.GET)
-	public Iterable<Fund> getFunds() {
-		return fundRepo.findAll();
-	}
+//	@RequestMapping(path = "/funds", method = RequestMethod.GET)
+//	public Iterable<Fund> getFunds() {
+//		return fundRepo.findAll();
+//	}
 
 	@RequestMapping(path = "/funds/{fundId}", method = RequestMethod.GET)
 	public Fund getFund(@PathVariable("fundId") long fundId) {

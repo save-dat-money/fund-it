@@ -1,5 +1,20 @@
-window.fundsApp = {
+
+
+fundsApp = {
   funds: [],
+  refreshFunds(callback){
+	  const xhr5 = new XMLHttpRequest();
+	  xhr5.onreadystatechange = function() {
+	  	if (xhr5.readyState === 4 && xhr5.status === 200) {
+	  		const fundsArray = JSON.parse(xhr5.response);
+	  		fundsApp.funds = fundsArray;
+	  		console.log(fundsArray);
+	  		callback();
+	  	}
+	  };
+	  xhr5.open('GET', 'http://localhost:8080/account/1/funds', true);
+      xhr5.send();
+  }
 };
 fundsApp.newFundForm = document.querySelector(".fund-input-form");
 
@@ -66,10 +81,6 @@ let closeButtonMilesStone = document.querySelector('.close-button-miles-stone')
                     
 closeButtonMilesStone.addEventListener('click', toggleModalMilesStone)
 
-function toggleModalMilesStone(){
-    let modalMilesStone = document.querySelector('.modal-progess')
-    modalMilesStone.classList.toggle("show-modal-miles-stone");
-}
 
 
 
@@ -133,16 +144,7 @@ function toggleModalMilesStone(){
 		fundDetailsUnassignedFundsDiv.appendChild(unAsAmnt);
 		fundDetailsUnassignedFundsDiv.id = "unassigned_funds_in_fund";
 		
-		let editFundAmntModal = document.querySelector(".edit-fund-amount-modal")
-		let decrFundAmntModal = document.querySelector(".decrease-fund-amount-modal")
         			
-        			function toggleEditFundAmntModal() {
-        				editFundAmntModal.classList.toggle("show-edit-fund-modal");   
-        			}
-
-        			function toggleDecrFundAmntModal() {
-            			decrFundAmntModal.classList.toggle("show-edit-fund-modal");   
-            		}
 
         			addToFundButton.addEventListener("click", toggleEditFundAmntModal);
         			decrFundButton.addEventListener("click", toggleDecrFundAmntModal);
@@ -196,9 +198,9 @@ function toggleModalMilesStone(){
                     // modal functionality is here
                     
 
-                    const modalProgressContainer = document.querySelector('.modal-content-progress')
-                    const lastChild = modalProgressContainer.lastElementChild
-                    lastChild.replaceWith(mileMarkerProgressDiv)
+//                    const modalProgressContainer = document.querySelector('.modal-content-progress')
+//                    const lastChild = modalProgressContainer.lastElementChild
+//                    lastChild.replaceWith(mileMarkerProgressDiv)
 
                     let milesStoneEditButton = document.querySelector('.add__to__mile__button')
 
@@ -221,7 +223,7 @@ function toggleModalMilesStone(){
     
     
     
-const addMileMarker = () => {
+const addMileMarker = function() {
 let addMileButton;
 if (addMileButton = document.querySelector('.edit-milestone-button'))
   addMileButton.addEventListener('click', (e) => {
@@ -233,8 +235,9 @@ if (addMileButton = document.querySelector('.edit-milestone-button'))
      			const mileMarkerDiv = document.querySelector(".fund__details__mile__marker");
                 const mileMarkerAmount = createElement('h2', "Mile Marker: " + fund.mileMarker);
      			mileMarkerDiv.replaceChild(mileMarkerAmount, mileMarkerDiv.childNodes[0]);
-     			let modalMilesStone = document.querySelector('.modal-progess')
-     		    modalMilesStone.classList.toggle("show-modal-miles-stone");     			
+//     			let modalMilesStone = document.querySelector('.modal-progess')
+//     		    modalMilesStone.classList.toggle("show-modal-miles-stone"); 
+     			toggleModalMilesStone();
      			const mileMarkerProgress = document.querySelector(".meter");
      			const progressWidth = (fund.fundAmount/fund.mileMarker)*100;
    			console.log(progressWidth);
@@ -259,7 +262,19 @@ if (addMileButton = document.querySelector('.edit-milestone-button'))
       return newElem
   }
 
+function toggleModalMilesStone(){
+	let modalMilesStone = document.querySelector('.modal-progess')
+	modalMilesStone.classList.toggle("show-modal-miles-stone");
+}
+function toggleEditFundAmntModal() {
+	let editFundAmntModal = document.querySelector(".edit-fund-amount-modal")
+	editFundAmntModal.classList.toggle("show-edit-fund-modal");   
+}
 
+function toggleDecrFundAmntModal() {
+	let decrFundAmntModal = document.querySelector(".decrease-fund-amount-modal")
+	decrFundAmntModal.classList.toggle("show-edit-fund-modal");   
+}
   
 
 

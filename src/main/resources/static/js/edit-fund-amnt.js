@@ -26,11 +26,14 @@ function editFundAmnt(event) {
             console.log(res.fundAmount)
             document.querySelector('#fundAmountBefore').innerHTML = "Balance: " + res.fundAmount.toFixed(2);
 			document.querySelector('#unassigned_funds_in_fund').innerHTML = "Unassigned Funds Available: " + res.account.unassignedFundAmount.toFixed(2);
-
+			fundsApp.refreshFunds( () => {
+				drawChart(fundsApp.funds)
+			});
+			toggleEditFundAmntModal();
         }
 
-    }
-    xhrFundIncrease.open('POST', '/increase-fund/account/1/' + window.fundsApp.selectedId + '/' + fundIncrease , true)
+    } 
+    xhrFundIncrease.open('POST', '/increase-fund/account/1/' + fundsApp.selectedId + '/' + fundIncrease , true)
     xhrFundIncrease.send()
 
 }
@@ -56,8 +59,10 @@ function decrFundAmnt(event) {
             console.log(res.fundAmount)
             document.querySelector('#fundAmountBefore').innerHTML = "Balance: " + res.fundAmount.toFixed(2);
 			document.querySelector('#unassigned_funds_in_fund').innerHTML = "Unassigned Funds Available: " + res.account.unassignedFundAmount.toFixed(2);
-
-            
+			fundsApp.refreshFunds( () => {
+				drawChart(fundsApp.funds)
+			});
+			toggleDecrFundAmntModal();
         }
 
     }
