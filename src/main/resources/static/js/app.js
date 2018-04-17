@@ -115,7 +115,11 @@ function appendOneElementToBody(res) {
 //	appendElement(fund, editButton)
 
 	appendElement(fundContainer, fund)
-	appendElement(fundContainer, xButton)
+
+
+//	appendElement(fundContainer, xButton)
+//	appendElement(fund, editButton)
+
 	appendElement(fundContainer, createElement('p', res.fundAmount.toFixed(2)))
 
 	fundContainer.setAttribute('data-fund-id', res.id)

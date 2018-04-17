@@ -35,10 +35,10 @@ public class AccountRestController {
 		return displayFund;
 	}
 
-	@RequestMapping(path = "/funds/{fundId}/addMile", method = RequestMethod.POST)
-	public Fund addMileMarker(@PathVariable("fundId") long fundId) {
+	@RequestMapping(path = "/funds/{fundId}/addMile/{mileMarkerAmount}", method = RequestMethod.POST)
+	public Fund addMileMarker(@PathVariable("fundId") long fundId, @PathVariable("mileMarkerAmount") double mileMarkerAmount) {
 		Fund addMileMarkerFund = fundRepo.findOne(fundId);
-		addMileMarkerFund.mileMarker = 500;
+		addMileMarkerFund.mileMarker = mileMarkerAmount;
 		fundRepo.save(addMileMarkerFund);
 		return addMileMarkerFund;
 	}
@@ -124,6 +124,18 @@ public class AccountRestController {
 		fundRepo.save(fundToIncr);
 		accountRepo.save(account); 
 		return fundToIncr;
+	}
+	
+	@RequestMapping(path = "/decrease-fund/account/{accountId}/{fundId}/{fundDecrease}", method = RequestMethod.POST)
+	public Fund decreaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId, @PathVariable("fundDecrease") double fundDecrease) {
+		Account account = accountRepo.findById(1L);
+		Fund fundToDecr = fundRepo.findOne(fundId);
+		
+		fundToDecr.decreaseFundAmnt(fundDecrease);
+
+		fundRepo.save(fundToDecr);
+		accountRepo.save(account); 
+		return fundToDecr;
 	}
 
 }

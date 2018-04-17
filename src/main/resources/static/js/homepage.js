@@ -89,7 +89,8 @@ function toggleModalMilesStone(){
      console.log(selection);
      if (!selection.length) return;
      const value = data.getValue(selection[0].row || 0, 2);
-     window.fundsApp.selectedId = value;
+     fundsApp.selectedId = value;
+
      const fundDetails = document.createElement('div');
      fundDetails.className = "fund__details";
      const mainBottomRight = document.querySelector('.main__bottom__right');
@@ -106,46 +107,61 @@ function toggleModalMilesStone(){
        const fundNameText = createElement('p', fund.fundName);
        fundNameText.className = "fund__details__header__text";
        const fundNameEditButton = createElement('button', "edit");
-                    //        			fundNameEditButton.innerHTML= "<img class='fund__name__edit__button__img' src='./images/pencil-icon.png'></img>"
-                    fundNameEditButton.className = "fund__name__edit__button";
-                    fundDetailsHeader.appendChild(fundNameText);
-                    fundDetailsHeader.appendChild(fundNameEditButton);
 
-	const fundBalanceDiv = document.createElement('div');
-        			fundBalanceDiv.className = "fund__details__balance";
-        			const indvidualFundAmnt = fund.fundAmount
+      
+        fundNameEditButton.className = "fund__name__edit__button";
+        fundDetailsHeader.appendChild(fundNameText);
+        fundDetailsHeader.appendChild(fundNameEditButton);
+
+    const fundBalanceDiv = document.createElement('div');
+		fundBalanceDiv.className = "fund__details__balance";
+		const indvidualFundAmnt = fund.fundAmount.toFixed(2);
+		
+		const fundBalanceAmount = createElement('h2', "Balance: " + indvidualFundAmnt);
+		fundBalanceAmount.id = "fundAmountBefore";
+		const addToFundButton = createElement('button', "+");
+		addToFundButton.id = "add__to__fund__button";
+		fundBalanceDiv.appendChild(fundBalanceAmount);
+
+		fundBalanceDiv.appendChild(addToFundButton);
+		const decrFundButton = createElement('button', "-");
+		decrFundButton.id = "remove__from__fund__button";
+		fundBalanceDiv.appendChild(decrFundButton);
+		
+	    const fundDetailsUnassignedFundsDiv = document.createElement('div');
+		const unAsAmnt = createElement('h3', "Unassigned Funds Available: " + fund.account.unassignedFundAmount.toFixed(2));
+		fundDetailsUnassignedFundsDiv.appendChild(unAsAmnt);
+		fundDetailsUnassignedFundsDiv.id = "unassigned_funds_in_fund";
+		
+		let editFundAmntModal = document.querySelector(".edit-fund-amount-modal")
+		let decrFundAmntModal = document.querySelector(".decrease-fund-amount-modal")
         			
-        			const fundBalanceAmount = createElement('h2', "Balance: " + indvidualFundAmnt);
-        			fundBalanceAmount.id = "fundAmountBefore";
-        			const addToFundButton = createElement('button', "edit");
-        			addToFundButton.id = "add__to__fund__button";
-        			fundBalanceDiv.appendChild(fundBalanceAmount);
-        			fundBalanceDiv.appendChild(addToFundButton);
-
-
-        			let editFundAmntModal = document.querySelector(".edit-fund-amount-modal")
         			function toggleEditFundAmntModal() {
-        			editFundAmntModal.classList.toggle("show-edit-fund-modal");   
+        				editFundAmntModal.classList.toggle("show-edit-fund-modal");   
         			}
 
+        			function toggleDecrFundAmntModal() {
+            			decrFundAmntModal.classList.toggle("show-edit-fund-modal");   
+            		}
+
         			addToFundButton.addEventListener("click", toggleEditFundAmntModal);
+        			decrFundButton.addEventListener("click", toggleDecrFundAmntModal);
 
         			let closeButtonFundAmount = document.querySelector(".close-edit-fund-button")
         			closeButtonFundAmount.addEventListener("click", toggleEditFundAmntModal);
 
+        			let closeButtonDecrFundAmount = document.querySelector(".close-decr-fund-button")
+        			closeButtonDecrFundAmount.addEventListener("click", toggleDecrFundAmntModal);
 
 
                     const fundMileMarkerDiv = document.createElement('div');
                     fundMileMarkerDiv.className = "fund__details__mile__marker";
 
-                    const mileMarkerAmount = createElement('h2', "Mile Marker: 2000");
-                    const addToMileMarkerButton = createElement('button', "+");
-                    const removeFromMileMarkerButton = createElement('button', "-"); 
+                    const mileMarkerAmount = createElement('h2', "Mile Marker: " + fund.mileMarker);
+                    const addToMileMarkerButton = createElement('button', "edit");
                     addToMileMarkerButton.className = "add__to__mile__button";
-                    removeFromMileMarkerButton.className = "remove__from__mile__button";
                     fundMileMarkerDiv.appendChild(mileMarkerAmount);
                     fundMileMarkerDiv.appendChild(addToMileMarkerButton);
-                    fundMileMarkerDiv.appendChild(removeFromMileMarkerButton);
 
                     const mileMarkerProgressDiv = document.createElement('div');
                     const mileMarkerProgressText = createElement('h2', "Progress:");
@@ -160,19 +176,22 @@ function toggleModalMilesStone(){
                     const backToOverviewButton = createElement('button', "Back");
                     backToOverviewButton.className = "back-to-overview";
                     const deleteFundButton = createElement('button', "Delete");
+                    deleteFundButton.className = "delete-fund-button";
                     bottomButtonDiv.appendChild(backToOverviewButton);
                     bottomButtonDiv.appendChild(deleteFundButton);
 
 
                     fundDetails.appendChild(fundDetailsHeader);
                     fundDetails.appendChild(fundBalanceDiv);
+                    fundDetails.appendChild(fundDetailsUnassignedFundsDiv);
                     fundDetails.appendChild(fundMileMarkerDiv);
                     fundDetails.appendChild(mileMarkerProgressDiv);
                     fundDetails.appendChild(bottomButtonDiv);
                     mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[1]);
                     backToOverview();
+                    addMileMarker();
 
-                    //modal functionality is here
+                    // modal functionality is here
                     
 
                     const modalProgressContainer = document.querySelector('.modal-content-progress')
@@ -196,6 +215,43 @@ function toggleModalMilesStone(){
        xhr1.open('GET', 'http://localhost:8080/account/1/funds', true);
        xhr1.send();
    });
+    
+    
+    
+    
+    const addMileMarker = () => {
+   	 	
+    	let addMileButton;
+   	 if (addMileButton = document.querySelector('.edit-milestone-button'))
+   	  addMileButton.addEventListener('click', (e) => {
+   		  e.preventDefault();
+   		  const xhr3 = new XMLHttpRequest();
+         	xhr3.onreadystatechange = function() {
+         		if (xhr3.readyState === 4 && xhr3.status === 200) {
+         			const fund = JSON.parse(xhr3.response);
+         			const mileMarkerDiv = document.querySelector(".fund__details__mile__marker");
+                    const mileMarkerAmount = createElement('h2', "Mile Marker: " + fund.mileMarker);
+         			mileMarkerDiv.replaceChild(mileMarkerAmount, mileMarkerDiv.childNodes[0]);
+//     				editMileMarkerButton = createElement('button', "edit");
+//     				editMileMarkerButton.className = "edit__mile__button";
+//     				mileMarkerDiv.appendChild(editMileMarkerButton);
+         			addMileButton.toggleModalMilesStone;
+         			const mileMarkerProgress = document.querySelector(".meter");
+         			const progressWidth = (fund.fundAmount/fund.mileMarker)*100;
+       			console.log(progressWidth);
+       			mileMarkerProgress.style.setProperty("--progress-width", progressWidth + "%");
+
+         			
+         			
+         		}
+         	}
+         	const fundId = fundsApp.selectedId;
+         	const mileMarkerEditNumber = document.querySelector('#mileStone').value;
+         	
+         	xhr3.open('POST', 'http://localhost:8080/funds/' + fundId + '/addMile/' + mileMarkerEditNumber , true);
+         	xhr3.send();
+   	  });
+     }
 
     function createElement(elem, textValue) {
       const newElem = document.createElement(elem)
