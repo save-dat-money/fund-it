@@ -235,7 +235,6 @@ function modalFundInformation(res) {
         console.log(amountNewWithdraw)
         if (fundSum >= Math.abs(amountNewWithdraw)){
 
-            console.log(+fundSum - -amountNewWithdraw)
 
             submitWithdrawButton.disabled = false
             amountNewWithdraw +=fundSum
@@ -246,6 +245,14 @@ function modalFundInformation(res) {
             unAssignedFundToAdd.style.color = "black"
 
             return
+        } 
+
+        if (fundSum < Math.abs(amountNewWithdraw)){
+            amountNewWithdraw +=fundSum
+            console.log(+fundSum - -amountNewWithdraw)
+
+            innerTextToAdd = 'Unassigned Fund: $' + amountNewWithdraw 
+            unAssignedFundToAdd.innerText = innerTextToAdd
         }
         return
     }
