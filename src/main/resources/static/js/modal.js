@@ -195,7 +195,7 @@ function modalFundInformation(res) {
         }
 
 
-        function withdrawalInnerText(){
+    function withdrawalInnerText(){
     // let withdrawUnassigned = document.querySelector('.unassigned-fund').innerText // value of unassigned
     let amountWithdraw = document.querySelector('#amountWithdraw').value; //amount to withdraw 
 
@@ -247,6 +247,7 @@ function modalFundInformation(res) {
             return
         } 
 
+        //update
         if (fundSum < Math.abs(amountNewWithdraw)){
             amountNewWithdraw +=fundSum
             console.log(+fundSum - -amountNewWithdraw)
