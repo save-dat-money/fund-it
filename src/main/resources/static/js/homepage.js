@@ -69,7 +69,6 @@ closeButtonMilesStone.addEventListener('click', toggleModalMilesStone)
 function toggleModalMilesStone(){
     let modalMilesStone = document.querySelector('.modal-progess')
     modalMilesStone.classList.toggle("show-modal-miles-stone");
-
 }
 
 
@@ -116,17 +115,18 @@ function toggleModalMilesStone(){
     const fundBalanceDiv = document.createElement('div');
 		fundBalanceDiv.className = "fund__details__balance";
 		const indvidualFundAmnt = fund.fundAmount.toFixed(2);
-		
 		const fundBalanceAmount = createElement('h2', "Balance: " + indvidualFundAmnt);
 		fundBalanceAmount.id = "fundAmountBefore";
+		const editFundButtonDiv = document.createElement('div');
+		editFundButtonDiv.className = "edit__fund__buttons";
 		const addToFundButton = createElement('button', "+");
 		addToFundButton.id = "add__to__fund__button";
 		fundBalanceDiv.appendChild(fundBalanceAmount);
-
-		fundBalanceDiv.appendChild(addToFundButton);
+		editFundButtonDiv.appendChild(addToFundButton);
 		const decrFundButton = createElement('button', "-");
 		decrFundButton.id = "remove__from__fund__button";
-		fundBalanceDiv.appendChild(decrFundButton);
+		editFundButtonDiv.appendChild(decrFundButton);
+		fundBalanceDiv.appendChild(editFundButtonDiv);
 		
 	    const fundDetailsUnassignedFundsDiv = document.createElement('div');
 		const unAsAmnt = createElement('h3', "Unassigned Funds Available: " + fund.account.unassignedFundAmount.toFixed(2));
@@ -220,39 +220,36 @@ function toggleModalMilesStone(){
     
     
     
-    const addMileMarker = () => {
-   	 	
-    	let addMileButton;
-   	 if (addMileButton = document.querySelector('.edit-milestone-button'))
-   	  addMileButton.addEventListener('click', (e) => {
-   		  e.preventDefault();
-   		  const xhr3 = new XMLHttpRequest();
-         	xhr3.onreadystatechange = function() {
-         		if (xhr3.readyState === 4 && xhr3.status === 200) {
-         			const fund = JSON.parse(xhr3.response);
-         			const mileMarkerDiv = document.querySelector(".fund__details__mile__marker");
-                    const mileMarkerAmount = createElement('h2', "Mile Marker: " + fund.mileMarker);
-         			mileMarkerDiv.replaceChild(mileMarkerAmount, mileMarkerDiv.childNodes[0]);
-//     				editMileMarkerButton = createElement('button', "edit");
-//     				editMileMarkerButton.className = "edit__mile__button";
-//     				mileMarkerDiv.appendChild(editMileMarkerButton);
-         			addMileButton.toggleModalMilesStone;
-         			const mileMarkerProgress = document.querySelector(".meter");
-         			const progressWidth = (fund.fundAmount/fund.mileMarker)*100;
-       			console.log(progressWidth);
-       			mileMarkerProgress.style.setProperty("--progress-width", progressWidth + "%");
+const addMileMarker = () => {
+let addMileButton;
+if (addMileButton = document.querySelector('.edit-milestone-button'))
+  addMileButton.addEventListener('click', (e) => {
+	  e.preventDefault();
+	  const xhr3 = new XMLHttpRequest();
+     	xhr3.onreadystatechange = function() {
+     		if (xhr3.readyState === 4 && xhr3.status === 200) {
+     			const fund = JSON.parse(xhr3.response);
+     			const mileMarkerDiv = document.querySelector(".fund__details__mile__marker");
+                const mileMarkerAmount = createElement('h2', "Mile Marker: " + fund.mileMarker);
+     			mileMarkerDiv.replaceChild(mileMarkerAmount, mileMarkerDiv.childNodes[0]);
+     			let modalMilesStone = document.querySelector('.modal-progess')
+     		    modalMilesStone.classList.toggle("show-modal-miles-stone");     			
+     			const mileMarkerProgress = document.querySelector(".meter");
+     			const progressWidth = (fund.fundAmount/fund.mileMarker)*100;
+   			console.log(progressWidth);
+   			mileMarkerProgress.style.setProperty("--progress-width", progressWidth + "%");
 
-         			
-         			
-         		}
-         	}
-         	const fundId = fundsApp.selectedId;
-         	const mileMarkerEditNumber = document.querySelector('#mileStone').value;
-         	
-         	xhr3.open('POST', 'http://localhost:8080/funds/' + fundId + '/addMile/' + mileMarkerEditNumber , true);
-         	xhr3.send();
-   	  });
-     }
+     			
+     			
+     		}
+     	}
+     	const fundId = fundsApp.selectedId;
+     	const mileMarkerEditNumber = document.querySelector('#mileStone').value;
+     	
+     	xhr3.open('POST', 'http://localhost:8080/funds/' + fundId + '/addMile/' + mileMarkerEditNumber , true);
+     	xhr3.send();
+  });
+ }
 
     function createElement(elem, textValue) {
       const newElem = document.createElement(elem)
