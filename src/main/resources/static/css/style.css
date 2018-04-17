@@ -41,6 +41,12 @@ footer {
   height: 100%;
 }
 
+.funds__overview{
+	display: flex;
+	justify-content: space-between;
+	height:80%;
+}
+
 .fund__details{
 	display: flex;
 	flex-direction: column;
