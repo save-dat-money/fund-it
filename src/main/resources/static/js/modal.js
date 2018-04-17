@@ -208,7 +208,7 @@ function modalFundInformation(res) {
     const unAssignedFundToAdd = document.createElement('p')
     unAssignedFundToAdd.classList.add('unassigned-fund')
 
-    const innerTextToAdd = 'Unassigned Fund: $' + amountNewWithdraw 
+    let innerTextToAdd = 'Unassigned Fund: $' + amountNewWithdraw 
     unAssignedFundToAdd.innerText = innerTextToAdd
 
 
@@ -221,9 +221,9 @@ function modalFundInformation(res) {
         lastChild.replaceWith(unAssignedFundToAdd)
         
         unAssignedFundToAdd.style.color = "red"
-       //submit unclickable --> function 
-       submitWithdrawButton.disabled = true
-       console.log('too much')
+        //submit unclickable --> function 
+        submitWithdrawButton.disabled = true
+        console.log('too much')
         const childrenOfModalFunds = document.querySelectorAll('.input_fund_value_modal') //array
         //functio for childrenOfModalFunds
         let fundSum = 0
@@ -237,10 +237,14 @@ function modalFundInformation(res) {
 
             console.log(+fundSum - -amountNewWithdraw)
 
-
             submitWithdrawButton.disabled = false
             amountNewWithdraw +=fundSum
             console.log(+fundSum - -amountNewWithdraw)
+
+            innerTextToAdd = 'Unassigned Fund: $' + amountNewWithdraw 
+            unAssignedFundToAdd.innerText = innerTextToAdd
+            unAssignedFundToAdd.style.color = "black"
+
             return
         }
         return
