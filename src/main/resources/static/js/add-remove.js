@@ -66,7 +66,7 @@ function addFund(event) {
 	event.preventDefault();// prevents forms from refreshing
 	const theButtonAdd = event.target;
 	const fundName = document.querySelector('#fund_input').value;
-	const fundAmount = document.querySelector('#fund_amount_input').value; // Fund name
+	const fundAmount = document.querySelector('#fund_amount_input').value; 
 
 	console.log(fundName);
 	const xhr = new XMLHttpRequest()// ajax request
@@ -85,8 +85,8 @@ function addFund(event) {
 				newUnassignedFundAmnt = 0
 			} 
 			document.querySelector('.defaultFundAmnt').textContent = newUnassignedFundAmnt.toFixed(2)
-			fundName.value = "";
-			fundAmount.value = "";
+			document.getElementById("fund_input").value = "";
+			document.getElementById("fund_amount_input").value = "";
 		}	
 	}
 

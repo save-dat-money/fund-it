@@ -246,17 +246,18 @@ if (addMileButton = document.querySelector('.edit-milestone-button'))
      			const progressWidth = (fund.fundAmount/fund.mileMarker)*100;
    			console.log(progressWidth);
    			mileMarkerProgress.style.setProperty("--progress-width", progressWidth + "%");
-
      			
      			
      		}
      	}
      	const fundId = fundsApp.selectedId;
      	const mileMarkerEditNumber = document.querySelector('#mileStone').value;
+     	document.getElementById("mileStone").value = "";
      	
      	xhr3.open('POST', 'http://localhost:8080/funds/' + fundId + '/addMile/' + mileMarkerEditNumber , true);
      	xhr3.send();
   });
+
  }
 
     function createElement(elem, textValue) {
