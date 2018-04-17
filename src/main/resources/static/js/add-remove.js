@@ -6,7 +6,7 @@ function createAddFundButton() {
 	const addFundButton = document.querySelector('.fund-add-button');
 	addFundButton.addEventListener('click', addFund)
 }
-//dont delete this... susie
+
 function removeFund() {
 	let removeFundButton;
 	if (removeFundButton = document.querySelector('.delete-fund-button'))
@@ -29,13 +29,14 @@ function removeFund() {
 	 		
 	 		const defaultFundsContainer = document.createElement('span');
 	 		defaultFundsContainer.className = "defaultFundContainer";
-	 		fundsOverview.appendChild(defaultFundsContainer);
 	 		
 	 		const fundContainer = document.createElement('span');
 	 		fundContainer.className = "fundContainer";
-	 		const fundContainerHeader = createElement('h3', "Funds:");
-	 		fundContainer.appendChild(fundContainerHeader);
+//	 		const fundContainerHeader = createElement('h3', "Funds:");
+//	 		fundContainer.appendChild(fundContainerHeader);
+	 		
 	 		fundsOverview.appendChild(fundContainer);
+	 		fundsOverview.appendChild(defaultFundsContainer);
 	 		
 	 		const fundInputForm = document.createElement('article');
 	 		fundInputForm.className = "fund-input-form";
@@ -51,14 +52,8 @@ function removeFund() {
 	 		})
 	 		fundsOverview.appendChild(fundsApp.newFundForm);		
 	 		
-	 		/////
-//			let fundContainer = theButton.parentElement
-//			const unassignedFundAmnt = funds.unassignedFundAmount.toFixed(2)
-//			fundContainer.parentElement.removeChild(fundContainer)
 			drawChart(fundsApp.funds)	
-//			document.querySelector('.defaultFundAmnt').textContent = unassignedFundAmnt		
 
-			
 		}
 	}
 	xhr.open('POST', '/account/1/fund/' + fundId + '/remove-fund', true)
@@ -90,6 +85,8 @@ function addFund(event) {
 				newUnassignedFundAmnt = 0
 			} 
 			document.querySelector('.defaultFundAmnt').textContent = newUnassignedFundAmnt.toFixed(2)
+			fundName.value = "";
+			fundAmount.value = "";
 		}	
 	}
 
