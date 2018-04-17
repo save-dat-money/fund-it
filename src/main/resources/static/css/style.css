@@ -200,6 +200,7 @@ footer {
 .bottom__button__div{
 	display: flex;
 	justify-content: space-between;
+}
 .edit__fund__buttons {
 	display: flex;
 	flex-direction: row;
