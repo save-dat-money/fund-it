@@ -41,14 +41,10 @@ function editAccountDeposit(event) {
     const theButtonDeposit = event.target
     const amountDeposit = document.querySelector('#amountDeposit').value; // deposit to add
     
-
-
-
     let accountBalanceBeforeDeposit = document.querySelector('.accntAmnt')
     
-
-    accountBalanceBeforeDeposit.innerText = +accountBalanceBeforeDeposit.innerText + +amountDeposit
-
+    let newAccntAmnt = +accountBalanceBeforeDeposit.innerText + +amountDeposit
+    accountBalanceBeforeDeposit.innerText = newAccntAmnt.toFixed(2)
 
     console.log(accountBalanceBeforeDeposit)
 
@@ -58,6 +54,11 @@ function editAccountDeposit(event) {
             console.log(xhrDeposit)
             const res = JSON.parse(xhrDeposit.response)
             console.log(res)
+            
+            let editAccntDepositModal = document.querySelector(".modal-deposit")
+            editAccntDepositModal.classList.toggle("show-modal");
+            
+            document.querySelector('.defaultFundAmnt').textContent = res.unassignedFundAmount.toFixed(2)
         }
 
     }
@@ -101,7 +102,8 @@ function editAccountWithdraw(event) {
 
     let accountBalanceBeforeWithdraw = document.querySelector('.accntAmnt')
 
-    accountBalanceBeforeWithdraw.innerText = +accountBalanceBeforeWithdraw.innerText - +amountWithdraw
+    let accountBalanceAfterWithdraw = +accountBalanceBeforeWithdraw.innerText - +amountWithdraw
+    accountBalanceBeforeWithdraw.innerText = accountBalanceAfterWithdraw.toFixed(2)
 
 
     console.log(accountBalanceBeforeWithdraw)
@@ -111,10 +113,13 @@ function editAccountWithdraw(event) {
         if (xhrWithdraw.readyState === 4 && xhrWithdraw.status === 200) {
             const res = JSON.parse(xhrWithdraw.response)
             console.log(res)
-            console.log('here')
+            
+            let editAccntWithdrawModal = document.querySelector(".modal-withdraw")
+            editAccntWithdrawModal.classList.toggle("show-modal");
+ 
+            document.querySelector('.defaultFundAmnt').textContent = res.unassignedFundAmount.toFixed(2)
         }
 
-      
 
     }
       xhrWithdraw.open('PUT', '/edit-account-withdraw/account/1?amountWithdraw='+ encodeURI(amountWithdraw), true)

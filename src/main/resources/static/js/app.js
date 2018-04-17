@@ -33,11 +33,11 @@ function fundsOverviewSetup (funds) {
 			const modalWithdrawAmount = document.createElement('div')
 			appendElement(modalWithdrawAmount, createElement('p', funds[0].account.balance.toFixed(2)))
 
-			const modalContentDeposit = document.querySelector('.modal-content-deposit')
-			appendElement(modalContentDeposit, modalDepositAmount)
+//			const modalContentDeposit = document.querySelector('.modal-content-deposit')
+//			appendElement(modalContentDeposit, modalDepositAmount)
 
 			const modalContentWithdraw = document.querySelector('.modal-content-withdraw')
-			appendElement(modalContentWithdraw, modalWithdrawAmount)
+			//appendElement(modalContentWithdraw, modalWithdrawAmount)
 
 
 			const modalFundsHolder = document.createElement('div') // attach all input fund info to this div
@@ -152,8 +152,8 @@ const backToOverview = () => {
     			 		
     			 		const fundContainer = document.createElement('span');
     			 		fundContainer.className = "fundContainer";
-    			 		const fundContainerHeader = createElement('h3', "Funds:");
-    			 		fundContainer.appendChild(fundContainerHeader);
+//    			 		const fundContainerHeader = createElement('h3', "Funds:");
+//    			 		fundContainer.appendChild(fundContainerHeader);
     			 		fundsOverview.appendChild(fundContainer);
     			 		
     			 		const fundInputForm = document.createElement('article');
