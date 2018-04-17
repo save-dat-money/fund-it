@@ -136,8 +136,7 @@ function toggleModalMilesStone(){
 		
 		let editFundAmntModal = document.querySelector(".edit-fund-amount-modal")
 		let decrFundAmntModal = document.querySelector(".decrease-fund-amount-modal")
-		let fundNameModal = document.querySelector(".edit-fund-name-modal")
-		
+		let fundNameModal = document.querySelector(".edit-fund-name-modal")		
         			
         			function toggleEditFundAmntModal() {
         				editFundAmntModal.classList.toggle("show-edit-fund-modal");   
@@ -151,9 +150,11 @@ function toggleModalMilesStone(){
         				fundNameModal.classList.toggle("show-edit-fund-modal");   
             		}
 
+
         			addToFundButton.addEventListener("click", toggleEditFundAmntModal);
         			decrFundButton.addEventListener("click", toggleDecrFundAmntModal);
         			fundNameEditButton.addEventListener("click", toggleFundNameModal);
+        			
 
         			let closeButtonFundAmount = document.querySelector(".close-edit-fund-button")
         			closeButtonFundAmount.addEventListener("click", toggleEditFundAmntModal);
