@@ -174,6 +174,14 @@ closeButtonMilesStone.addEventListener('click', toggleModalMilesStone)
                     const mileMarkerProgress = document.createElement('div');
                     mileMarkerProgress.className = "meter";
                     const mileMarkerProgressSpan = document.createElement('span');
+                    let progressWidth;
+         			if (fund.fundAmount/fund.mileMarker > 1) {
+         				progressWidth = 100;
+         			} else {
+         				progressWidth = (fund.fundAmount/fund.mileMarker)*100;
+         			}
+         			console.log(progressWidth);
+       			mileMarkerProgress.style.setProperty("--progress-width", progressWidth + "%");
                     mileMarkerProgress.appendChild(mileMarkerProgressSpan);
                     mileMarkerProgressDiv.appendChild(mileMarkerProgressText);
                     mileMarkerProgressDiv.appendChild(mileMarkerProgress);
@@ -242,9 +250,14 @@ if (addMileButton = document.querySelector('.edit-milestone-button'))
 //     			let modalMilesStone = document.querySelector('.modal-progess')
 //     		    modalMilesStone.classList.toggle("show-modal-miles-stone"); 
      			toggleModalMilesStone();
+     			let progressWidth;
      			const mileMarkerProgress = document.querySelector(".meter");
-     			const progressWidth = (fund.fundAmount/fund.mileMarker)*100;
-   			console.log(progressWidth);
+     			if (fund.fundAmount/fund.mileMarker > 1) {
+     				progressWidth = 100;
+     			} else {
+     				progressWidth = (fund.fundAmount/fund.mileMarker)*100;
+     			}
+     			console.log(progressWidth);
    			mileMarkerProgress.style.setProperty("--progress-width", progressWidth + "%");
      			
      			
