@@ -192,6 +192,7 @@ function toggleModalMilesStone(){
                     mainBottomRight.replaceChild(fundDetails, mainBottomRight.childNodes[1]);
                     backToOverview();
                     addMileMarker();
+                    removeFund();
 
                     // modal functionality is here
                     
