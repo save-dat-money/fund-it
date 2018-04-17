@@ -151,8 +151,8 @@ const backToOverview = () => {
     			 		
     			 		const fundContainer = document.createElement('span');
     			 		fundContainer.className = "fundContainer";
-    			 		const fundContainerHeader = createElement('h3', "Funds:");
-    			 		fundContainer.appendChild(fundContainerHeader);
+//    			 		const fundContainerHeader = createElement('h3', "Funds:");
+//    			 		fundContainer.appendChild(fundContainerHeader);
     			 		fundsOverview.appendChild(fundContainer);
     			 		
     			 		const fundInputForm = document.createElement('article');
