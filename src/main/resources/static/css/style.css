@@ -159,7 +159,7 @@ footer {
 #fund__details__balance{
 }
 
-#add__to__fund__button{
+#add__to__fund__button, #remove__from__fund__button{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -178,7 +178,10 @@ footer {
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
     border:dashed 2px #41403E;
 }
-
+.edit__fund__buttons {
+	display: flex;
+	flex-direction: row;
+}
 
 
 
