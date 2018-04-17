@@ -36,7 +36,8 @@ public class AccountRestController {
 	}
 
 	@RequestMapping(path = "/funds/{fundId}/addMile/{mileMarkerAmount}", method = RequestMethod.POST)
-	public Fund addMileMarker(@PathVariable("fundId") long fundId, @PathVariable("mileMarkerAmount") double mileMarkerAmount) {
+	public Fund addMileMarker(@PathVariable("fundId") long fundId,
+			@PathVariable("mileMarkerAmount") double mileMarkerAmount) {
 		Fund addMileMarkerFund = fundRepo.findOne(fundId);
 		addMileMarkerFund.mileMarker = mileMarkerAmount;
 		fundRepo.save(addMileMarkerFund);
@@ -49,11 +50,9 @@ public class AccountRestController {
 		return fundRepo.findByAccountId(accountId);
 	}
 
-
-	
-	//account edit controller
+	// account edit controller
 	@RequestMapping(path = "/edit-account-deposit/account/1", method = RequestMethod.PUT)
-	public Account depositAccount(@RequestParam(value = "amountDeposit", required=true) double amountDeposit) {
+	public Account depositAccount(@RequestParam(value = "amountDeposit", required = true) double amountDeposit) {
 
 		Account editAccount = accountRepo.findById(1L);
 		editAccount.deposit(amountDeposit);
@@ -61,31 +60,24 @@ public class AccountRestController {
 		return editAccount;
 	}
 
-	
-	//actual withdraw of account balance
+	// actual withdraw of account balance
 	@RequestMapping(path = "/edit-account-withdraw/account/1", method = RequestMethod.PUT)
-	public Account withdrawAccount(@RequestParam(value = "amountWithdraw", required=true) double amountWithdraw) {
+	public Account withdrawAccount(@RequestParam(value = "amountWithdraw", required = true) double amountWithdraw) {
 		Account editAccount = accountRepo.findById(1L);
 		editAccount.withdraw(amountWithdraw);
-		accountRepo.save(editAccount);	
-		return editAccount; 
+		accountRepo.save(editAccount);
+		return editAccount;
 	}
-	
-//	edit-account-withdraw/populate/account/1
+
+	// edit-account-withdraw/populate/account/1
 	@RequestMapping(path = "/edit-account-withdraw/populate/account/1", method = RequestMethod.GET)
-	public Iterable<Fund> withdrawPopulation() {	
-		return fundRepo.findAll(); 
+	public Iterable<Fund> withdrawPopulation() {
+		return fundRepo.findAll();
 	}
-
-	
-	
-	
-	
-	
-
 
 	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}/{fundAmount}", method = RequestMethod.POST)
-	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName, @PathVariable("fundAmount") double fundAmount) {
+	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName,
+			@PathVariable("fundAmount") double fundAmount) {
 		Account newFundAccount = accountRepo.findById(1L);
 		double newFundAmount;
 		if (newFundAccount.getUnassignedFundAmount() < fundAmount) {
@@ -115,26 +107,34 @@ public class AccountRestController {
 	}
 
 	@RequestMapping(path = "/increase-fund/account/{accountId}/{fundId}/{fundIncrease}", method = RequestMethod.POST)
-	public Fund increaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId, @PathVariable("fundIncrease") double fundIncrease) {
+	public Fund increaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId,
+			@PathVariable("fundIncrease") double fundIncrease) {
 		Account account = accountRepo.findById(1L);
 		Fund fundToIncr = fundRepo.findOne(fundId);
-		
+		if (fundIncrease > account.getUnassignedFundAmount()) {
+			fundIncrease = account.getUnassignedFundAmount();
+		}
+
 		fundToIncr.increaseFundAmnt(fundIncrease);
 
 		fundRepo.save(fundToIncr);
-		accountRepo.save(account); 
+		accountRepo.save(account);
 		return fundToIncr;
 	}
-	
+
 	@RequestMapping(path = "/decrease-fund/account/{accountId}/{fundId}/{fundDecrease}", method = RequestMethod.POST)
-	public Fund decreaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId, @PathVariable("fundDecrease") double fundDecrease) {
+	public Fund decreaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId,
+			@PathVariable("fundDecrease") double fundDecrease) {
 		Account account = accountRepo.findById(1L);
 		Fund fundToDecr = fundRepo.findOne(fundId);
-		
+
+		if (fundDecrease > fundToDecr.getFundAmount()) {
+			fundDecrease = fundToDecr.fundAmount;
+		}
 		fundToDecr.decreaseFundAmnt(fundDecrease);
 
 		fundRepo.save(fundToDecr);
-		accountRepo.save(account); 
+		accountRepo.save(account);
 		return fundToDecr;
 	}
 
