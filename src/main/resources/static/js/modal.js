@@ -149,7 +149,23 @@ function editAccountWithdraw(event) {
     let accountBalanceAfterWithdraw = +accountBalanceBeforeWithdraw.innerText - +amountWithdraw
     accountBalanceBeforeWithdraw.innerText = accountBalanceAfterWithdraw.toFixed(2)
 
+    let requestParamsString = []
+      //create form data object
+    const requestParams = []
 
+    //iterate through funds
+    let fundsValue = document.querySelectorAll('.input_fund_value_modal')
+
+    fundsValue.forEach(function(fund) {
+        let fundId = fund.id
+        let value = fund.value
+        requestParams.push(fundId + '=' + value)// adds to an end array
+       
+        // console.log(fundId)
+        // console.log(formData.get(fundId))
+    }) 
+
+     requestParamsString = requestParams.join('&') // take array of strings and cocatonate with &
 
     console.log(accountBalanceBeforeWithdraw)
 
@@ -162,34 +178,12 @@ function editAccountWithdraw(event) {
             let editAccntWithdrawModal = document.querySelector(".modal-withdraw")
             editAccntWithdrawModal.classList.toggle("show-modal");
  
-            document.querySelector('.defaultFundAmnt').textContent = res.unassignedFundAmount.toFixed(2)
-
-            let unassignedFundValue = document.querySelector('.unassigned-fund').innerText
-
-            //regex command
-            let amount = +/\$(.*)/.exec(unassignedFundValue)[1]
-
-            //create form data object
-            const formData = new FormData(); 
-
-            //iterate through funds
-            let fundsValue = document.querySelectorAll('.input_fund_value_modal')
-
-            fundsValue.forEach(function(fund) {
-                let fundId = fund.id
-                let value = fund.value
-                fundsFormData(formData, fundId, value)
-                console.log(fundId)
-                console.log(formData.get(fundId))
-            }) 
-            
-//            console.log(formData.getAll())
-
-
+            document.querySelector('.defaultFundAmnt').textContent = res.unassignedFundAmount.toFixed(2)  
+            window.location.reload()
         }
 
     }
-    xhrWithdraw.open('PUT', '/edit-account-withdraw/account/1?amountWithdraw='+ encodeURI(amountWithdraw), true)
+    xhrWithdraw.open('PUT', '/edit-account-withdraw/account/1?amountWithdraw='+ encodeURI(amountWithdraw) + '&' + encodeURI(requestParamsString), true)
     xhrWithdraw.send()
 }
 
@@ -321,9 +315,4 @@ function appendElement(parent, child) {
 
 }
 
-function fundsFormData(formData, id, value) {
 
-//    formData.append('fundId', id)
-//    formData.append('fundValue', value)
-	formData.append(id, value)
-}
