@@ -16,9 +16,9 @@ ul li:hover {
 ul {
 	list-style-type: none;
 }
-footer {
+/*footer {
 	display: flex;
-}
+}*/
 
 .main__bottom__right{
 	font-family: 'Indie Flower', cursive;
@@ -44,7 +44,7 @@ footer {
 .funds__overview{
 	display: flex;
 	justify-content: space-between;
-	height:80%;
+	height:90%;
 }
 
 .fund__details{
@@ -148,7 +148,7 @@ footer {
 	align-items: center;
 	align-self:center;
     background:transparent;
-    padding:1rem 1rem;
+    padding:.3rem 1rem;
     margin:0 1rem;
     transition:all .5s ease;
     color:black;

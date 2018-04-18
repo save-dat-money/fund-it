@@ -50,7 +50,8 @@ function removeFund() {
 	 		funds.forEach(function(fund) {
 	 			appendOneElementToBody(fund)
 	 		})
-	 		fundsOverview.appendChild(fundsApp.newFundForm);		
+	 		fundsOverview.appendChild(fundsApp.newFundForm);
+	 		fundsOverview.appendChild(fundsApp.depositWithdraw);
 	 		
 			drawChart(fundsApp.funds)	
 
