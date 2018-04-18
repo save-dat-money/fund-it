@@ -30,6 +30,7 @@ function editFundAmnt(event) {
 			fundsApp.refreshFunds( () => {
 				drawChart(fundsApp.funds)
 			});
+			document.getElementById("fundIncrAmnt").value = "";
         }
 
     } 
@@ -60,6 +61,7 @@ function decrFundAmnt(event) {
 			fundsApp.refreshFunds( () => {
 				drawChart(fundsApp.funds)
 			});
+			document.getElementById("fundDecrAmnt").value = "";
         }
 
     }
@@ -85,7 +87,7 @@ function editFundName(event) {
       
            // this is where we will change innerHTML of fund name
            document.querySelector('.fund__details__header__text').innerHTML = newNameForFund;
-
+           document.getElementById("newFundNameInput").value = "";
         }
 
     }

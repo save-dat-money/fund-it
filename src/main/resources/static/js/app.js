@@ -148,14 +148,14 @@ const backToOverview = () => {
     			 		
     			 		const defaultFundsContainer = document.createElement('span');
     			 		defaultFundsContainer.className = "defaultFundContainer";
-    			 		fundsOverview.appendChild(defaultFundsContainer);
     			 		
     			 		const fundContainer = document.createElement('span');
     			 		fundContainer.className = "fundContainer";
 //    			 		const fundContainerHeader = createElement('h3', "Funds:");
-    			 		fundContainer.appendChild(fundContainerHeader);
+//    			 		fundContainer.appendChild(fundContainerHeader);
 
     			 		fundsOverview.appendChild(fundContainer);
+    			 		fundsOverview.appendChild(defaultFundsContainer);
     			 		
     			 		const fundInputForm = document.createElement('article');
     			 		fundInputForm.className = "fund-input-form";
