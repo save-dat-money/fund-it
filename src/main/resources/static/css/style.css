@@ -20,9 +20,17 @@ ul {
 	display: flex;
 }*/
 
+
 .main__bottom__right{
 	font-family: 'Indie Flower', cursive;
 	font-weight: bold;
+}
+.fundInformation {
+	background-color: rgba(0,0,0,0);
+	border: none;
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
+	font-size: 1.5em;
 }
 
 
