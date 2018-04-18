@@ -67,6 +67,13 @@ function addFund(event) {
 	const theButtonAdd = event.target;
 	const fundName = document.querySelector('#fund_input').value;
 	const fundAmount = document.querySelector('#fund_amount_input').value; 
+    if (fundAmount<0){
+        console.log('Value too small')
+        //event to gray out submit
+        //method needed in Java 
+        return 
+
+    }
 
 	console.log(fundName);
 	const xhr = new XMLHttpRequest()// ajax request
@@ -79,8 +86,8 @@ function addFund(event) {
 			appendOneElementToBody(newFund)
 			drawChart(fundsApp.funds);
 			//ajax for updating unassigned fund amnt
-			let unFndAmnt = newFund.account.unassignedFundAmount
-			let newUnassignedFundAmnt = unFndAmnt - fundAmount
+			let unFndAmnt = newFund.account.unassignedFundAmount.toFixed(2)
+			let newUnassignedFundAmnt = unFndAmnt.toFixed(2) - fundAmount.toFixed(2)
 			if (newUnassignedFundAmnt < 0) {
 				newUnassignedFundAmnt = 0
 			} 

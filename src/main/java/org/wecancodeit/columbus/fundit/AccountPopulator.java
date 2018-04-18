@@ -22,10 +22,10 @@ public class AccountPopulator implements CommandLineRunner {
 		Account account2 = new Account("Account 2", 1000);
 		accountRepo.save(account2);
 		
-		Fund fund = new Fund("Test 1", account, 200);
+		Fund fund = new Fund("Test 1", account, 200.01);
 		fundRepo.save(fund);
 		
-		Fund fund2 = new Fund("Test 2", account, 300);
+		Fund fund2 = new Fund("Test 2", account, 300.05);
 		fundRepo.save(fund2);
 		
 //		Fund fund3 = new Fund("Test Fund", account2, 400);

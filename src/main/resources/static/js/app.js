@@ -52,9 +52,6 @@ function fundsOverviewSetup (funds) {
 
 		}
 
-		
-
-
 		// <div> 1
 		//fund name: res.
 		//fund amount: res.
@@ -104,9 +101,7 @@ function appendOneElementToBody(res) {
 	const fundContainer = document.createElement('div')
 	fundContainer.classList.add('fundContainer')
 
-	let xButton = createElement('button', 'x')
-	xButton.className = 'removeButton'
-	xButton.onclick = removeFund
+
 	let fund = createElement('h2', res.fundName)
 
 	fund.className = 'fundInformation'
@@ -117,16 +112,12 @@ function appendOneElementToBody(res) {
 
 	appendElement(fundContainer, fund)
 
-
-//	appendElement(fundContainer, xButton)
-//	appendElement(fund, editButton)
-
 	appendElement(fundContainer, createElement('p', res.fundAmount.toFixed(2)))
 
 	fundContainer.setAttribute('data-fund-id', res.id)
-	fundContainer.setAttribute('data-fund-amount', res.fundAmount)
+	fundContainer.setAttribute('data-fund-amount',res.fundAmount.toFixed(2))
 	fundContainer.setAttribute('data-unassigned-fund-amount',
-			res.account.unassignedFundAmount)
+			res.account.unassignedFundAmount.toFixed(2))
 
 	appendElement(body, fundContainer)
 

@@ -93,7 +93,7 @@ public class Account {
 	}
 
 	public double getFundsTotalAmnt() {
-		double totalAmnt = 0;
+		double totalAmnt = 0.0;
 		
 		for (Fund fund : funds) {
 			
@@ -107,7 +107,7 @@ public class Account {
 		if (this.balance >= this.getFundsTotalAmnt()) {
 			unassignedFund = balance - getFundsTotalAmnt();
 		} else {
-			unassignedFund = -1*(getFundsTotalAmnt() - balance);
+			unassignedFund = -1.00*(getFundsTotalAmnt() - balance);
 		}
 		return unassignedFund;
 	}
