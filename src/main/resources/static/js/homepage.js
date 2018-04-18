@@ -186,10 +186,12 @@ function goIntoFundDetails (fundId) {
 				fundMileMarkerDiv.appendChild(addToMileMarkerButton);
 				
 				const mileMarkerProgressDiv = document.createElement('div');
+				mileMarkerProgressDiv.className = 'mileMarkerDiv';
 				const mileMarkerProgressText = createElement('h2', "Progress:");
 				const mileMarkerProgress = document.createElement('div');
 				mileMarkerProgress.className = "meter";
 				const mileMarkerProgressSpan = document.createElement('span');
+				mileMarkerProgressSpan.className = "shading";
 				let progressWidth;
 				if (fund.fundAmount/fund.mileMarker > 1) {
 					progressWidth = 100;
@@ -200,7 +202,10 @@ function goIntoFundDetails (fundId) {
 				mileMarkerProgress.appendChild(mileMarkerProgressSpan);
 				mileMarkerProgressDiv.appendChild(mileMarkerProgressText);
 				mileMarkerProgressDiv.appendChild(mileMarkerProgress);
-				
+				if(fund.mileMarker === 0) {
+					mileMarkerProgressDiv.style.visibility = 'hidden';
+				}
+					
 				const bottomButtonDiv = document.createElement('div');
 				bottomButtonDiv.className = "bottom__button__div";
 				const backToOverviewButton = createElement('button', "Back");
@@ -239,7 +244,7 @@ function goIntoFundDetails (fundId) {
 const addMileMarker = function() {
 let addMileButton;
 if (addMileButton = document.querySelector('.edit-milestone-button'))
-  addMileButton.addEventListener('click', (e) => {
+  addMileButton.onclick = (e) => {
 	  e.preventDefault();
 	  const xhr3 = new XMLHttpRequest();
      	xhr3.onreadystatechange = function() {
@@ -248,18 +253,24 @@ if (addMileButton = document.querySelector('.edit-milestone-button'))
      			const mileMarkerDiv = document.querySelector(".fund__details__mile__marker");
                 const mileMarkerAmount = createElement('h2', "Mile Marker: " + fund.mileMarker);
      			mileMarkerDiv.replaceChild(mileMarkerAmount, mileMarkerDiv.childNodes[0]);
-//     			let modalMilesStone = document.querySelector('.modal-progess')
-//     		    modalMilesStone.classList.toggle("show-modal-miles-stone"); 
      			toggleModalMilesStone();
      			let progressWidth;
      			const mileMarkerProgress = document.querySelector(".meter");
+     			const mileMarkerProgressSpan = document.querySelector('.shading');
      			if (fund.fundAmount/fund.mileMarker > 1) {
      				progressWidth = 100;
      			} else {
      				progressWidth = (fund.fundAmount/fund.mileMarker)*100;
      			}
      			console.log(progressWidth);
-   			mileMarkerProgress.style.setProperty("--progress-width", progressWidth + "%");
+     			
+     			mileMarkerProgress.style.setProperty("--progress-width", progressWidth + "%");
+     			mileMarkerProgressDiv = document.querySelector('.mileMarkerDiv');
+     			if(fund.mileMarker === 0) {
+					mileMarkerProgressDiv.style.visibility = 'hidden';
+				} else {
+					mileMarkerProgressDiv.style.visibility = 'visible';
+				}
      			
      			
      		}
@@ -270,7 +281,7 @@ if (addMileButton = document.querySelector('.edit-milestone-button'))
      	
      	xhr3.open('POST', 'http://localhost:8080/funds/' + fundId + '/addMile/' + mileMarkerEditNumber , true);
      	xhr3.send();
-  });
+  };
 
  }
 
