@@ -14,6 +14,7 @@ function fundsOverviewSetup (funds) {
 	funds.forEach(function(fund) {
 		appendOneElementToBody(fund)
 	})
+	clickingOnFundName()
 }
 
 
@@ -57,7 +58,6 @@ function fundsOverviewSetup (funds) {
 				console.log(`${prop} ${funds[prop]}`)
 			}
 		}
-//		console.log(funds)
 
 function appendUnassignedFundToBody(fund) {
 	const thirdBody = document.querySelector('.defaultFundContainer')
@@ -88,14 +88,12 @@ function appendOneElementToBody(res) {
 	const fundContainer = document.createElement('div')
 	fundContainer.classList.add('fundContainer')
 
-	let xButton = createElement('button', 'x')
-	xButton.className = 'removeButton'
-	xButton.onclick = removeFund
-	let fund = createElement('h2', res.fundName)
-
+	
+	let fund = createElement('button', res.fundName)
 	fund.className = 'fundInformation'
 
 	appendElement(fundContainer, fund)
+
 
 	appendElement(fundContainer, createElement('p', res.fundAmount.toFixed(2)))
 
@@ -110,46 +108,55 @@ function appendOneElementToBody(res) {
 
 
 const backToOverview = () => {
-	let backToOverviewButton
-	if ( backToOverviewButton = document.querySelector('.back-to-overview'))
-	 backToOverviewButton.addEventListener('click', () => {
-		 const xhr = new XMLHttpRequest()
-		 xhr.onreadystatechange = function() {
-		 	if (xhr.readyState === 4 && xhr.status === 200) {
-		 		// console.warn(xhr.responseText)
-		 		const funds = JSON.parse(xhr.response)
-		 		
-		 		const fundsOverview = document.createElement('article');
-		 		fundsOverview.className = "funds__overview";
-		 		
-		 		const defaultFundsContainer = document.createElement('span');
-		 		defaultFundsContainer.className = "defaultFundContainer";
-		 		
-		 		const fundContainer = document.createElement('span');
-		 		fundContainer.className = "fundContainer";
 
-		 		fundsOverview.appendChild(fundContainer);
-		 		fundsOverview.appendChild(defaultFundsContainer);
-		 		
-		 		const fundInputForm = document.createElement('article');
-		 		fundInputForm.className = "fund-input-form";
-		 		fundsOverview.appendChild(fundInputForm);
-		 		
-		 		const mainBottomRight = document.querySelector('.main__bottom__right');
-		 		mainBottomRight.replaceChild(fundsOverview, mainBottomRight.childNodes[1]);
-		 		
-		 		
-		 		appendUnassignedFundToBody(funds[0]);
-		 		funds.forEach(function(fund) {
-		 			appendOneElementToBody(fund)
-		 		})
-		 		console.log(fundsApp);
-		 		fundsOverview.appendChild(fundsApp.newFundForm);
-		 	}
-		 }
-		 xhr.open('GET', 'http://localhost:8080/account/1/funds', true)
-		 xhr.send()
-	 });
+    	 let backToOverviewButton
+    	 if ( backToOverviewButton = document.querySelector('.back-to-overview'))
+    		 backToOverviewButton.addEventListener('click', () => {
+    			 const xhr = new XMLHttpRequest()
+    			 xhr.onreadystatechange = function() {
+    			 	if (xhr.readyState === 4 && xhr.status === 200) {
+    			 		// console.warn(xhr.responseText)
+    			 		const funds = JSON.parse(xhr.response)
+    			 		
+    			 		const fundsOverview = document.createElement('article');
+    			 		fundsOverview.className = "funds__overview";
+    			 		
+    			 		const defaultFundsContainer = document.createElement('span');
+    			 		defaultFundsContainer.className = "defaultFundContainer";
+    			 		
+    			 		const fundContainer = document.createElement('span');
+    			 		fundContainer.className = "fundContainer";
+//    			 		const fundContainerHeader = createElement('h3', "Funds:");
+//    			 		fundContainer.appendChild(fundContainerHeader);
+
+    			 		fundsOverview.appendChild(fundContainer);
+    			 		fundsOverview.appendChild(defaultFundsContainer);
+    			 		
+    			 		const fundInputForm = document.createElement('article');
+    			 		fundInputForm.className = "fund-input-form";
+    			 		fundsOverview.appendChild(fundInputForm);
+    			 		
+    			 		const mainBottomRight = document.querySelector('.main__bottom__right');
+    			 		mainBottomRight.replaceChild(fundsOverview, mainBottomRight.childNodes[1]);
+    			 		
+    			 		
+    			 		appendUnassignedFundToBody(funds[0]);
+    			 		funds.forEach(function(fund) {
+    			 			appendOneElementToBody(fund)
+    			 		})
+    			 		console.log(fundsApp);
+    			 		fundsOverview.appendChild(fundsApp.newFundForm);
+              fundsOverview.appendChild(fundsApp.depositWithdraw);
+              
+    			 		clickingOnFundName();
+              
+    			 		
+              
+    			 	}
+    			 }
+    			 xhr.open('GET', 'http://localhost:8080/account/1/funds', true)
+    			 xhr.send()
+    		 });
 }
 
 function createElement(elem, textValue) {

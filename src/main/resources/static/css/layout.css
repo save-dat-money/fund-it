@@ -87,7 +87,7 @@ main {
 
 .accountAction {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	z-index: 4; 
-	width:50vw;}
+}
 

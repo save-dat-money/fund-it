@@ -11,7 +11,8 @@ changeFundNameButton.addEventListener('click', editFundName)
 function editFundAmnt(event) {
     const editFundButton = event.target
     const fundIncrease = document.querySelector('#fundIncrAmnt').value; 
-    let fundBalanceBeforeIncrease = window.fundsApp.funds.find(fund => fund.id === window.fundsApp.selectedId).fundAmount;
+    console.log(fundsApp.selectedId);
+    let fundBalanceBeforeIncrease = fundsApp.funds.find(fund => fundsApp.selectedId).fundAmount;
 
     let newFundAmnt = fundBalanceBeforeIncrease.innerText = +fundBalanceBeforeIncrease.innerText + +fundIncrease
  
@@ -43,7 +44,7 @@ function decrFundAmnt(event) {
     const editFundButton = event.target
     const fundDecrease = document.querySelector('#fundDecrAmnt').value; 
     
-    let fundBalanceBeforeDecrease = window.fundsApp.funds.find(fund => fund.id === window.fundsApp.selectedId).fundAmount;
+    let fundBalanceBeforeDecrease = fundsApp.funds.find(fund => fundsApp.selectedId).fundAmount;
 
     let newFundAmnt = fundBalanceBeforeDecrease.innerText = +fundBalanceBeforeDecrease.innerText - +fundDecrease
  
