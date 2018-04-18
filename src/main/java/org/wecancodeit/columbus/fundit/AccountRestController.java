@@ -1,9 +1,14 @@
 package org.wecancodeit.columbus.fundit;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,12 +67,36 @@ public class AccountRestController {
 
 	// actual withdraw of account balance
 	@RequestMapping(path = "/edit-account-withdraw/account/1", method = RequestMethod.PUT)
-	public Account withdrawAccount(@RequestParam(value = "amountWithdraw", required = true) double amountWithdraw) {
+	public Account withdrawAccount(@RequestParam(value = "amountWithdraw", required = true) double amountWithdraw, @RequestParam Map<String,String> requestParamsString) {
 		Account editAccount = accountRepo.findById(1L);
 		editAccount.withdraw(amountWithdraw);
 		accountRepo.save(editAccount);
+		
+		for(Map.Entry<String, String> element : requestParamsString.entrySet()) {
+			long id;
+			double value;
+			try {
+				id = Long.parseLong(element.getKey());
+				value = Double.parseDouble(element.getValue());
+			} catch(NumberFormatException e) {
+				continue;
+			
+			}
+			Fund toChange = fundRepo.findOne(id); 
+			toChange.decreaseFundAmnt(value);
+			fundRepo.save(toChange);
+		}
+		
+		
 		return editAccount;
 	}
+	
+
+//	for(Map.Entry<Long,Double> value: formData.entrySet()) {
+//		Long id = value.getKey();
+//		Double withdrawal = value.getValue(); 
+//		Fund fundToDecr = fundRepo.findOne(id);
+//	
 
 	// edit-account-withdraw/populate/account/1
 	@RequestMapping(path = "/edit-account-withdraw/populate/account/1", method = RequestMethod.GET)
@@ -120,7 +149,9 @@ public class AccountRestController {
 		return fundToIncr;
 	}
 
+
 	@RequestMapping(path = "/decrease-fund/account/{accountId}/{fundId}/{fundDecrease}/", method = RequestMethod.POST)
+
 	public Fund decreaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId,
 			@PathVariable("fundDecrease") double fundDecrease) {
 		Account account = accountRepo.findById(1L);
@@ -146,5 +177,15 @@ public class AccountRestController {
 		accountRepo.save(fundAccount);
 		return fundToChangeName;
 	}
+	
+//	//pull form multiple funds
+//	@RequestMapping(value="/create",method=RequestMethod.PUT)
+//	public String createRole(@RequestParam Map<String,String> formData){
+//		
+//		
+//		}
+//	
+//		return ""; 
+//	}
 
 }

@@ -53,8 +53,6 @@ function fundsOverviewSetup (funds) {
 
 		}
 
-	
-		
 		function showAllPropsInObject(object) {
 			for (prop in funds) {
 				console.log(`${prop} ${funds[prop]}`)
@@ -94,7 +92,6 @@ function appendOneElementToBody(res) {
 	let fund = createElement('button', res.fundName)
 	fund.className = 'fundInformation'
 
-
 	appendElement(fundContainer, fund)
 
 
@@ -111,6 +108,7 @@ function appendOneElementToBody(res) {
 
 
 const backToOverview = () => {
+
     	 let backToOverviewButton
     	 if ( backToOverviewButton = document.querySelector('.back-to-overview'))
     		 backToOverviewButton.addEventListener('click', () => {
