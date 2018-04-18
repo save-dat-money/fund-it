@@ -113,12 +113,20 @@ public class Account {
 	}
 
 	public void deposit(double balanceDeposit) {
-		balance += balanceDeposit;
+		if(balanceDeposit < 0) {
+			return;
+		} else {
+			balance += balanceDeposit;
+		}	
 	}
 
 	public void withdraw(double balanceWithdraw) {
 		// TODO Auto-generated method stub
-		balance -= balanceWithdraw;
+		if (balanceWithdraw > balance) {
+			return; 
+		} else {
+			balance -= balanceWithdraw;
+		}
 	}
 
 }
