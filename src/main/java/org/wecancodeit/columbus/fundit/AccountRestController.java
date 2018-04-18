@@ -75,7 +75,7 @@ public class AccountRestController {
 		return fundRepo.findAll();
 	}
 
-	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}/{fundAmount}", method = RequestMethod.POST)
+	@RequestMapping(path = "/add-fund/account/{accountId}/{fundName}/{fundAmount}/", method = RequestMethod.POST)
 	public Fund addFund(@PathVariable("accountId") long accountId, @PathVariable("fundName") String fundName,
 			@PathVariable("fundAmount") double fundAmount) {
 		Account newFundAccount = accountRepo.findById(1L);
@@ -102,9 +102,10 @@ public class AccountRestController {
 		return fundRepo.findByAccountId(accountId);
 	}
 
-	@RequestMapping(path = "/increase-fund/account/{accountId}/{fundId}/{fundIncrease}", method = RequestMethod.POST)
+	@RequestMapping(path = "/increase-fund/account/{accountId}/{fundId}/{fundIncrease}/", method = RequestMethod.POST)
 	public Fund increaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId,
 			@PathVariable("fundIncrease") double fundIncrease) {
+		System.out.println(fundIncrease);
 		Account account = accountRepo.findById(1L);
 		Fund fundToIncr = fundRepo.findOne(fundId);
 		if (fundIncrease > account.getUnassignedFundAmount()) {
@@ -115,10 +116,11 @@ public class AccountRestController {
 
 		fundRepo.save(fundToIncr);
 		accountRepo.save(account);
+		System.out.println(fundToIncr.fundAmount);
 		return fundToIncr;
 	}
 
-	@RequestMapping(path = "/decrease-fund/account/{accountId}/{fundId}/{fundDecrease}", method = RequestMethod.POST)
+	@RequestMapping(path = "/decrease-fund/account/{accountId}/{fundId}/{fundDecrease}/", method = RequestMethod.POST)
 	public Fund decreaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId,
 			@PathVariable("fundDecrease") double fundDecrease) {
 		Account account = accountRepo.findById(1L);
