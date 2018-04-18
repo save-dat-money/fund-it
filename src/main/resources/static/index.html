@@ -3,31 +3,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
-	<title>Account</title>
-	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-	<link class="layout" rel="stylesheet" type="text/css" href="/css/layout.css" />
-	<link class="style" rel="stylesheet" type="text/css" href="/css/style.css" />
-	<link class="layout" rel="stylesheet" type="text/css" href="/css/post-it.css" />
-	<link class="layout" rel="stylesheet" type="text/css" href="/css/notepad.css" />
-	<link class="layout" rel="stylesheet" type="text/css" href="/css/modalbox.css" />
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<title>Account</title>
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower"
+	rel="stylesheet">
+<link class="layout" rel="stylesheet" type="text/css"
+	href="/css/layout.css" />
+<link class="style" rel="stylesheet" type="text/css"
+	href="/css/style.css" />
+<link class="layout" rel="stylesheet" type="text/css"
+	href="/css/post-it.css" />
+<link class="layout" rel="stylesheet" type="text/css"
+	href="/css/notepad.css" />
+<link class="layout" rel="stylesheet" type="text/css"
+	href="/css/modalbox.css" />
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
 <body>
 	<section class="container">
 		<header>
 			<section class="header__container">
-				<div class ="post-it">
+				<div class="post-it">
 
 					<h2>Fundit!LOGO</h2>
-					<ul>
+					<img src="./images/logo.pdf" /img>
+					<!-- <ul>
 						<li>Resources</li>
 						<li>|</li>
 						<li>About</li>
 						<li>|</li>
 						<li>Settings</li>
-					</ul>
+					</ul> -->
 				</div>
 				<img class="coffee" src="./images/coffee-cup.png" />
 
@@ -41,11 +50,9 @@
 			<section class="main__bottom__right">
 				<article class="funds__overview">
 
-					<span class="defaultFundContainer">
-						<!-- <h3>Default Fund:</h3> -->
-					</span> <span class="fundContainer">
-						<h3>Funds:</h3>
-					</span>
+					<span class="fundContainer"> </span>
+					<span class="defaultFundContainer"> </span>
+
 					<article class="fund-input-form">
 						<h3>Add Fund:</h3>
 						<form method="POST">
@@ -54,8 +61,8 @@
 									id="fundName" required="true" />
 							</div>
 							<div>
-								<label>Fund Amount:</label> <input id="fund_amount_input" type="number"
-									id="fundAmount" required="true" />
+								<label>Fund Amount:</label> <input id="fund_amount_input"
+									type="number" id="fundAmount" required="true" />
 							</div>
 							<div>
 								<input type="button" class="fund-add-button" value="Submit"></input>
@@ -64,10 +71,70 @@
 					</article>
 				</article>
 			</section>
+			
+			<!--change fund name-->
+			<div class="edit-fund-name-modal">
+				<!-- .modal -->
+				<div class="modal-fund-name">
+					<span class="close-fund-name-button">&times;</span>
+					<h1>Enter a new fund name: </h1>
+					<form method="PUT">
 
-			<div class="modal-deposit"><!-- .modal -->
+						<div>
+							<label>Name</label> <input id="newFundNameInput"
+								type="text" required="true" />
+						</div>
+						<div>
+							<input type="button" class="name-change-button" value="Submit"></input>
+						</div>
+
+					</form>
+				</div>
+			</div>
+			
+			<!--increase fund-->
+			<div class="edit-fund-amount-modal">
+				<!-- .modal -->
+				<div class="modal-content-incr">
+					<span class="close-edit-fund-button">&times;</span>
+					<h1>Enter Amount To Increase:</h1>
+					<form method="PUT">
+
+						<div>
+							<label>Amount To Increase Fund:</label> <input id="fundIncrAmnt"
+								type="number" required="true" min="1" max="700" />
+						</div>
+						<div>
+							<input type="button" class="amount-incr-button" value="Submit"></input>
+						</div>
+
+					</form>
+				</div>
+			</div>
+
+			<!--decrease fund-->
+			<div class="decrease-fund-amount-modal">
+				<!-- .modal -->
+				<div class="modal-content-incr">
+					<span class="close-decr-fund-button">&times;</span>
+					<h1>Enter Amount To Decrease:</h1>
+					<form method="PUT">
+						<div>
+							<label>Amount To Decrease Fund:</label> <input id="fundDecrAmnt"
+								type="number" required="true" min="1" max="700" />
+						</div>
+						<div>
+							<input type="button" class="amount-decr-button" value="Submit"></input>
+						</div>
+
+					</form>
+				</div>
+			</div>
 			
 
+
+			<div class="modal-deposit">
+				<!-- .modal -->
 				<div class="modal-content-deposit">
 					<span class="close-button-deposit">&times;</span>
 					<h1>Current Account Balance:</h1>
@@ -78,74 +145,82 @@
 								type="number" required="true" min="1" max="700" />
 						</div>
 
-							<div>
-								<input type="button" class="amount-deposit-button"  value="Submit"></input>
-							</div>
 
-						</form>
-					</div>
+						<div>
+							<input type="button" class="amount-deposit-button" value="Submit"></input>
+						</div>
+
+					</form>
 				</div>
-				
-				<div class="modal-withdraw"><!-- .modal -->
+			</div>
 
-					<div class="modal-content-withdraw">
-						<span class="close-button-withdraw">&times;</span>
-						<h1>Current Account Balance:</h1>
+			<div class="modal-withdraw">
+				<!-- .modal -->
 
-						<form method="PUT">
-							<div>
-								<label>Amount to Withdraw:</label> <input id="amountWithdraw" type="number" required="true" min="1" max="700"/>
-							</div>
-							<div>
-								<input type="button" class="amount-withdraw-button"  value="Submit"></input>
-							</div>
-						</form>
+				<div class="modal-content-withdraw">
+					<span class="close-button-withdraw">&times;</span>
+					<h1>Current Account Balance:</h1>
+
+					<form method="PUT">
+						<div>
+							<label>Amount to Withdraw:</label> <input id="amountWithdraw"
+								type="number" required="true" min="1" max="700" />
+						</div>
+						<div>
+							<input type="button" class="amount-withdraw-button"
+								value="Submit"></input>
+						</div>
+					</form>
 
 
-					</div>
 				</div>
-				<!-- Miles Stone modal -->
-				<div class="modal-progess">
+			</div>
+			<!-- Miles Stone modal -->
+			<div class="modal-progess">
 
 				<div class="modal-content-progress">
 					<span class="close-button-miles-stone">&times;</span>
 					<h1>Current Value: </h1>
-					<form method="PUT">
+					<form method="POST">
 
 						<div>
-							<label>Milstone Value:</label> <input id="milesStone" type="number" required="true" min="1" max="700"/>
+							<label>Milestone Value:</label> <input id="mileStone" type="number" required="true" min="1" max="1000000"/>
 						</div>
 
 						<div>
-							<input type="button" class="amount-miles-stone-button"  value="Edit"></input>
+
+							<input type="button" class="edit-milestone-button"  value="Submit"></input>
+
+
 						</div>
 
 					</form>
-					<div class="last-child-place-holder"> </div>
-					</div>
-					<!-- Where it ends -->
+					<div class="last-child-place-holder"></div>
 				</div>
+				<!-- Where it ends -->
+			</div>
+		</main>
+
+		<footer>
+			<div class="accountAction">
+
+				<button id="deposit">Deposit</button>
+				<button id="withdraw">Withdraw</button>
+
+			</div>
+		</footer>
+	</section>
+	<script type="text/javascript" src="/js/app.js"></script>
+
+	<script type="text/javascript" src="/js/homepage.js"></script>
+
+	<script type="text/javascript" src="/js/add-remove.js"></script>
+
+	<script type="text/javascript" src="/js/modal.js"></script>
+
+	<script type="text/javascript" src="/js/edit-fund-amnt.js"></script>
 
 
-			</main>
 
-			<footer>
-				<div class="accountAction">
-
-					<button id="deposit">Deposit</button>
-					<button id="withdraw">Withdraw</button>
-
-				</div>
-			</footer>
-		</section>
-		<script type="text/javascript" src="/js/app.js"></script>
-
-		<script type="text/javascript" src="/js/homepage.js"></script>
-
-		<script type="text/javascript" src="/js/add-remove.js"></script>
-
-		<script type="text/javascript" src="/js/modal.js"></script>
-
-
-	</body>
-	</html>
+</body>
+</html>

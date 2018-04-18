@@ -7,15 +7,6 @@ body{
 }
 
 
-.show__menu {
-	display: flex;
-	background-color: white;
-	padding: 3px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: black;
-	border-radius: 5px;
-}
 ul li {
 	margin-bottom: 12px;
 }
@@ -27,6 +18,11 @@ ul {
 }
 footer {
 	display: flex;
+}
+
+.main__bottom__right{
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
 }
 
 
@@ -45,6 +41,12 @@ footer {
   height: 100%;
 }
 
+.funds__overview{
+	display: flex;
+	justify-content: space-between;
+	height:80%;
+}
+
 .fund__details{
 	display: flex;
 	flex-direction: column;
@@ -57,6 +59,7 @@ footer {
 .fund__details__header, .fund__details__balance, .fund__details__mile__marker {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 }
 .add__to__fund__button, .remove__from__fund__button, .add__mile__button, .remove__from__mile__button, .edit__mile__button {
 	background-color: rgba(0,0,0,0);
@@ -67,19 +70,70 @@ footer {
 	font-size: 56px;
 	align-self: center;
 	font-family: "Permanent Marker";
+	font-weight: normal;
+}
+
+.defaultFundHeader{
+	font-size: 56px;
+	font-family: "Permanent Marker";
+	font-weight: normal;
 }
 .fund__name__edit__button {
-	background-color: rgba(0,0,0,0);
-	color: grey;
-	margin-bottom: 1rem;
-	width: 3%;
-	height: 3%;
-	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding: .1rem 1rem;
+    margin:0 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    font-weight: bold;
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:dashed 2px #41403E;
 }
-.fund__name__edit__button__img {
 
-	width: 100%;
-	height: 100%;
+.fund-add-button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding: .1rem 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:dashed 2px #41403E;
+}
+
+#add__to__mile__button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding: .1rem 1rem;
+    margin:0 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    font-weight: bold;
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:dashed 2px #41403E;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Patrick+Hand+SC);
@@ -97,8 +151,9 @@ footer {
     padding:1rem 1rem;
     margin:0 1rem;
     transition:all .5s ease;
-    color:white;
+    color:black;
     font-size:1rem;
+    font-family: "Permanent Marker";
     font-weight: bold;
     letter-spacing:1px;
     outline:none;
@@ -111,7 +166,54 @@ footer {
 }
 
 
+#add__to__fund__button, #remove__from__fund__button, .add__to__mile__button, .back-to-overview{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding: .1rem 1rem;
+    margin:0 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    font-weight: bold;
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:dashed 2px #41403E;
+}
 
+.delete-fund-button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+  background:transparent;
+  padding: .1rem 1rem;
+  margin:0 1rem;
+  transition:all .5s ease;
+  color:red;
+  font-size:1rem;
+  font-family: "Permanent Marker";
+  font-weight: bold;
+  letter-spacing:1px;
+  outline:none;
+  box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border:dashed 2px red;
+}
+
+.bottom__button__div{
+	display: flex;
+	justify-content: space-between;
+}
+.edit__fund__buttons {
+	display: flex;
+	flex-direction: row;
+}
 
 
 

@@ -12,12 +12,12 @@ public class Fund {
 	private long id;
 	private String fundName;
 	protected double fundAmount;
-	int mileMarker;
+	double mileMarker;
 
 	@ManyToOne
 	public Account account;
 
-	public int getMileMarker() {
+	public double getMileMarker() {
 		return mileMarker;
 	}
 
@@ -94,16 +94,11 @@ public class Fund {
 	}
 
 	public void decreaseFundAmnt(double fundDecrease) {
-		account.unassignedFund += fundDecrease;
 		fundAmount -= fundDecrease;
 		// when fundDecrease is greater than fundAmount, the fund has a value of 0
 	}
 
 	public void increaseFundAmnt(double fundIncrease) {
-		if (fundIncrease > account.unassignedFund) {
-			fundIncrease = account.unassignedFund;
-		}
-		account.unassignedFund -= fundIncrease;
 		fundAmount += fundIncrease;
 
 		// if fundIncrease is more than unassignedFundAmount,

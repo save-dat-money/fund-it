@@ -48,8 +48,6 @@ function editAccountDeposit(event) {
     const theButtonDeposit = event.target
     const amountDeposit = document.querySelector('#amountDeposit').value; // deposit to add
 
-
-    let accountBalanceBeforeDeposit = document.querySelector('.accntAmnt')
     
     if (amountDeposit<0){
         console.log('Value too small')
@@ -59,8 +57,12 @@ function editAccountDeposit(event) {
 
     }
 
-    accountBalanceBeforeDeposit.innerText = +accountBalanceBeforeDeposit.innerText + +amountDeposit
-
+ 
+    
+    let accountBalanceBeforeDeposit = document.querySelector('.accntAmnt')
+    
+    let newAccntAmnt = +accountBalanceBeforeDeposit.innerText + +amountDeposit
+    accountBalanceBeforeDeposit.innerText = newAccntAmnt.toFixed(2)
 
     console.log(accountBalanceBeforeDeposit)
 
@@ -70,6 +72,11 @@ function editAccountDeposit(event) {
             console.log(xhrDeposit)
             const res = JSON.parse(xhrDeposit.response)
             console.log(res)
+            
+            let editAccntDepositModal = document.querySelector(".modal-deposit")
+            editAccntDepositModal.classList.toggle("show-modal");
+            
+            document.querySelector('.defaultFundAmnt').textContent = res.unassignedFundAmount.toFixed(2)
         }
 
     }
@@ -141,7 +148,10 @@ function editAccountWithdraw(event) {
     // on blur 
     
 
-    accountBalanceBeforeWithdraw.innerText = +accountBalanceBeforeWithdraw.innerText - +amountWithdraw // take money from account balance
+
+    let accountBalanceAfterWithdraw = +accountBalanceBeforeWithdraw.innerText - +amountWithdraw
+    accountBalanceBeforeWithdraw.innerText = accountBalanceAfterWithdraw.toFixed(2)
+
 
 
     console.log(accountBalanceBeforeWithdraw)
@@ -151,8 +161,13 @@ function editAccountWithdraw(event) {
         if (xhrWithdraw.readyState === 4 && xhrWithdraw.status === 200) {
             const res = JSON.parse(xhrWithdraw.response)
             console.log(res)
-            console.log('here')
+            
+            let editAccntWithdrawModal = document.querySelector(".modal-withdraw")
+            editAccntWithdrawModal.classList.toggle("show-modal");
+ 
+            document.querySelector('.defaultFundAmnt').textContent = res.unassignedFundAmount.toFixed(2)
         }
+
 
 
 
