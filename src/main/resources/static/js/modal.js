@@ -143,12 +143,9 @@ function editAccountWithdraw(event) {
         return //exit function
     }
 
-
     //logic for fund allocation
     // on blur 
     
-
-
     let accountBalanceAfterWithdraw = +accountBalanceBeforeWithdraw.innerText - +amountWithdraw
     accountBalanceBeforeWithdraw.innerText = accountBalanceAfterWithdraw.toFixed(2)
 
@@ -166,10 +163,30 @@ function editAccountWithdraw(event) {
             editAccntWithdrawModal.classList.toggle("show-modal");
  
             document.querySelector('.defaultFundAmnt').textContent = res.unassignedFundAmount.toFixed(2)
+
+            let unassignedFundValue = document.querySelector('.unassigned-fund').innerText
+
+            //regex command
+            let amount = +/\$(.*)/.exec(unassignedFundValue)[1]
+
+            //create form data object
+            const formData = new FormData(); 
+
+            //iterate through funds
+            let fundsValue = document.querySelectorAll('.input_fund_value_modal')
+
+            fundsValue.forEach(function(fund) {
+                let fundId = fund.id
+                let value = fund.value
+                fundsFormData(formData, fundId, value)
+                console.log(fundId)
+                console.log(formData.get(fundId))
+            }) 
+            
+//            console.log(formData.getAll())
+
+
         }
-
-
-
 
     }
     xhrWithdraw.open('PUT', '/edit-account-withdraw/account/1?amountWithdraw='+ encodeURI(amountWithdraw), true)
@@ -179,38 +196,39 @@ function editAccountWithdraw(event) {
 
 function modalFundInformation(res) {
 
-            //individual fund div info
-            const fundsModalInformationContainer = document.createElement('div') //1 indivi
-            fundsModalInformationContainer.classList.add('indiv-fund')
+    //individual fund div info
+    const fundsModalInformationContainer = document.createElement('div') //1 indivi
+    fundsModalInformationContainer.classList.add('indiv-fund')
 
 
 
-            const fundModalInfo = document.createElement('p')
-            fundModalInfo.innerText = 'Fund Name:' + res.fundName +  '\nAmount: $' + res.fundAmount
-            //class name needed?
-            appendElement(fundsModalInformationContainer,fundModalInfo)
+    const fundModalInfo = document.createElement('p')
+    fundModalInfo.innerText = 'Fund Name:' + res.fundName +  '\nAmount: $' + res.fundAmount
+    //class name needed?
+    appendElement(fundsModalInformationContainer,fundModalInfo)
 
-            const fundLabel = document.createElement('label')
-            fundLabel.innerText = 'Amount to Withdraw:'
+    const fundLabel = document.createElement('label')
+    fundLabel.innerText = 'Amount to Withdraw:'
 
-            const fundInput = document.createElement('input')
-            fundInput.setAttribute('class', 'input_fund_value_modal')
-            fundInput.setAttribute('type', 'number')
-            fundInput.setAttribute('required', 'required')
-            fundInput.setAttribute('min', 1)
-            fundInput.setAttribute('max', res.fundAmount)
-            fundInput.addEventListener('change', withdrawalInnerText)
-
-
-            appendElement(fundLabel, fundInput)
-            appendElement(fundsModalInformationContainer, fundLabel)
-
-            console.log(fundsModalInformationContainer)
-            return fundsModalInformationContainer
-        }
+    const fundInput = document.createElement('input')
+    fundInput.setAttribute('id', res.id)
+    fundInput.setAttribute('class', 'input_fund_value_modal')
+    fundInput.setAttribute('type', 'number')
+    fundInput.setAttribute('required', 'required')
+    fundInput.setAttribute('min', 1)
+    fundInput.setAttribute('max', res.fundAmount)
+    fundInput.addEventListener('change', withdrawalInnerText)
 
 
-    function withdrawalInnerText(){
+    appendElement(fundLabel, fundInput)
+    appendElement(fundsModalInformationContainer, fundLabel)
+
+    console.log(fundsModalInformationContainer)
+    return fundsModalInformationContainer
+}
+
+
+function withdrawalInnerText(){
     // let withdrawUnassigned = document.querySelector('.unassigned-fund').innerText // value of unassigned
     let amountWithdraw = document.querySelector('#amountWithdraw').value; //amount to withdraw 
 
@@ -283,7 +301,6 @@ function modalFundInformation(res) {
 }
 
 
-
 function createElement(elem, textValue) {
     const newElem = document.createElement(elem)
     newElem.innerText = textValue
@@ -304,3 +321,9 @@ function appendElement(parent, child) {
 
 }
 
+function fundsFormData(formData, id, value) {
+
+//    formData.append('fundId', id)
+//    formData.append('fundValue', value)
+	formData.append(id, value)
+}

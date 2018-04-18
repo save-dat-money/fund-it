@@ -121,7 +121,6 @@ public class Account {
 	}
 
 	public void withdraw(double balanceWithdraw) {
-		// TODO Auto-generated method stub
 		if (balanceWithdraw > balance) {
 			return; 
 		} else {
