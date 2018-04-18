@@ -1,5 +1,5 @@
 :root {
-	--progress-width: 22%;	
+	--progress-width;	
 }
 
 body{
@@ -235,8 +235,9 @@ ul {
   width: 90%;
 }
 .meter > span {
-  animation-name: expandWidth;
-  animation-duration: 3s;
+  /*animation-name: expandWidth;
+  animation-duration: 3s;*/
+  transition: width 3s;
   width: var(--progress-width);
   display: block;
   height: 100%;
@@ -252,5 +253,8 @@ ul {
     inset 0 -2px 6px rgba(0,0,0,0.4);
   position: relative;
   overflow: hidden;
+}
+.run-animation {
+  animation: expandWidth 3s 1; 
 }
 
