@@ -148,7 +148,12 @@ const backToOverview = () => {
     			 		})
     			 		console.log(fundsApp);
     			 		fundsOverview.appendChild(fundsApp.newFundForm);
+              fundsOverview.appendChild(fundsApp.depositWithdraw);
+              
     			 		clickingOnFundName();
+              
+    			 		
+              
     			 	}
     			 }
     			 xhr.open('GET', 'http://localhost:8080/account/1/funds', true)

@@ -17,6 +17,7 @@ fundsApp = {
   }
 };
 fundsApp.newFundForm = document.querySelector(".fund-input-form");
+fundsApp.depositWithdraw = document.querySelector(".accountAction");
 
 const toggleMenu = () => {
 	const navButton = document.querySelector(".header__nav__button");

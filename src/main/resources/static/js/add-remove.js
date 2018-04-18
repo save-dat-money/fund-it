@@ -51,7 +51,10 @@ function removeFund() {
 	 			appendOneElementToBody(fund)
 	 		})
 	 		fundsOverview.appendChild(fundsApp.newFundForm);
-	 		clickingOnFundName()
+	 		fundsOverview.appendChild(fundsApp.depositWithdraw);
+      
+      clickingOnFundName()
+
 			drawChart(fundsApp.funds)	
 
 		}
