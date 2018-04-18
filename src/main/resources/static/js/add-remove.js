@@ -87,7 +87,7 @@ function addFund(event) {
 			drawChart(fundsApp.funds);
 			//ajax for updating unassigned fund amnt
 			let unFndAmnt = newFund.account.unassignedFundAmount.toFixed(2)
-			let newUnassignedFundAmnt = unFndAmnt.toFixed(2) - fundAmount.toFixed(2)
+			let newUnassignedFundAmnt = +unFndAmnt - +fundAmount
 			if (newUnassignedFundAmnt < 0) {
 				newUnassignedFundAmnt = 0
 			} 
