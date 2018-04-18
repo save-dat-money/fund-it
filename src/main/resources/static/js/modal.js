@@ -77,6 +77,7 @@ function editAccountDeposit(event) {
             editAccntDepositModal.classList.toggle("show-modal");
             
             document.querySelector('.defaultFundAmnt').textContent = res.unassignedFundAmount.toFixed(2)
+            document.getElementById("amountDeposit").value = "";
         }
 
     }
@@ -166,6 +167,7 @@ function editAccountWithdraw(event) {
             editAccntWithdrawModal.classList.toggle("show-modal");
  
             document.querySelector('.defaultFundAmnt').textContent = res.unassignedFundAmount.toFixed(2)
+            document.getElementById("amountWithdraw").value = "";
         }
 
 
