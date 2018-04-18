@@ -94,13 +94,20 @@ public class Fund {
 	}
 
 	public void decreaseFundAmnt(double fundDecrease) {
+		if (fundDecrease > fundAmount) {
+			return; 
+		} else { 
 		fundAmount -= fundDecrease;
 		// when fundDecrease is greater than fundAmount, the fund has a value of 0
+		}
 	}
 
 	public void increaseFundAmnt(double fundIncrease) {
+		if (fundIncrease < 0) {
+			return;
+		} else { 
 		fundAmount += fundIncrease;
-
+		}
 		// if fundIncrease is more than unassignedFundAmount,
 		// then give fundAmount the remainder in unassigned fund and have account
 		// balance be zero
@@ -108,7 +115,6 @@ public class Fund {
 		// modal box to alert user
 		// if there is time, let user take fund cash from another fund.... or something
 		// else
-
 	}
 
 }
