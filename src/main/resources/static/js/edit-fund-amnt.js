@@ -11,21 +11,15 @@ changeFundNameButton.addEventListener('click', editFundName)
 function editFundAmnt(event) {
     const editFundButton = event.target
     const fundIncrease = document.querySelector('#fundIncrAmnt').value; 
-    console.log(fundsApp.selectedId);
     let fundBalanceBeforeIncrease = fundsApp.funds.find(fund => fundsApp.selectedId).fundAmount;
-
-    let newFundAmnt = fundBalanceBeforeIncrease.innerText = +fundBalanceBeforeIncrease.innerText + +fundIncrease
+    let newFundAmnt = fundBalanceBeforeIncrease = +fundBalanceBeforeIncrease + +fundIncrease
  
-    
-    console.log(fundBalanceBeforeIncrease)
-   
     const xhrFundIncrease = new XMLHttpRequest()
     xhrFundIncrease.onreadystatechange = function() {
     	if (xhrFundIncrease.readyState === 4 && xhrFundIncrease.status === 200) {
             console.log(xhrFundIncrease)
             const res = JSON.parse(xhrFundIncrease.response)
             toggleEditFundAmntModal();
-            console.log(res.fundAmount)
             document.querySelector('#fundAmountBefore').innerHTML = "Balance: " + res.fundAmount.toFixed(2);
 			document.querySelector('#unassigned_funds_in_fund').innerHTML = "Unassigned Funds Available: " + res.account.unassignedFundAmount.toFixed(2);
 			fundsApp.refreshFunds( () => {
@@ -33,9 +27,8 @@ function editFundAmnt(event) {
 			});
 			document.getElementById("fundIncrAmnt").value = "";
         }
-
     } 
-    xhrFundIncrease.open('POST', '/increase-fund/account/1/' + fundsApp.selectedId + '/' + fundIncrease , true)
+    xhrFundIncrease.open('POST', '/increase-fund/account/1/' + fundsApp.selectedId + '/' + fundIncrease + '/' , true)
     xhrFundIncrease.send()
 
 }
@@ -43,10 +36,12 @@ function editFundAmnt(event) {
 function decrFundAmnt(event) {
     const editFundButton = event.target
     const fundDecrease = document.querySelector('#fundDecrAmnt').value; 
+    console.log(fundDecrease);
     
     let fundBalanceBeforeDecrease = fundsApp.funds.find(fund => fundsApp.selectedId).fundAmount;
 
-    let newFundAmnt = fundBalanceBeforeDecrease.innerText = +fundBalanceBeforeDecrease.innerText - +fundDecrease
+    let newFundAmnt = fundBalanceBeforeDecrease = +fundBalanceBeforeDecrease - +fundDecrease
+    console.log(newFundAmnt);
  
     
     console.log(fundBalanceBeforeDecrease)
@@ -64,9 +59,8 @@ function decrFundAmnt(event) {
 			});
 			document.getElementById("fundDecrAmnt").value = "";
         }
-
     }
-    xhrFundDecrease.open('POST', '/decrease-fund/account/1/' + window.fundsApp.selectedId + '/' + fundDecrease , true)
+    xhrFundDecrease.open('POST', '/decrease-fund/account/1/' + window.fundsApp.selectedId + '/' + fundDecrease + '/' , true)
     xhrFundDecrease.send()
 
 }

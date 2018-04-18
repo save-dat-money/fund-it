@@ -95,7 +95,7 @@ function addFund(event) {
 		}	
 	}
 
-	xhr.open('POST', '/add-fund/account/1/' + fundName + '/' +fundAmount, true)
+	xhr.open('POST', '/add-fund/account/1/' + fundName + '/' + fundAmount + '/', true)
 	xhr.send()
 	
 }

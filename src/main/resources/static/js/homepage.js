@@ -203,6 +203,7 @@ function goIntoFundDetails (fundId) {
 				mileMarkerProgressDiv.appendChild(mileMarkerProgressText);
 				mileMarkerProgressDiv.appendChild(mileMarkerProgress);
 				if(fund.mileMarker === 0) {
+     				mileMarkerProgress.style.setProperty("--progress-width", '0%');
 					mileMarkerProgressDiv.style.visibility = 'hidden';
 				}
 					
@@ -267,6 +268,7 @@ if (addMileButton = document.querySelector('.edit-milestone-button'))
      			mileMarkerProgress.style.setProperty("--progress-width", progressWidth + "%");
      			mileMarkerProgressDiv = document.querySelector('.mileMarkerDiv');
      			if(fund.mileMarker === 0) {
+     				mileMarkerProgress.style.setProperty("--progress-width", '0%');
 					mileMarkerProgressDiv.style.visibility = 'hidden';
 				} else {
 					mileMarkerProgressDiv.style.visibility = 'visible';
