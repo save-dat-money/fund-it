@@ -14,6 +14,7 @@ function fundsOverviewSetup (funds) {
 	funds.forEach(function(fund) {
 		appendOneElementToBody(fund)
 	})
+	clickingOnFundName()
 }
 
 
@@ -52,28 +53,13 @@ function fundsOverviewSetup (funds) {
 
 		}
 
+	
 		
-
-
-		// <div> 1
-		//fund name: res.
-		//fund amount: res.
-		// 						<label>Amount To Deposit:</label> <input id="amountDeposit" type="number"  required="true"  min="1" max = "700"/>
-		// 					</div>
-
-
-		// 					<div>
-		// 						<input type="button" class="amount-deposit-button"  value="Submit"></input>
-		// 					</div> 
-
-
-
 		function showAllPropsInObject(object) {
 			for (prop in funds) {
 				console.log(`${prop} ${funds[prop]}`)
 			}
 		}
-//		console.log(funds)
 
 function appendUnassignedFundToBody(fund) {
 	const thirdBody = document.querySelector('.defaultFundContainer')
@@ -104,22 +90,13 @@ function appendOneElementToBody(res) {
 	const fundContainer = document.createElement('div')
 	fundContainer.classList.add('fundContainer')
 
-	let xButton = createElement('button', 'x')
-	xButton.className = 'removeButton'
-	xButton.onclick = removeFund
-	let fund = createElement('h2', res.fundName)
-
+	
+	let fund = createElement('button', res.fundName)
 	fund.className = 'fundInformation'
 
-//	let editButton = createElement('button', 'edit')
-//	editButton.className = 'editButton'
-//	appendElement(fund, editButton)
 
 	appendElement(fundContainer, fund)
 
-
-//	appendElement(fundContainer, xButton)
-//	appendElement(fund, editButton)
 
 	appendElement(fundContainer, createElement('p', res.fundAmount.toFixed(2)))
 
@@ -171,6 +148,7 @@ const backToOverview = () => {
     			 		})
     			 		console.log(fundsApp);
     			 		fundsOverview.appendChild(fundsApp.newFundForm);
+    			 		clickingOnFundName();
     			 	}
     			 }
     			 xhr.open('GET', 'http://localhost:8080/account/1/funds', true)
