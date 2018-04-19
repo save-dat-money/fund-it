@@ -271,3 +271,7 @@ ul {
   justify-content: space-between;
 }
 
+#amountWithdraw, .input_fund_value_modal {
+  border: solid 0.1px;
+}
+
