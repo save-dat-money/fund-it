@@ -108,7 +108,6 @@ function clickingOnFundName() {
 	const fundNames = document.querySelectorAll('.fundInformation');
 	if (fundNames) fundNames.forEach(button => {
 		const fundIdClick = button.parentElement.getAttribute('data-fund-id');
-		fundsApp.selectedId = fundIdClick;
 		button.addEventListener('click', () => {
 			goIntoFundDetails(fundIdClick);
 		});
@@ -117,6 +116,7 @@ function clickingOnFundName() {
 
 	 
 function goIntoFundDetails (fundId) {
+	fundsApp.selectedId = fundId;
 	 const fundDetails = document.createElement('div');
 	 fundDetails.className = "fund__details";
 	 const mainBottomRight = document.querySelector('.main__bottom__right');

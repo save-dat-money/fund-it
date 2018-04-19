@@ -200,7 +200,7 @@ function modalFundInformation(res) {
 
 
     const fundModalInfo = document.createElement('p')
-    fundModalInfo.innerText = 'Fund Name:' + res.fundName +  '\nAmount: $' + res.fundAmount
+    fundModalInfo.innerText = res.fundName +  '\nAmount: $' + res.fundAmount
     //class name needed?
     appendElement(fundsModalInformationContainer,fundModalInfo)
 

@@ -13,9 +13,12 @@ function removeFund() {
 	removeFundButton.addEventListener('click', () => {
 	const r = confirm("Are you sure you want to delete this fund?")
 	if(r==true){
+	clickingOnFundName()
+	console.log(fundsApp.selectedId);
 	const fundId = fundsApp.selectedId;	
+	console.log(fundId);
 
-	const arrayIndex = fundsApp.funds.indexOf(fundId)
+	const arrayIndex = fundsApp.funds.find(fund => fund.id === fundId);
 	fundsApp.funds.splice(arrayIndex, 1)
 
 	const xhr = new XMLHttpRequest()// ajax request
@@ -53,7 +56,6 @@ function removeFund() {
 	 		fundsOverview.appendChild(fundsApp.newFundForm);
 	 		fundsOverview.appendChild(fundsApp.depositWithdraw);
       
-      clickingOnFundName()
 
 			drawChart(fundsApp.funds)	
 

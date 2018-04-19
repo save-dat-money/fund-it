@@ -74,7 +74,7 @@ function appendUnassignedFundToBody(fund) {
 	appendElement(fundContainer, defaultFundHeader);
 
 	appendElement(defaultFundContainer, defaultFund)
-	let unFndAmnt = createElement('p', fund.account.unassignedFundAmount
+	let unFndAmnt = createElement('h2', fund.account.unassignedFundAmount
 			.toFixed(2))
 	unFndAmnt.className = 'defaultFundAmnt'
 	appendElement(defaultFundContainer, unFndAmnt)
@@ -95,7 +95,7 @@ function appendOneElementToBody(res) {
 	appendElement(fundContainer, fund)
 
 
-	appendElement(fundContainer, createElement('p', res.fundAmount.toFixed(2)))
+	appendElement(fundContainer, createElement('h2', res.fundAmount.toFixed(2)))
 
 	fundContainer.setAttribute('data-fund-id', res.id)
 	fundContainer.setAttribute('data-fund-amount', res.fundAmount)
