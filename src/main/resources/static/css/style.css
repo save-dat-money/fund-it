@@ -266,3 +266,12 @@ ul {
   animation: expandWidth 3s 1; 
 }
 
+.withdrawal-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+#amountWithdraw, .input_fund_value_modal {
+  border: solid 0.1px;
+}
+
