@@ -6,8 +6,8 @@
  	overflow: hidden;
  	float: left;
  	background:#ffc;
- 	height: 10em;
- 	width: 10em;
+ 	height: 11em;
+ 	width: 11em;
  	padding: 1em;
  	padding-bottom: 0;
  	/*making the box*/
@@ -47,6 +47,11 @@ post-it:hover,post-it:focus{
 	font-family: 'Indie Flower', cursive;
 	font-weight: bold;
 
+}
+
+.post-it h3{
+	display: flex;
+	justify-content: center;
 }
 /*.post-it ul li {
 	border-right-style: solid;
