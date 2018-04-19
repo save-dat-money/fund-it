@@ -266,3 +266,8 @@ ul {
   animation: expandWidth 3s 1; 
 }
 
+.withdrawal-form {
+  display: flex;
+  justify-content: space-between;
+}
+
