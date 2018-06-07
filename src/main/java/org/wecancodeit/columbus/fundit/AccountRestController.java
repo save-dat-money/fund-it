@@ -26,13 +26,7 @@ public class AccountRestController {
 	@RequestMapping(path = "/accounts", method = RequestMethod.GET)
 	public Iterable<Account> findAccounts() {
 		return accountRepo.findAll();
-
 	}
-
-//	@RequestMapping(path = "/funds", method = RequestMethod.GET)
-//	public Iterable<Fund> getFunds() {
-//		return fundRepo.findAll();
-//	}
 
 	@RequestMapping(path = "/funds/{fundId}", method = RequestMethod.GET)
 	public Fund getFund(@PathVariable("fundId") long fundId) {
@@ -90,13 +84,6 @@ public class AccountRestController {
 		
 		return editAccount;
 	}
-	
-
-//	for(Map.Entry<Long,Double> value: formData.entrySet()) {
-//		Long id = value.getKey();
-//		Double withdrawal = value.getValue(); 
-//		Fund fundToDecr = fundRepo.findOne(id);
-//	
 
 	// edit-account-withdraw/populate/account/1
 	@RequestMapping(path = "/edit-account-withdraw/populate/account/1", method = RequestMethod.GET)
@@ -177,15 +164,5 @@ public class AccountRestController {
 		accountRepo.save(fundAccount);
 		return fundToChangeName;
 	}
-	
-//	//pull form multiple funds
-//	@RequestMapping(value="/create",method=RequestMethod.PUT)
-//	public String createRole(@RequestParam Map<String,String> formData){
-//		
-//		
-//		}
-//	
-//		return ""; 
-//	}
 
 }
