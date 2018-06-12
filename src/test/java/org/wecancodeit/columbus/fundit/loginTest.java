@@ -1,6 +1,7 @@
 package org.wecancodeit.columbus.fundit;
 
 import org.junit.Test;
+import static org.junit.Assert.assertNotNull;
 
 public class loginTest {
 
@@ -8,6 +9,6 @@ public class loginTest {
     public void shouldCreateALoginObject() {
         Login login = new Login();
 
-        assertNotnull(login);
+        assertNotNull(login);
     }
 }
