@@ -11,7 +11,7 @@ public class Login {
 
     public Login(String name, String password){
         this.username = name;
-        this.password = "test";
+        this.password = password;
     }
 
     public String getUsername(){
@@ -21,6 +21,8 @@ public class Login {
     public String getPassword(){
         return password;
     }
+
+
 //    @Override
 //    public int hashCode() {
 //        final int prime = 31;

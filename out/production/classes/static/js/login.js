@@ -3,24 +3,32 @@
 //check the password with the associated name. JS
 //If the password is in correct say, so . 
 
-function submitButton() {
+document.addEventListener("DOMContentLoaded", function() {
+	createSubmitButton()
+});
+
+function createSubmitButton() {
 	const submit = document.querySelector('.submit-button')
 	addFundButton.addEventListener('click', authenticate)
 }
 
-function authenticate() {
+function authenticate(event) {
 	event.preventDefault();
-	let submitButton
+	const submitButton = event.target;
+	const username = document.querySelector('#username_input');
+	const password = document.querySelector('#password_input');
+	console.log(username);
+	console.log(password); 
 	
-	const xhr = new XMLHttpRequest() 
-		xhr.onreadystatechange = fucntion() {
-		if (xhr.readyState === 4 && xhr.status=== 200){
-			const funds = JSON.parse(xhr.response)
-		}	
-	}
+	// const xhr = new XMLHttpRequest() 
+	// 	xhr.onreadystatechange = fucntion() {
+	// 	if (xhr.readyState === 4 && xhr.status=== 200){
+	// 		const funds = JSON.parse(xhr.response)
+	// 	}	
+	// }
 
-	xhr.open('GET', 'http://localhost:8080/login/auth', true)
-	xhr.send(); 
+	// xhr.open('GET', 'http://localhost:8080/login/auth', true)
+	// xhr.send(); 
 }
 
 
