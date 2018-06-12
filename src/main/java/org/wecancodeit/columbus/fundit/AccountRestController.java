@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import sun.misc.Request;
 
 @RestController
 public class AccountRestController {
@@ -22,6 +23,12 @@ public class AccountRestController {
 
 	@Resource
 	AccountRepository accountRepo;
+
+//	@RequestMapping(path="/login", method = RequestMethod.GET)
+//	public login getLogin(@PathVariable("loginId") long loginId) {
+//		Login checkLogin = loginRepo.findOne(loginId);
+//		return checkLogin;
+//	}
 
 	@RequestMapping(path = "/accounts", method = RequestMethod.GET)
 	public Iterable<Account> findAccounts() {
@@ -138,7 +145,6 @@ public class AccountRestController {
 
 
 	@RequestMapping(path = "/decrease-fund/account/{accountId}/{fundId}/{fundDecrease}/", method = RequestMethod.POST)
-
 	public Fund decreaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId,
 			@PathVariable("fundDecrease") double fundDecrease) {
 		Account account = accountRepo.findById(1L);
