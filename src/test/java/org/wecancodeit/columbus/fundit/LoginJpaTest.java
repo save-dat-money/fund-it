@@ -6,9 +6,12 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import junit.framework.Assert;
+
 import javax.annotation.Resource;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -40,12 +43,34 @@ public class LoginJpaTest {
 		Login login = new Login("test", "testpass");
 		login = loginRepo.save(login);
 
-		String loginName = login.getUsername();
+//		String loginName = login.getUsername();?\
 
 		entityManager.flush();
 		entityManager.clear();
 		
 		Login test = loginRepo.findByUsername("test"); 
-		assertThat(test.getUsername(), is(loginName));
+		assertThat(login.getUsername(), is(test.getUsername()));
     }
+	
+//	(expected= NullPointerException.class)
+	@Test
+	public void returnsMessageWhenNameNotFound() {
+		Login login = new Login("test", "testpass");
+		login = loginRepo.save(login);
+		Login login2 = new Login("test2", "testpass2");
+		login = loginRepo.save(login2);
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		Login test = loginRepo.findByUsername("test3"); 
+		String response = "ok"; 
+		if(test == null) {
+			response = "not found"; 
+		}
+		
+		assertThat(response, is("not found")); 
+		
+	}
+
 }
