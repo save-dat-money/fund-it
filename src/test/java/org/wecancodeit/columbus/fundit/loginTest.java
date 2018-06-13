@@ -1,5 +1,6 @@
 package org.wecancodeit.columbus.fundit;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
@@ -12,7 +13,10 @@ public class loginTest {
 //    public void setUp() {
 //        Login login = new Login();
 //    }
-
+@Before
+public void setUp() throws Exception {
+    Login login = new Login();
+}
     @Test
     public void shouldCreateALoginObject() {
         Login login = new Login();
@@ -32,9 +36,7 @@ public class loginTest {
     @Test
     public void shouldCheckUserInputWithPassword(){
         Login login = new Login("test","testpass");
-        String pass = login.getPassword();
-        String input = "testpass";
-        assertThat(pass, is(input));
-
+        Boolean reply = login.checkPassword("testpass");
+        assertThat(reply, is(true));
     }
 }

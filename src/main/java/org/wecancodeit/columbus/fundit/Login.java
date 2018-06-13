@@ -22,6 +22,12 @@ public class Login {
         return password;
     }
 
+    public boolean checkPassword(String input){
+        if(input == password){
+            return true;
+        }
+        return false;
+    }
 
 //    @Override
 //    public int hashCode() {
