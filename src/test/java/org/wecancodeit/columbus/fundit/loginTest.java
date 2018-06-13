@@ -8,6 +8,11 @@ import static org.junit.Assert.assertThat;
 
 public class loginTest {
 
+//    @Before
+//    public void setUp() {
+//        Login login = new Login();
+//    }
+
     @Test
     public void shouldCreateALoginObject() {
         Login login = new Login();
@@ -22,5 +27,14 @@ public class loginTest {
         String test = login.getPassword();
 
         assertThat(test,is("testpass"));
+    }
+
+    @Test
+    public void shouldCheckUserInputWithPassword(){
+        Login login = new Login("test","testpass");
+        String pass = login.getPassword();
+        String input = "testpass";
+        assertThat(pass, is(input));
+
     }
 }
