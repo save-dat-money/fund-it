@@ -1,18 +1,9 @@
 package org.wecancodeit.columbus.fundit;
 
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.Map;
 //import sun.misc.Request;
 
 @RestController
@@ -23,12 +14,6 @@ public class AccountRestController {
 
 	@Resource
 	AccountRepository accountRepo;
-
-//	@RequestMapping(path="/login", method = RequestMethod.GET)
-//	public login getLogin(@PathVariable("loginId") long loginId) {
-//		Login checkLogin = loginRepo.findOne(loginId);
-//		return checkLogin;
-//	}
 
 	@RequestMapping(path = "/accounts", method = RequestMethod.GET)
 	public Iterable<Account> findAccounts() {

@@ -1,10 +1,13 @@
 package org.wecancodeit.columbus.fundit;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 public class Login {
-
-//    private long id;
+    @Id
+    @GeneratedValue
+    private long id;
     private String username;
-
     private String password;
 
     public Login(){};
@@ -27,6 +30,10 @@ public class Login {
             return true;
         }
         return false;
+    }
+
+    public long getid(){
+        return id;
     }
 
 //    @Override
