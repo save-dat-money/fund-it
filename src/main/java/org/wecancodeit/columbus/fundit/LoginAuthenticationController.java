@@ -10,21 +10,20 @@ import javax.annotation.Resource;
 //@RestController
 public class LoginAuthenticationController {
 
-    @Resource
-    LoginRepository loginRepo;
-    
-    @RequestMapping(path = "/login/{username}/{passwordInput}", method = RequestMethod.PUT)
-    public Login authenticate(@PathVariable("username") String username, @PathVariable("passwordInput") String passwordInput) {
+	@Resource
+	LoginRepository loginRepo;
 
-    	try {
-    	Login checkName = loginRepo.findByUsername(username); 
-    	} catch (NullPointerException) {
-    	if (checkName == null) {
-    		//username not found
-    	} 
-    	checkName.checkPassword(passwordInput)
-    }
+	@RequestMapping(path = "/login/{username}/{passwordInput}", method = RequestMethod.PUT)
+	public boolean authenticate(@PathVariable("username") String username,
+			@PathVariable("passwordInput") String passwordInput) {
 
-
+		Login checkName = loginRepo.findByUsername(username);
+		if (checkName != null) {
+			checkName.checkPassword(passwordInput);
+			return true; 
+		}
+		
+		return false; 
+	}
 
 }

@@ -52,8 +52,8 @@ public class LoginJpaTest {
 		assertThat(login.getUsername(), is(test.getUsername()));
     }
 	
-//	(expected= NullPointerException.class)
-	@Test
+
+	@Test //	(expected= NullPointerException.class)
 	public void returnsMessageWhenNameNotFound() {
 		Login login = new Login("test", "testpass");
 		login = loginRepo.save(login);
