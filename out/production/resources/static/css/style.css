@@ -1,0 +1,277 @@
+:root {
+	--progress-width;	
+}
+
+body{
+	background-image: url(../images/cherry-wood.jpg);
+}
+
+
+ul li {
+	margin-bottom: 12px;
+}
+ul li:hover {
+	/*color: blue;*/
+}
+ul {
+	list-style-type: none;
+}
+/*footer {
+	display: flex;
+}*/
+
+
+.main__bottom__right{
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
+}
+.fundInformation {
+	background-color: rgba(0,0,0,0);
+	border: none;
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+
+.accountNameContainer {
+	font-family: "Permanent Marker";
+	font-size: 58px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+	margin-bottom: 3rem;
+}
+
+.main__bottom__left {
+  width: 100%;
+  height: 100%;
+}
+
+.funds__overview{
+	display: flex;
+	justify-content: space-between;
+	height:90%;
+}
+
+.fund__details{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 80%
+}
+.fund__details__header {
+	align-items: flex-end;
+}
+.fund__details__header, .fund__details__balance, .fund__details__mile__marker {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.add__to__fund__button, .remove__from__fund__button, .add__mile__button, .remove__from__mile__button, .edit__mile__button {
+	background-color: rgba(0,0,0,0);
+	border: none;
+}
+.fund__details__header__text {
+	display: flex;
+	font-size: 56px;
+	align-self: center;
+	font-family: "Permanent Marker";
+	font-weight: normal;
+}
+
+.defaultFundHeader{
+	font-size: 56px;
+	font-family: "Permanent Marker";
+	font-weight: normal;
+}
+.fund__name__edit__button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding: .1rem 1rem;
+    margin:0 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    font-weight: bold;
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:dashed 2px #41403E;
+}
+
+.fund-add-button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding: .1rem 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:dashed 2px #41403E;
+}
+
+#add__to__mile__button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding: .1rem 1rem;
+    margin:0 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    font-weight: bold;
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:dashed 2px #41403E;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Patrick+Hand+SC);
+
+.accountAction{
+	font-family: 'Patrick Hand SC', cursive;
+}
+
+#deposit, #withdraw{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding:.3rem 1rem;
+    margin:0 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    font-weight: bold;
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:solid 7px black;
+}
+#deposit:hover, #withdraw:hover{
+	box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+}
+
+
+#add__to__fund__button, #remove__from__fund__button, .add__to__mile__button, .back-to-overview{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+    background:transparent;
+    padding: .1rem 1rem;
+    margin:0 1rem;
+    transition:all .5s ease;
+    color:black;
+    font-size:1rem;
+    font-family: "Permanent Marker";
+    font-weight: bold;
+    letter-spacing:1px;
+    outline:none;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    border:dashed 2px #41403E;
+}
+
+.delete-fund-button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self:center;
+  background:transparent;
+  padding: .1rem 1rem;
+  margin:0 1rem;
+  transition:all .5s ease;
+  color:red;
+  font-size:1rem;
+  font-family: "Permanent Marker";
+  font-weight: bold;
+  letter-spacing:1px;
+  outline:none;
+  box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border:dashed 2px red;
+}
+
+.bottom__button__div{
+	display: flex;
+	justify-content: space-between;
+}
+.edit__fund__buttons {
+	display: flex;
+	flex-direction: row;
+}
+
+
+
+@keyframes expandWidth {
+   0% { width: 0; }
+   100% { width: var(--progress-width); }
+}
+.meter { 
+	height: 20px;  
+	position: relative;
+	background: white;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+  border-style: solid;
+  border-width: 2px;
+  border-color: lightgrey;
+  width: 90%;
+}
+.meter > span {
+  /*animation-name: expandWidth;
+  animation-duration: 3s;*/
+  transition: width 3s;
+  width: var(--progress-width);
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+/*   background-color: rgb(43,194,83); */
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz-4dw4NpKma6nK0QixW-ZdsrcIZwAFVXUi4MOzvsfa-hStnUzJQ);
+  );
+  box-shadow: 
+    inset 0 2px 9px  rgba(255,255,255,0.3),
+    inset 0 -2px 6px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+.run-animation {
+  animation: expandWidth 3s 1; 
+}
+
+.withdrawal-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+#amountWithdraw, .input_fund_value_modal {
+  border: solid 0.1px;
+}
+

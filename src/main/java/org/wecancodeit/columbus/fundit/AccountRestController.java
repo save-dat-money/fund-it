@@ -1,18 +1,10 @@
 package org.wecancodeit.columbus.fundit;
 
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.Map;
+//import sun.misc.Request;
 
 @RestController
 public class AccountRestController {
@@ -26,13 +18,7 @@ public class AccountRestController {
 	@RequestMapping(path = "/accounts", method = RequestMethod.GET)
 	public Iterable<Account> findAccounts() {
 		return accountRepo.findAll();
-
 	}
-
-//	@RequestMapping(path = "/funds", method = RequestMethod.GET)
-//	public Iterable<Fund> getFunds() {
-//		return fundRepo.findAll();
-//	}
 
 	@RequestMapping(path = "/funds/{fundId}", method = RequestMethod.GET)
 	public Fund getFund(@PathVariable("fundId") long fundId) {
@@ -90,13 +76,6 @@ public class AccountRestController {
 		
 		return editAccount;
 	}
-	
-
-//	for(Map.Entry<Long,Double> value: formData.entrySet()) {
-//		Long id = value.getKey();
-//		Double withdrawal = value.getValue(); 
-//		Fund fundToDecr = fundRepo.findOne(id);
-//	
 
 	// edit-account-withdraw/populate/account/1
 	@RequestMapping(path = "/edit-account-withdraw/populate/account/1", method = RequestMethod.GET)
@@ -151,7 +130,6 @@ public class AccountRestController {
 
 
 	@RequestMapping(path = "/decrease-fund/account/{accountId}/{fundId}/{fundDecrease}/", method = RequestMethod.POST)
-
 	public Fund decreaseFund(@PathVariable("accountId") long accountId, @PathVariable("fundId") Long fundId,
 			@PathVariable("fundDecrease") double fundDecrease) {
 		Account account = accountRepo.findById(1L);
@@ -177,15 +155,5 @@ public class AccountRestController {
 		accountRepo.save(fundAccount);
 		return fundToChangeName;
 	}
-	
-//	//pull form multiple funds
-//	@RequestMapping(value="/create",method=RequestMethod.PUT)
-//	public String createRole(@RequestParam Map<String,String> formData){
-//		
-//		
-//		}
-//	
-//		return ""; 
-//	}
 
 }

@@ -1,9 +1,9 @@
 package org.wecancodeit.columbus.fundit;
 
-import javax.annotation.Resource;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 @Component
 public class AccountPopulator implements CommandLineRunner {
@@ -13,6 +13,9 @@ public class AccountPopulator implements CommandLineRunner {
 
 	@Resource
 	FundRepository fundRepo;
+
+	@Resource
+	LoginRepository loginRepo;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -27,7 +30,9 @@ public class AccountPopulator implements CommandLineRunner {
 		
 //		Fund fund3 = new Fund("Test Fund", account2, 400);
 //		fundRepo.save(fund3);
-//		
+//
+		Login login = new Login("test", "testpass");
+		login = loginRepo.save(login);
 
 	}
 

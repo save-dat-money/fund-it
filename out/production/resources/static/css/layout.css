@@ -1,0 +1,93 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	display: grid;
+	grid-template-rows: 10% auto 10%;
+	height: 100vh;
+	overflow-x: hidden;
+}
+.funds__overview {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	
+}
+header {
+	display: flex;
+	justify-content: center;
+
+}
+.header__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 11em;
+	width: 90%;
+	margin: auto;
+	position: relative;
+}
+.coffee {
+	position: absolute;
+	overflow: hidden;
+	left: 90%;
+	bottom: 10%;
+	transform: rotate(-45deg);
+}
+.nav__menu {
+	position: relative;
+}
+.header__nav {
+	position: absolute;
+	right: 0;
+}
+nav.show__menu{
+	z-index:22;
+}
+main {
+	display: grid;
+	grid-template-rows: 10% 90%;
+}
+.main__top {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.accountNameContainer {
+	display: flex;
+}
+
+.main__bottom__left {
+	display: flex;
+	justify-content: center;
+	margin: auto;
+}
+
+.fundContainer h3{
+	margin-top: 20px;
+}
+
+@media screen and (min-width: 700px) {
+	
+	.main__bottom {
+		display: grid;
+		grid-template-columns: 50% 50%;
+	}
+	.main__bottom__left {
+		width: auto;
+		height: calc(width*1.25);
+	}
+	.main__bottom__right {
+		min-height: 500px;
+	}
+
+}
+
+.accountAction {
+	display: flex;
+	justify-content: space-between;
+	z-index: 4; 
+}
+

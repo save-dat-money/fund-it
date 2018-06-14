@@ -41,6 +41,10 @@ public class Account {
 		return funds;
 	}
 
+	//For Spring
+	public Account() {
+	}
+
 	public Account(double balance) {
 		this.balance = balance;
 	}
@@ -50,20 +54,10 @@ public class Account {
 		this.balance = balance;
 	}
 
-//	public Account(String accountName, double balance, double unassignedFund, Fund... funds) {
-//		this.accountName = accountName;
-//		this.balance = balance;
-//		this.unassignedFund = unassignedFund; 
-//		this.funds = new HashSet<>(asList(funds));
-//	}
-
 	public Account(String accountName, double balance, Fund... funds) {
 		this.accountName = accountName;
 		this.balance = balance;
 		this.funds = new HashSet<>(asList(funds));
-	}
-
-	public Account() {
 	}
 
 	@Override

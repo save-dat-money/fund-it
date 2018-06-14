@@ -1,0 +1,66 @@
+.post-it{
+	font-family: arial, sans-serif;
+	display: flex;
+	flex-direction: column;
+ 	color:#000;
+ 	overflow: hidden;
+ 	float: left;
+ 	background:#ffc;
+ 	height: 11em;
+ 	width: 11em;
+ 	padding: 1em;
+ 	padding-bottom: 0;
+ 	/*making the box*/
+ 	-moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+ 	-webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+ 	box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+ 	-moz-transition:-moz-transform .15s linear;
+	-o-transition:-o-transform .15s linear;
+	-webkit-transition:-webkit-transform .15s linear;
+	/*Rotating the card*/
+	-webkit-transform: rotate(-6deg);
+	-o-transform: rotate(-6deg);
+	-moz-transform:rotate(-6deg);
+	justify-content: space-between;
+}
+post-it:hover,post-it:focus{
+  box-shadow:10px 10px 7px rgba(0,0,0,.7);
+  -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
+  -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  -o-transform: scale(1.25);
+  position:relative;
+  z-index:5;
+}
+@media screen and (min-width: 700px) {
+	.post-it {
+		transform-scale: .75, .75;
+	}
+}
+.post-it ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-bottom: 0;
+	font-size: 14px;
+	font-family: 'Indie Flower', cursive;
+	font-weight: bold;
+
+}
+
+.post-it h3{
+	display: flex;
+	justify-content: center;
+}
+/*.post-it ul li {
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: black;
+	padding-bottom: 0;
+	padding-right: 8px;
+}
+.post-it ul li:last-child {
+	border-right: none;
+	padding-right: none;
+}*/
