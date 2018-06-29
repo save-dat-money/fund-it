@@ -29,9 +29,12 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('org.springframework.boot:spring-boot-devtools')
 	compile('org.springframework.data:spring-data-rest-hal-browser')
-	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-		compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-security')
+	compile ('postgresql:postgresql:42.2.2')
+	// compile group: 'postgresql', name: 'postgresql', version: '42.2.2.jdbc4'
+
+
 
 }

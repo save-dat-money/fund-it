@@ -14,9 +14,6 @@ public class AccountPopulator implements CommandLineRunner {
 	@Resource
 	FundRepository fundRepo;
 
-	@Resource
-	LoginRepository loginRepo;
-
 	@Override
 	public void run(String... args) throws Exception {
 		Account account = new Account("My Account", 3000);
@@ -27,12 +24,6 @@ public class AccountPopulator implements CommandLineRunner {
 		
 		Fund fund2 = new Fund("Car", account, 1000);
 		fundRepo.save(fund2);
-		
-//		Fund fund3 = new Fund("Test Fund", account2, 400);
-//		fundRepo.save(fund3);
-//
-		Login login = new Login("test", "testpass");
-		login = loginRepo.save(login);
 
 	}
 
