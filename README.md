@@ -18,3 +18,12 @@ Web page with login
 Check for valid username and password (capatcha)
 After log in show all accounts
 Be able to mange
+
+Spring Security Login information:
+User Name: user
+Password: test
+
+Database
+PostgreSQL
+
+
