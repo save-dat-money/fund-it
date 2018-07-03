@@ -22,6 +22,7 @@ Be able to mange
 Spring Security Login information:
 User Name: user
 Password: test
+	To bypass this for testing purposes comment out lines #26-30 in SecurityConfiguration.java and uncomment lines #33-38
 
 Database
 PostgreSQL
