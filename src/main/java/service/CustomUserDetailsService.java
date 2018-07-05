@@ -4,11 +4,13 @@ import java.util.Optional;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import model.CustomerUserDetails;
 import model.Users;
 import repository.UsersRepository;
 
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
 	//authenticates and provides type of user details
 	
