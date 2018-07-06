@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/rest/hello")
 @RestController
 public class HelloResource {
-
+//this controller is used for testing the postgres only 
+	
 	@GetMapping("/all")
 	public String hello() {
 		return "Hello All!"; 
