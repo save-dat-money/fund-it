@@ -1,4 +1,7 @@
-package model;
+package org.wecancodeit.columbus.fundit;
+
+import java.util.Collection;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,22 +9,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "role")
 public class Role {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "role_id")
 	private int roleId; 
 
 	@Column(name = "role") 
 	private String role;
 	
-	@ManyToMany(mappedBy = "role")
-	private Users user; 
+	@JsonIgnore
+	@OneToMany(mappedBy = "role")
+	private Collection<Users> users; 
 
 	public Role(){
 		
@@ -42,6 +49,10 @@ public class Role {
 	public void setRole(String role) {
 		this.role = role;
 	} 
+	
+	public void setUsers(Collection<Users> users) {
+		this.users = users; 
+	}
 	
 	
 }

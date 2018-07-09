@@ -1,4 +1,4 @@
-package model;
+package org.wecancodeit.columbus.fundit;
 
 import java.util.Collection;
 import java.util.stream.Collectors;

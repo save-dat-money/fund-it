@@ -1,16 +1,14 @@
-package model;
+package org.wecancodeit.columbus.fundit;
 
 import java.util.Set;
 import javax.persistence.*;
-
-import org.wecancodeit.columbus.fundit.Account;
 
 @Entity
 @Table(name = "user")
 public class Users {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
 	private int id;
 
@@ -33,25 +31,24 @@ public class Users {
 	@OneToOne(mappedBy = "user")
 	public Account account; 
 	
-	@ManyToMany
+	@ManyToOne
 	public Role role; 
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles;
+//	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+//	private Set<Role> roles;
 
 	
 	public Users() {}
 	
 	//for making users in spring 
-	public Users(String name, String last_name, String password, String email, Role role, Account Account) {
+	public Users(String name, String last_name, String password, String email, Role role, Account account) {
 		
 		this.name = name; 
 		this.last_name = last_name; 
 		this.password = password; 
 		this.email = email; 
 		this.account = account;
-		this.role = role; 
 	}
 	
 	//for making users in postgres
@@ -59,7 +56,7 @@ public class Users {
 	
 		this.active = users.getActive();
 		this.email = users.getEmail();
-		this.roles = users.getRoles();
+		this.role = users.getRole();
 		this.name = users.getName();
 		this.last_name = users.getLastName();
 		this.id = users.getId();
@@ -114,12 +111,12 @@ public class Users {
 		this.active = active;
 	}
 
-	public Set<Role> getRoles() {
-		return roles;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
+	public void setRoles(Role roles) {
+		this.role = roles;
 	}
 
 }

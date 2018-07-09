@@ -1,4 +1,6 @@
-package org.wecancodeit.columbus.fundit.config;
+package org.wecancodeit.columbus.fundit;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -8,11 +10,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import customUserDetails.CustomerUserDetailsService;
-import repository.UsersRepository;
 
 @EnableGlobalMethodSecurity(prePostEnabled = true) //enables preauthentication. By role in our case
 @EnableWebSecurity
@@ -21,7 +19,7 @@ import repository.UsersRepository;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private CustomerUserDetailsService userDetailsService;
+	private CustomUserDetailsService userDetailsService;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -64,7 +62,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 			@Override
 			public boolean matches(CharSequence rawPassword, String encodedPassword) {
-				// TODO Auto-generated method stub
 				return false;
 			}
 		};

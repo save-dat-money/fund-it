@@ -23,6 +23,7 @@ public class Account {
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
 	private Collection<Fund> funds;
+	
 	protected double unassignedFund;
 
 	public long getId() {
