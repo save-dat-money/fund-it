@@ -28,7 +28,7 @@ public class Users {
 	private int active;
 	
 	//fund-it
-	@OneToOne(mappedBy = "user")
+	@OneToOne(mappedBy = "users")
 	public Account account; 
 	
 	@ManyToOne
@@ -117,6 +117,10 @@ public class Users {
 
 	public void setRoles(Role roles) {
 		this.role = roles;
+	}
+	
+	public Account getAccount() {
+		return this.account;
 	}
 
 }
