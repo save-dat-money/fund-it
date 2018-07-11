@@ -17,10 +17,14 @@ public class AccountPopulator implements CommandLineRunner {
 	@Resource 
 	UsersRepository usersRepo; 
 	
-	Role admin = new Role("ADMIN"); 
+	@Resource
+	RoleRepository roleRepo; 
 
 	@Override
 	public void run(String... args) throws Exception {
+		Role admin = new Role("ADMIN"); 
+		roleRepo.save(admin); 
+		
 		Account account = new Account("My Account", 3000);
 		accountRepo.save(account);
 		
@@ -31,12 +35,9 @@ public class AccountPopulator implements CommandLineRunner {
 		Fund fund2 = new Fund("Car", account, 1000);
 		fundRepo.save(fund2);
 		
-		Users user = new Users("Stefan", "Murakami", "test", "email", admin, account); 
-		usersRepo.save(user); 
+		Users testUser = new Users("Stefan", "Murakami", "test", "email", admin, account); 
+		usersRepo.save(testUser); 
 		
-		
-		
-
 	}
 
 }

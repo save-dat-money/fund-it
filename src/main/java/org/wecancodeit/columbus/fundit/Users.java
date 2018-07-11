@@ -8,7 +8,6 @@ import javax.persistence.*;
 public class Users {
 
 	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
 	private int id;
 
@@ -51,6 +50,7 @@ public class Users {
 		this.password = password; 
 		this.email = email; 
 		this.account = account;
+		this.role = role; 
 	}
 	
 	//for making users in postgres
