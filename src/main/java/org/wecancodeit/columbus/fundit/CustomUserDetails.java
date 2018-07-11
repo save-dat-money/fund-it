@@ -7,10 +7,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class CustomerUserDetails extends Users implements UserDetails {
+public class CustomUserDetails extends Users implements UserDetails {
 	
-	public CustomerUserDetails(final Users users) {
-		super(); 
+	public CustomUserDetails(final Users users) {
+		super(users); 
 	}
 
 //	@Override //preauthentication based on role

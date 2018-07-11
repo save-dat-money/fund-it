@@ -22,7 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		
 
 		return optionalUsers
-				.map(CustomerUserDetails::new).get();
+				.map(CustomUserDetails::new).get();
 	}
 
 

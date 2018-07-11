@@ -34,6 +34,10 @@ public class Role {
 		
 	}
 	
+	public Role(String role) {
+		this.role = role; 
+	}
+	
 	public int getRoleId() {
 		return roleId;
 	}

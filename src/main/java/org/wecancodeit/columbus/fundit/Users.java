@@ -39,7 +39,9 @@ public class Users {
 //	private Set<Role> roles;
 
 	
-	public Users() {}
+	public Users() {
+		
+	}
 	
 	//for making users in spring 
 	public Users(String name, String last_name, String password, String email, Role role, Account account) {
@@ -52,7 +54,7 @@ public class Users {
 	}
 	
 	//for making users in postgres
-	public Users(Users users, Account account, Role role) {
+	public Users(Users users) {
 	
 		this.active = users.getActive();
 		this.email = users.getEmail();
