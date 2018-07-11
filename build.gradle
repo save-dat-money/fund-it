@@ -33,7 +33,6 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	runtime('com.h2database:h2')
-	// compile ('postgresql:postgresql:42.2.2')
 	compile group: 'postgresql', name: 'postgresql', version: '42.2.2.jdbc4'
 
 

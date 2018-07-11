@@ -1,0 +1,26 @@
+postgresql
+
+CREATE TABLE account ( 
+	id serial primary key,
+	account_name character varying(200) NOT NULL, 
+	account_balance numeric(10,2)
+	);
+CREATE TABLE funds (
+	id serial primary key, 
+	memeber_account integer references account(id) NOT NULL,
+	fund_balance numeric(10,2) NOT NULL
+);
+
+CREATE TABLE role (
+	id serial primary key, 
+	role_name character varying(200) NOT NULL
+);
+
+CREATE TABLE users ( 
+	id serial primary key,
+	active boolean NOT NULL,
+	first_name character varying(200) NOT NULL,  
+	pass character varying(200) NOT NULL,
+	user_account integer references account(id) NOT NULL,
+	user_role integer references role(id) NOT NULL
+);
