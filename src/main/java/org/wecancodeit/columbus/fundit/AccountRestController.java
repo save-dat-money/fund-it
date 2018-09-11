@@ -71,8 +71,7 @@ public class AccountRestController {
 			toChange.decreaseFundAmnt(value);
 			fundRepo.save(toChange);
 		}
-		
-		
+
 		return editAccount;
 	}
 
